@@ -1,0 +1,8 @@
+{
+    "plugins": ["stylelint-scss"],
+    "extends": ["stylelint-config-standard", "stylelint-config-prettier"],
+    "ignoreFiles": ["**/*.ts", "**/*.tsx"],
+    "rules": {
+        "scss/no-duplicate-dollar-variables": true
+    }
+}
