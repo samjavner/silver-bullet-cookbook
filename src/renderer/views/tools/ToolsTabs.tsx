@@ -1,10 +1,9 @@
-import { Button, ButtonGroup } from "@blueprintjs/core";
-import classNames from "classnames";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import * as actions from "../../app/actions";
 import { State } from "../../app/state";
+import { Navtab, Navtabs } from "../../components/Navtabs";
 
 function mapStateToProps(state: State) {
     return {
@@ -28,68 +27,38 @@ type ToolsTabsProps = ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
 export const ToolsTabs: React.SFC<ToolsTabsProps> = props => (
-    <>
-        <div className="pz-navtabs">
-            <ButtonGroup minimal={true}>
-                <Button
-                    className={classNames({
-                        "pz-navtabs-button": true,
-                        "pz-navtabs-button--active":
-                            props.activePage === "calculator",
-                    })}
-                    icon="calculator"
-                    onClick={props.onCalculatorClick}
-                >
-                    Calculator
-                </Button>
-                <Button
-                    className={classNames({
-                        "pz-navtabs-button": true,
-                        "pz-navtabs-button--active":
-                            props.activePage === "timer",
-                    })}
-                    icon="time"
-                    onClick={props.onTimerClick}
-                >
-                    Timer
-                </Button>
-                <Button
-                    className={classNames({
-                        "pz-navtabs-button": true,
-                        "pz-navtabs-button--active":
-                            props.activePage === "import",
-                    })}
-                    icon="import"
-                    onClick={props.onImportClick}
-                >
-                    Import
-                </Button>
-                <Button
-                    className={classNames({
-                        "pz-navtabs-button": true,
-                        "pz-navtabs-button--active":
-                            props.activePage === "export",
-                    })}
-                    icon="export"
-                    onClick={props.onExportClick}
-                >
-                    Export
-                </Button>
-                <Button
-                    className={classNames({
-                        "pz-navtabs-button": true,
-                        "pz-navtabs-button--active":
-                            props.activePage === "statistics",
-                    })}
-                    icon="pie-chart"
-                    onClick={props.onStatisticsClick}
-                >
-                    Statistics
-                </Button>
-            </ButtonGroup>
-        </div>
-        <div style={{ borderTop: "1px solid lightgray" }} />
-    </>
+    <Navtabs>
+        <Navtab
+            isActive={props.activePage === "calculator"}
+            icon="calculator"
+            text="Calculator"
+            onClick={props.onCalculatorClick}
+        />
+        <Navtab
+            isActive={props.activePage === "timer"}
+            icon="time"
+            text="Timer"
+            onClick={props.onTimerClick}
+        />
+        <Navtab
+            isActive={props.activePage === "import"}
+            icon="import"
+            text="Import"
+            onClick={props.onImportClick}
+        />
+        <Navtab
+            isActive={props.activePage === "export"}
+            icon="export"
+            text="Export"
+            onClick={props.onExportClick}
+        />
+        <Navtab
+            isActive={props.activePage === "statistics"}
+            icon="pie-chart"
+            text="Statistics"
+            onClick={props.onStatisticsClick}
+        />
+    </Navtabs>
 );
 
 export default connect(
