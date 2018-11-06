@@ -37,6 +37,7 @@
         "lint-staged": "7.3.0",
         "node-sass": "4.9.4",
         "prettier": "1.14.3",
+        "react-test-renderer": "16.6.0",
         "sass-loader": "7.1.0",
         "stylelint": "9.6.0",
         "stylelint-config-prettier": "4.0.0",
@@ -62,7 +63,6 @@
         "react-hot-loader": "4.3.11",
         "react-redux": "5.1.0",
         "redux": "4.0.1",
-        "redux-little-router": "15.1.2",
         "reselect": "4.0.0",
         "source-map-support": "0.5.9",
         "sqlite3": "4.0.3",
@@ -74,7 +74,8 @@
         },
         "renderer": {
             "webpackConfig": "webpack.renderer.additions.js"
-        }
+        },
+        "title": "Pepperzip"
     },
     "jest": {
         "moduleFileExtensions": [

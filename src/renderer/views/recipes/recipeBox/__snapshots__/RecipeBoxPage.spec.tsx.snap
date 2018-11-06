@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeBoxPage renders the text 'Recipe Box' 1`] = `
+<div>
+  Recipe Box
+</div>
+`;

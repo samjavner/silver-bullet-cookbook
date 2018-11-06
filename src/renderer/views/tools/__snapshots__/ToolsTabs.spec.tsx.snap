@@ -1,0 +1,921 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolsTabs should render with the 'calculator' tab active when the 'calculator' page is active 1`] = `
+Array [
+  <div
+    className="pz-navtabs"
+  >
+    <div
+      className="bp3-button-group bp3-minimal"
+    >
+      <button
+        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-calculator"
+          icon="calculator"
+        >
+          <svg
+            data-icon="calculator"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              calculator
+            </desc>
+            <path
+              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Calculator
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-time"
+          icon="time"
+        >
+          <svg
+            data-icon="time"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              time
+            </desc>
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Timer
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-import"
+          icon="import"
+        >
+          <svg
+            data-icon="import"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              import
+            </desc>
+            <path
+              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Import
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-export"
+          icon="export"
+        >
+          <svg
+            data-icon="export"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              export
+            </desc>
+            <path
+              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Export
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-pie-chart"
+          icon="pie-chart"
+        >
+          <svg
+            data-icon="pie-chart"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              pie-chart
+            </desc>
+            <path
+              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
+              fillRule="evenodd"
+            />
+            <path
+              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Statistics
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "borderTop": "1px solid lightgray",
+      }
+    }
+  />,
+]
+`;
+
+exports[`ToolsTabs should render with the 'export' tab active when the 'export' page is active 1`] = `
+Array [
+  <div
+    className="pz-navtabs"
+  >
+    <div
+      className="bp3-button-group bp3-minimal"
+    >
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-calculator"
+          icon="calculator"
+        >
+          <svg
+            data-icon="calculator"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              calculator
+            </desc>
+            <path
+              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Calculator
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-time"
+          icon="time"
+        >
+          <svg
+            data-icon="time"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              time
+            </desc>
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Timer
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-import"
+          icon="import"
+        >
+          <svg
+            data-icon="import"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              import
+            </desc>
+            <path
+              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Import
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-export"
+          icon="export"
+        >
+          <svg
+            data-icon="export"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              export
+            </desc>
+            <path
+              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Export
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-pie-chart"
+          icon="pie-chart"
+        >
+          <svg
+            data-icon="pie-chart"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              pie-chart
+            </desc>
+            <path
+              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
+              fillRule="evenodd"
+            />
+            <path
+              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Statistics
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "borderTop": "1px solid lightgray",
+      }
+    }
+  />,
+]
+`;
+
+exports[`ToolsTabs should render with the 'import' tab active when the 'import' page is active 1`] = `
+Array [
+  <div
+    className="pz-navtabs"
+  >
+    <div
+      className="bp3-button-group bp3-minimal"
+    >
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-calculator"
+          icon="calculator"
+        >
+          <svg
+            data-icon="calculator"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              calculator
+            </desc>
+            <path
+              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Calculator
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-time"
+          icon="time"
+        >
+          <svg
+            data-icon="time"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              time
+            </desc>
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Timer
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-import"
+          icon="import"
+        >
+          <svg
+            data-icon="import"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              import
+            </desc>
+            <path
+              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Import
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-export"
+          icon="export"
+        >
+          <svg
+            data-icon="export"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              export
+            </desc>
+            <path
+              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Export
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-pie-chart"
+          icon="pie-chart"
+        >
+          <svg
+            data-icon="pie-chart"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              pie-chart
+            </desc>
+            <path
+              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
+              fillRule="evenodd"
+            />
+            <path
+              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Statistics
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "borderTop": "1px solid lightgray",
+      }
+    }
+  />,
+]
+`;
+
+exports[`ToolsTabs should render with the 'statistics' tab active when the 'statistics' page is active 1`] = `
+Array [
+  <div
+    className="pz-navtabs"
+  >
+    <div
+      className="bp3-button-group bp3-minimal"
+    >
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-calculator"
+          icon="calculator"
+        >
+          <svg
+            data-icon="calculator"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              calculator
+            </desc>
+            <path
+              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Calculator
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-time"
+          icon="time"
+        >
+          <svg
+            data-icon="time"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              time
+            </desc>
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Timer
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-import"
+          icon="import"
+        >
+          <svg
+            data-icon="import"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              import
+            </desc>
+            <path
+              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Import
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-export"
+          icon="export"
+        >
+          <svg
+            data-icon="export"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              export
+            </desc>
+            <path
+              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Export
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-pie-chart"
+          icon="pie-chart"
+        >
+          <svg
+            data-icon="pie-chart"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              pie-chart
+            </desc>
+            <path
+              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
+              fillRule="evenodd"
+            />
+            <path
+              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Statistics
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "borderTop": "1px solid lightgray",
+      }
+    }
+  />,
+]
+`;
+
+exports[`ToolsTabs should render with the 'timer' tab active when the 'timer' page is active 1`] = `
+Array [
+  <div
+    className="pz-navtabs"
+  >
+    <div
+      className="bp3-button-group bp3-minimal"
+    >
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-calculator"
+          icon="calculator"
+        >
+          <svg
+            data-icon="calculator"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              calculator
+            </desc>
+            <path
+              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Calculator
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-time"
+          icon="time"
+        >
+          <svg
+            data-icon="time"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              time
+            </desc>
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Timer
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-import"
+          icon="import"
+        >
+          <svg
+            data-icon="import"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              import
+            </desc>
+            <path
+              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Import
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-export"
+          icon="export"
+        >
+          <svg
+            data-icon="export"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              export
+            </desc>
+            <path
+              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Export
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-pie-chart"
+          icon="pie-chart"
+        >
+          <svg
+            data-icon="pie-chart"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              pie-chart
+            </desc>
+            <path
+              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
+              fillRule="evenodd"
+            />
+            <path
+              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Statistics
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "borderTop": "1px solid lightgray",
+      }
+    }
+  />,
+]
+`;

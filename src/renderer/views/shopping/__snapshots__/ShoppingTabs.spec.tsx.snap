@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShoppingTabs should render with the 'grocery_lists' tab active when the 'grocery_lists' page is active 1`] = `
+Array [
+  <div
+    className="pz-navtabs"
+  >
+    <div
+      className="bp3-button-group bp3-minimal"
+    >
+      <button
+        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-shopping-cart"
+          icon="shopping-cart"
+        >
+          <svg
+            data-icon="shopping-cart"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              shopping-cart
+            </desc>
+            <path
+              d="M14 10H7.72l-.33-1H13c.39 0 .72-.23.89-.56h.01l2-4h-.01c.06-.13.11-.28.11-.44 0-.55-.45-1-1-1H5.39l-.44-1.32h-.01C4.8 1.29 4.44 1 4 1H1c-.55 0-1 .45-1 1s.45 1 1 1h2.28l2.33 7H4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2h6c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2zM6.05 5h7.33l-1 2H6.72l-.67-2z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Grocery Lists
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-inbox"
+          icon="inbox"
+        >
+          <svg
+            data-icon="inbox"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              inbox
+            </desc>
+            <path
+              d="M13.91 2.6c-.16-.36-.51-.61-.92-.61h-10c-.41 0-.77.25-.92.61L-.01 7.45v5.54c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V7.45L13.91 2.6zm-1.92 5.39c-.55 0-1 .45-1 1v1h-6v-1c0-.55-.45-1-1-1H1.94l1.71-4h8.68l1.71 4h-2.05z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Inventory
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "borderTop": "1px solid lightgray",
+      }
+    }
+  />,
+]
+`;
+
+exports[`ShoppingTabs should render with the 'inventory' tab active when the 'inventory' page is active 1`] = `
+Array [
+  <div
+    className="pz-navtabs"
+  >
+    <div
+      className="bp3-button-group bp3-minimal"
+    >
+      <button
+        className="bp3-button pz-navtabs-button"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-shopping-cart"
+          icon="shopping-cart"
+        >
+          <svg
+            data-icon="shopping-cart"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              shopping-cart
+            </desc>
+            <path
+              d="M14 10H7.72l-.33-1H13c.39 0 .72-.23.89-.56h.01l2-4h-.01c.06-.13.11-.28.11-.44 0-.55-.45-1-1-1H5.39l-.44-1.32h-.01C4.8 1.29 4.44 1 4 1H1c-.55 0-1 .45-1 1s.45 1 1 1h2.28l2.33 7H4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2h6c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2zM6.05 5h7.33l-1 2H6.72l-.67-2z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Grocery Lists
+        </span>
+      </button>
+      <button
+        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        type="button"
+      >
+        <span
+          className="bp3-icon bp3-icon-inbox"
+          icon="inbox"
+        >
+          <svg
+            data-icon="inbox"
+            height={16}
+            viewBox="0 0 16 16"
+            width={16}
+          >
+            <desc>
+              inbox
+            </desc>
+            <path
+              d="M13.91 2.6c-.16-.36-.51-.61-.92-.61h-10c-.41 0-.77.25-.92.61L-.01 7.45v5.54c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V7.45L13.91 2.6zm-1.92 5.39c-.55 0-1 .45-1 1v1h-6v-1c0-.55-.45-1-1-1H1.94l1.71-4h8.68l1.71 4h-2.05z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </span>
+        <span
+          className="bp3-button-text"
+        >
+          Inventory
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    style={
+      Object {
+        "borderTop": "1px solid lightgray",
+      }
+    }
+  />,
+]
+`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InventoryPage renders the text 'Inventory' 1`] = `
+<div>
+  Inventory
+</div>
+`;

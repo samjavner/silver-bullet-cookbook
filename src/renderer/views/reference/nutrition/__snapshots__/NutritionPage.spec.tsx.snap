@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NutritionPage renders the text 'Nutrition' 1`] = `
+<div>
+  Nutrition
+</div>
+`;
