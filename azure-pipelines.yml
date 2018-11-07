@@ -7,3 +7,10 @@ steps:
 
     - script: yarn run build
       displayName: yarn run build
+
+    - task: PublishTestResults@2
+      displayName: Publish test results
+      condition: succeededOrFailed()
+      inputs:
+          testResultsFiles: junit.xml
+          testRunTitle: Jest Tests
