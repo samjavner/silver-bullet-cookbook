@@ -7,11 +7,13 @@
     "scripts": {
         "start": "electron-webpack dev",
         "test": "jest --watch",
-        "build": "yarn run build:lint && yarn run build:test && electron-webpack && electron-builder",
+        "build": "yarn run build:lint && yarn run build:test && yarn run build:webpack && yarn run build:electron",
         "build:lint": "yarn run build:tslint && yarn run build:stylelint",
         "build:tslint": "tslint --config tslint.json --project tsconfig.json",
         "build:stylelint": "stylelint \"src/**/*.scss\"",
         "build:test": "jest",
+        "build:webpack": "electron-webpack",
+        "build:electron": "electron-builder --publish=never",
         "postinstall": "electron-builder install-app-deps",
         "precommit": "lint-staged"
     },
