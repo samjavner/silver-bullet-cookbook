@@ -23,7 +23,7 @@ jobs:
             condition: succeededOrFailed()
             inputs:
                 testResultsFiles: junit.xml
-                testRunTitle: $(Agent.JobName) Jest Tests
+                testRunTitle: ${{ parameters.name }} Jest Tests
 
           - task: PublishBuildArtifacts@1
             displayName: Publish artifact
