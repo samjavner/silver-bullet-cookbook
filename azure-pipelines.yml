@@ -5,39 +5,18 @@ variables:
     versionNumber: 0.1.0
 
 jobs:
-    - job: Build
-      strategy:
-          matrix:
-              Windows:
-                  vmImage: vs2017-win2016
-
-              Linux:
-                  vmImage: ubuntu-16.04
-
+    - job: Windows
       pool:
-          vmImage: $(vmImage)
-
+          vmImage: vs2017-win2016
+      variables:
+          packageExtension: exe
       steps:
-          - task: qetza.replacetokens.replacetokens-task.replacetokens@3
-            displayName: Set version in package.json
-            inputs:
-                targetFiles: package.json
+          - template: templates/build.yml
 
-          - script: yarn install
-            displayName: yarn install
-
-          - script: yarn run build
-            displayName: yarn run build
-
-          - task: PublishTestResults@2
-            displayName: Publish test results
-            condition: succeededOrFailed()
-            inputs:
-                testResultsFiles: junit.xml
-                testRunTitle: Jest Tests
-
-          - task: PublishBuildArtifacts@1
-            displayName: Publish artifact
-            inputs:
-                pathtoPublish: $(Build.SourcesDirectory)/dist/pepperzip Setup $(versionNumber).exe
-                artifactName: Pepperzip
+    - job: Linux
+      pool:
+          vmImage: ubuntu-16.04
+      variables:
+          packageExtension: AppImage
+      steps:
+          - template: templates/build.yml
