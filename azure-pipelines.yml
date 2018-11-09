@@ -1,33 +1,43 @@
 name: $(versionNumber).$(Rev:r)
 
-pool:
-    vmImage: vs2017-win2016
-
 variables:
     version: version
     versionNumber: 0.1.0
 
-steps:
-    - task: qetza.replacetokens.replacetokens-task.replacetokens@3
-      displayName: Set version in package.json
-      inputs:
-          targetFiles: package.json
+jobs:
+    - job: Build
+      strategy:
+          matrix:
+              Windows:
+                  vmImage: vs2017-win2016
 
-    - script: yarn install
-      displayName: yarn install
+              Linux:
+                  vmImage: ubuntu-16.04
 
-    - script: yarn run build
-      displayName: yarn run build
+      pool:
+          vmImage: $(vmImage)
 
-    - task: PublishTestResults@2
-      displayName: Publish test results
-      condition: succeededOrFailed()
-      inputs:
-          testResultsFiles: junit.xml
-          testRunTitle: Jest Tests
+      steps:
+          - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+            displayName: Set version in package.json
+            inputs:
+                targetFiles: package.json
 
-    - task: PublishBuildArtifacts@1
-      displayName: Publish artifact
-      inputs:
-          pathtoPublish: $(Build.SourcesDirectory)/dist/pepperzip Setup $(versionNumber).exe
-          artifactName: Pepperzip
+          - script: yarn install
+            displayName: yarn install
+
+          - script: yarn run build
+            displayName: yarn run build
+
+          - task: PublishTestResults@2
+            displayName: Publish test results
+            condition: succeededOrFailed()
+            inputs:
+                testResultsFiles: junit.xml
+                testRunTitle: Jest Tests
+
+          - task: PublishBuildArtifacts@1
+            displayName: Publish artifact
+            inputs:
+                pathtoPublish: $(Build.SourcesDirectory)/dist/pepperzip Setup $(versionNumber).exe
+                artifactName: Pepperzip
