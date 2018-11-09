@@ -1,5 +1,10 @@
+name: $(version).$(Rev:rrrr)
+
 pool:
     vmImage: vs2017-win2016
+
+variables:
+    version: 0.1
 
 steps:
     - script: yarn install
@@ -14,3 +19,9 @@ steps:
       inputs:
           testResultsFiles: junit.xml
           testRunTitle: Jest Tests
+
+    - task: PublishBuildArtifacts@1
+      displayName: Publish artifact
+      inputs:
+          pathtoPublish: $(Build.SourcesDirectory)/dist/pepperzip Setup $(Build.BuildNumber).exe
+          artifactName: $(projectName)
