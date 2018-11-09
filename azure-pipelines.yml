@@ -29,5 +29,5 @@ steps:
     - task: PublishBuildArtifacts@1
       displayName: Publish artifact
       inputs:
-          pathtoPublish: $(Build.SourcesDirectory)/dist/pepperzip Setup $(Build.BuildNumber).exe
-          artifactName: $(projectName)
+          pathtoPublish: $(Build.ArtifactStagingDirectory)/dist/pepperzip Setup $(Build.BuildNumber).exe
+          artifactName: Pepperzip
