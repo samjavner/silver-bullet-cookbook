@@ -5,7 +5,7 @@ pool:
 
 variables:
     version: version
-    versionNumber: 0.1
+    versionNumber: 0.1.0
 
 steps:
     - task: qetza.replacetokens.replacetokens-task.replacetokens@3
@@ -29,5 +29,5 @@ steps:
     - task: PublishBuildArtifacts@1
       displayName: Publish artifact
       inputs:
-          pathtoPublish: $(Build.SourcesDirectory)/dist/pepperzip Setup $(Build.BuildNumber).exe
+          pathtoPublish: $(Build.SourcesDirectory)/dist/pepperzip Setup $(versionNumber).exe
           artifactName: Pepperzip
