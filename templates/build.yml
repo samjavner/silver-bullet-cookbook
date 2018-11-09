@@ -15,10 +15,10 @@ steps:
       condition: succeededOrFailed()
       inputs:
           testResultsFiles: junit.xml
-          testRunTitle: Jest Tests
+          testRunTitle: $(Agent.JobName) Jest Tests
 
     - task: PublishBuildArtifacts@1
       displayName: Publish artifact
       inputs:
-          pathtoPublish: $(Build.SourcesDirectory)/dist/pepperzip Setup $(versionNumber).$(packageExtension)
+          pathtoPublish: $(Build.SourcesDirectory)/dist/pepperzip Setup $(versionNumber)$(artifactFileSuffix)
           artifactName: Pepperzip
