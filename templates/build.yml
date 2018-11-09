@@ -1,24 +1,32 @@
-steps:
-    - task: qetza.replacetokens.replacetokens-task.replacetokens@3
-      displayName: Set version in package.json
-      inputs:
-          targetFiles: package.json
+parameters:
+    name: ""
+    pool: ""
+    artifact: ""
 
-    - script: yarn install
-      displayName: yarn install
+jobs:
+    - job: ${{ parameters.name }}
+      pool: ${{ parameters.pool }}
+      steps:
+          - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+            displayName: Set version in package.json
+            inputs:
+                targetFiles: package.json
 
-    - script: yarn run build
-      displayName: yarn run build
+          - script: yarn install
+            displayName: yarn install
 
-    - task: PublishTestResults@2
-      displayName: Publish test results
-      condition: succeededOrFailed()
-      inputs:
-          testResultsFiles: junit.xml
-          testRunTitle: $(Agent.JobName) Jest Tests
+          - script: yarn run build
+            displayName: yarn run build
 
-    - task: PublishBuildArtifacts@1
-      displayName: Publish artifact
-      inputs:
-          pathtoPublish: $(Build.SourcesDirectory)/dist/$(artifactFileName)
-          artifactName: Pepperzip
+          - task: PublishTestResults@2
+            displayName: Publish test results
+            condition: succeededOrFailed()
+            inputs:
+                testResultsFiles: junit.xml
+                testRunTitle: $(Agent.JobName) Jest Tests
+
+          - task: PublishBuildArtifacts@1
+            displayName: Publish artifact
+            inputs:
+                pathtoPublish: $(Build.SourcesDirectory)/dist/${{ parameters.artifact }}
+                artifactName: Pepperzip
