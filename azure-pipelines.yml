@@ -9,7 +9,7 @@ jobs:
       pool:
           vmImage: vs2017-win2016
       variables:
-          artifactFileSuffix: .exe
+          artifactFileName: pepperzip Setup $(versionNumber).exe
       steps:
           - template: templates/build.yml
 
@@ -17,6 +17,6 @@ jobs:
       pool:
           vmImage: ubuntu-16.04
       variables:
-          artifactFileSuffix: -x86_64.AppImage
+          artifactFileName: pepperzip-$(versionNumber)-x86_64.AppImage
       steps:
           - template: templates/build.yml
