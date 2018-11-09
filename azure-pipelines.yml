@@ -1,12 +1,18 @@
-name: $(version).$(Rev:rrrr)
+name: $(versionNumber).$(Rev:r)
 
 pool:
     vmImage: vs2017-win2016
 
 variables:
-    version: 0.1
+    version: version
+    versionNumber: 0.1.0
 
 steps:
+    - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+      displayName: Set version in package.json
+      inputs:
+          targetFiles: package.json
+
     - script: yarn install
       displayName: yarn install
 

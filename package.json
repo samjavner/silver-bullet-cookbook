@@ -1,6 +1,6 @@
 {
     "name": "pepperzip",
-    "version": "0.1.0",
+    "#{version}#": "#{versionNumber}#",
     "repository": "https://github.com/samjavner/pepperzip",
     "author": "Sam Javner <samuel.javner@gmail.com>",
     "license": "MIT",
