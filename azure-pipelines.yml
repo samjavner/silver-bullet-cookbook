@@ -24,4 +24,4 @@ jobs:
           name: macOS
           pool:
               vmImage: macOS-10.13
-          artifact: pepperzip Setup $(versionNumber).dmg
+          artifact: pepperzip-$(versionNumber).dmg
