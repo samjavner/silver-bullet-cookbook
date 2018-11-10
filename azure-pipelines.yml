@@ -18,3 +18,10 @@ jobs:
           pool:
               vmImage: ubuntu-16.04
           artifact: pepperzip-$(versionNumber)-x86_64.AppImage
+
+    - template: templates/build.yml
+      parameters:
+          name: macOS
+          pool:
+              vmImage: macOS-10.13
+          artifact: pepperzip Setup $(versionNumber).dmg
