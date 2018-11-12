@@ -1,5 +1,7 @@
 name: $(versionNumber).$(Rev:r)
 
+trigger: master
+
 variables:
     version: version
     versionNumber: 0.1.0
