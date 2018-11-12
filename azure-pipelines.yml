@@ -1,0 +1,27 @@
+name: $(versionNumber).$(Rev:r)
+
+variables:
+    version: version
+    versionNumber: 0.1.0
+
+jobs:
+    - template: templates/build.yml
+      parameters:
+          name: Windows
+          pool:
+              vmImage: vs2017-win2016
+          artifact: pepperzip Setup $(versionNumber).exe
+
+    - template: templates/build.yml
+      parameters:
+          name: Linux
+          pool:
+              vmImage: ubuntu-16.04
+          artifact: pepperzip-$(versionNumber)-x86_64.AppImage
+
+    - template: templates/build.yml
+      parameters:
+          name: macOS
+          pool:
+              vmImage: macOS-10.13
+          artifact: pepperzip-$(versionNumber).dmg
