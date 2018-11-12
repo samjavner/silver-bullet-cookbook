@@ -1,6 +1,7 @@
-name: $(versionNumber).$(Rev:r)
+name: $(versionNumber)-rc.$(Rev:r)
 
-trigger: master
+trigger:
+    - master
 
 variables:
     version: version
