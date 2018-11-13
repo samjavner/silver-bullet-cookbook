@@ -43,11 +43,7 @@ Array [
     </div>
   </div>,
   <div
-    style={
-      Object {
-        "borderTop": "1px solid lightgray",
-      }
-    }
+    className="pz-navtabs__border"
   />,
 ]
 `;

@@ -86,6 +86,9 @@
             "tsx",
             "js"
         ],
+        "moduleNameMapper": {
+            "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+        },
         "transform": {
             "^.+\\.tsx?$": "ts-jest"
         },

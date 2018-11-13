@@ -51,21 +51,3 @@ body {
     font-size: 15px;
     text-transform: lowercase;
 }
-
-.pz-navtabs-button.bp3-button,
-.pz-navtabs-button.bp3-button:hover {
-    font-family: $pz-font-family-interface;
-    font-size: 15px;
-    text-transform: lowercase;
-
-    &.pz-navtabs-button--active,
-    &.pz-navtabs-button--active .bp3-icon {
-        color: #006e82;
-    }
-}
-
-.pz-navtabs {
-    display: flex;
-    justify-content: center;
-    padding: 4px;
-}

@@ -1,13 +1,14 @@
 import { Button, ButtonGroup, IconName } from "@blueprintjs/core";
 import classNames from "classnames";
 import * as React from "react";
+import "./Navtabs.scss";
 
 export const Navtabs: React.SFC = props => (
     <>
         <div className="pz-navtabs">
             <ButtonGroup minimal={true}>{props.children}</ButtonGroup>
         </div>
-        <div style={{ borderTop: "1px solid lightgray" }} />
+        <div className="pz-navtabs__border" />
     </>
 );
 

@@ -1,0 +1,30 @@
+@import "../variables.scss";
+
+.pz-navtabs {
+    display: flex;
+    justify-content: center;
+}
+
+.pz-navtabs__border {
+    border-top: 1px solid lightgray;
+    margin-top: -1px;
+}
+
+.pz-navtabs-button.bp3-button,
+.pz-navtabs-button.bp3-button:hover {
+    border: 2px solid transparent;
+    border-radius: 0;
+    font-family: $pz-font-family-interface;
+    font-size: 15px;
+    padding: 9px;
+    text-transform: lowercase;
+
+    &.pz-navtabs-button--active {
+        border-bottom-color: #006e82;
+        color: #006e82;
+    }
+
+    &.pz-navtabs-button--active .bp3-icon {
+        color: #006e82;
+    }
+}
