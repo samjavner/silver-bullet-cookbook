@@ -13,18 +13,18 @@ jobs:
           name: Windows
           pool:
               vmImage: vs2017-win2016
-          artifact: pepperzip Setup $(versionNumber).exe
+          artifact: silver-bullet-cookbook Setup $(versionNumber).exe
 
     - template: templates/build.yml
       parameters:
           name: Linux
           pool:
               vmImage: ubuntu-16.04
-          artifact: pepperzip-$(versionNumber)-x86_64.AppImage
+          artifact: silver-bullet-cookbook-$(versionNumber)-x86_64.AppImage
 
     - template: templates/build.yml
       parameters:
           name: macOS
           pool:
               vmImage: macOS-10.13
-          artifact: pepperzip-$(versionNumber).dmg
+          artifact: silver-bullet-cookbook-$(versionNumber).dmg

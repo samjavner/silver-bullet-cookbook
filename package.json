@@ -1,7 +1,7 @@
 {
-    "name": "pepperzip",
+    "name": "silver-bullet-cookbook",
     "#{version}#": "#{versionNumber}#",
-    "repository": "https://github.com/samjavner/pepperzip",
+    "repository": "https://github.com/samjavner/silver-bullet-cookbook",
     "author": "Sam Javner <samuel.javner@gmail.com>",
     "license": "MIT",
     "scripts": {
@@ -78,7 +78,7 @@
         "renderer": {
             "webpackConfig": "webpack.renderer.additions.js"
         },
-        "title": "Pepperzip"
+        "title": "Silver Bullet Cookbook"
     },
     "jest": {
         "moduleFileExtensions": [
