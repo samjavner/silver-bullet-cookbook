@@ -7,7 +7,10 @@ import { Action } from "./app/actions";
 import reducer from "./app/reducer";
 import { State } from "./app/state";
 import "./index.scss";
+import { sqliteTest } from "./sqliteTest";
 import App from "./views/App";
+
+// sqliteTest();
 
 const store: redux.Store<State, Action> = redux.createStore(
     reducer,
