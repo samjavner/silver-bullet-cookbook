@@ -1,3 +1,10 @@
+import {
+    faArchive,
+    faBook,
+    faHeart,
+    faSearch,
+    faTags,
+} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -30,31 +37,31 @@ export const RecipesTabs: React.SFC<RecipesTabsProps> = props => (
     <Navtabs>
         <Navtab
             isActive={props.activePage === "library"}
-            icon="book"
+            icon={faBook}
             text="Library"
             onClick={props.onLibraryClick}
         />
         <Navtab
             isActive={props.activePage === "recipe_box"}
-            icon="box"
+            icon={faArchive}
             text="Recipe Box"
             onClick={props.onRecipeBoxClick}
         />
         <Navtab
             isActive={props.activePage === "favorites"}
-            icon="heart"
+            icon={faHeart}
             text="Favorites"
             onClick={props.onFavoritesClick}
         />
         <Navtab
             isActive={props.activePage === "tags"}
-            icon="tag"
+            icon={faTags}
             text="Tags"
             onClick={props.onTagsClick}
         />
         <Navtab
             isActive={props.activePage === "search"}
-            icon="search"
+            icon={faSearch}
             text="Search"
             onClick={props.onSearchClick}
         />

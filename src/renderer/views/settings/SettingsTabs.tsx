@@ -1,3 +1,4 @@
+import { faCog, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -26,13 +27,13 @@ export const SettingsTabs: React.SFC<SettingsTabsProps> = props => (
     <Navtabs>
         <Navtab
             isActive={props.activePage === "settings"}
-            icon="cog"
+            icon={faCog}
             text="Settings"
             onClick={props.onSettingsClick}
         />
         <Navtab
             isActive={props.activePage === "about"}
-            icon="info-sign"
+            icon={faInfoCircle}
             text="About"
             onClick={props.onAboutClick}
         />

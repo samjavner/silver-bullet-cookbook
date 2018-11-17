@@ -1,3 +1,4 @@
+import { faHome } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -24,7 +25,7 @@ export const HomeTabs: React.SFC<HomeTabsProps> = props => (
     <Navtabs>
         <Navtab
             isActive={props.activePage === "home"}
-            icon="home"
+            icon={faHome}
             text="Home"
             onClick={props.onHomeClick}
         />

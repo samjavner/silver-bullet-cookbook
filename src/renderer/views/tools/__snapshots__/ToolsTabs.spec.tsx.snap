@@ -1,901 +1,821 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToolsTabs should render with the 'calculator' tab active when the 'calculator' page is active 1`] = `
-Array [
-  <div
-    className="pz-navtabs"
-  >
-    <div
-      className="bp3-button-group bp3-minimal"
+<div
+  className="tabs is-centered"
+  style={
+    Object {
+      "marginBottom": "0px",
+    }
+  }
+>
+  <ul>
+    <li
+      className="is-active"
     >
-      <button
-        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-calculator"
-          icon="calculator"
+          className="icon is-small"
         >
           <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-calculator fa-w-14 "
             data-icon="calculator"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              calculator
-            </desc>
             <path
-              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
-              fillRule="evenodd"
+              d="M400 0H48C22.4 0 0 22.4 0 48v416c0 25.6 22.4 48 48 48h352c25.6 0 48-22.4 48-48V48c0-25.6-22.4-48-48-48zM128 435.2c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8V268.8c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v166.4zm0-256c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8V76.8C64 70.4 70.4 64 76.8 64h294.4c6.4 0 12.8 6.4 12.8 12.8v102.4z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Calculator
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Calculator
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-time"
-          icon="time"
+          className="icon is-small"
         >
           <svg
-            data-icon="time"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-stopwatch fa-w-14 "
+            data-icon="stopwatch"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              time
-            </desc>
             <path
-              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
-              fillRule="evenodd"
+              d="M432 304c0 114.9-93.1 208-208 208S16 418.9 16 304c0-104 76.3-190.2 176-205.5V64h-28c-6.6 0-12-5.4-12-12V12c0-6.6 5.4-12 12-12h120c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-28v34.5c37.5 5.8 71.7 21.6 99.7 44.6l27.5-27.5c4.7-4.7 12.3-4.7 17 0l28.3 28.3c4.7 4.7 4.7 12.3 0 17l-29.4 29.4-.6.6C419.7 223.3 432 262.2 432 304zm-176 36V188.5c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12V340c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Timer
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Timer
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-import"
-          icon="import"
+          className="icon is-small"
         >
           <svg
-            data-icon="import"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-import fa-w-16 "
+            data-icon="file-import"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              import
-            </desc>
             <path
-              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M16 288c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h112v-64H16zm336-152V0H152c-13.3 0-24 10.7-24 24v264h127.99v-65.18c0-14.28 17.29-21.41 27.36-11.27l95.7 96.43c6.6 6.65 6.6 17.39 0 24.04l-95.7 96.42c-10.06 10.14-27.36 3.01-27.36-11.27V352H128v136c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H376c-13.2 0-24-10.8-24-24zm153-31L407.1 7c-4.5-4.5-10.6-7-17-7H384v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Import
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Import
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-export"
-          icon="export"
+          className="icon is-small"
         >
           <svg
-            data-icon="export"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-export fa-w-18 "
+            data-icon="file-export"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 576 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              export
-            </desc>
             <path
-              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zM192 336v-32c0-8.84 7.16-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.84 0-16-7.16-16-16zm379.05-28.02l-95.7-96.43c-10.06-10.14-27.36-3.01-27.36 11.27V288H384v64h63.99v65.18c0 14.28 17.29 21.41 27.36 11.27l95.7-96.42c6.6-6.66 6.6-17.4 0-24.05z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Export
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Export
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-pie-chart"
-          icon="pie-chart"
+          className="icon is-small"
         >
           <svg
-            data-icon="pie-chart"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-chart-pie fa-w-17 "
+            data-icon="chart-pie"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 544 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              pie-chart
-            </desc>
             <path
-              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
-              fillRule="evenodd"
-            />
-            <path
-              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
-              fillRule="evenodd"
+              d="M527.79 288H290.5l158.03 158.03c6.04 6.04 15.98 6.53 22.19.68 38.7-36.46 65.32-85.61 73.13-140.86 1.34-9.46-6.51-17.85-16.06-17.85zm-15.83-64.8C503.72 103.74 408.26 8.28 288.8.04 279.68-.59 272 7.1 272 16.24V240h223.77c9.14 0 16.82-7.68 16.19-16.8zM224 288V50.71c0-9.55-8.39-17.4-17.84-16.06C86.99 51.49-4.1 155.6.14 280.37 4.5 408.51 114.83 513.59 243.03 511.98c50.4-.63 96.97-16.87 135.26-44.03 7.9-5.6 8.42-17.23 1.57-24.08L224 288z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Statistics
-        </span>
-      </button>
-    </div>
-  </div>,
-  <div
-    className="pz-navtabs__border"
-  />,
-]
+        Statistics
+      </a>
+    </li>
+  </ul>
+</div>
 `;
 
 exports[`ToolsTabs should render with the 'export' tab active when the 'export' page is active 1`] = `
-Array [
-  <div
-    className="pz-navtabs"
-  >
-    <div
-      className="bp3-button-group bp3-minimal"
+<div
+  className="tabs is-centered"
+  style={
+    Object {
+      "marginBottom": "0px",
+    }
+  }
+>
+  <ul>
+    <li
+      className=""
     >
-      <button
-        className="bp3-button pz-navtabs-button"
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-calculator"
-          icon="calculator"
+          className="icon is-small"
         >
           <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-calculator fa-w-14 "
             data-icon="calculator"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              calculator
-            </desc>
             <path
-              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
-              fillRule="evenodd"
+              d="M400 0H48C22.4 0 0 22.4 0 48v416c0 25.6 22.4 48 48 48h352c25.6 0 48-22.4 48-48V48c0-25.6-22.4-48-48-48zM128 435.2c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8V268.8c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v166.4zm0-256c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8V76.8C64 70.4 70.4 64 76.8 64h294.4c6.4 0 12.8 6.4 12.8 12.8v102.4z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Calculator
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Calculator
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-time"
-          icon="time"
+          className="icon is-small"
         >
           <svg
-            data-icon="time"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-stopwatch fa-w-14 "
+            data-icon="stopwatch"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              time
-            </desc>
             <path
-              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
-              fillRule="evenodd"
+              d="M432 304c0 114.9-93.1 208-208 208S16 418.9 16 304c0-104 76.3-190.2 176-205.5V64h-28c-6.6 0-12-5.4-12-12V12c0-6.6 5.4-12 12-12h120c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-28v34.5c37.5 5.8 71.7 21.6 99.7 44.6l27.5-27.5c4.7-4.7 12.3-4.7 17 0l28.3 28.3c4.7 4.7 4.7 12.3 0 17l-29.4 29.4-.6.6C419.7 223.3 432 262.2 432 304zm-176 36V188.5c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12V340c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Timer
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Timer
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-import"
-          icon="import"
+          className="icon is-small"
         >
           <svg
-            data-icon="import"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-import fa-w-16 "
+            data-icon="file-import"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              import
-            </desc>
             <path
-              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M16 288c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h112v-64H16zm336-152V0H152c-13.3 0-24 10.7-24 24v264h127.99v-65.18c0-14.28 17.29-21.41 27.36-11.27l95.7 96.43c6.6 6.65 6.6 17.39 0 24.04l-95.7 96.42c-10.06 10.14-27.36 3.01-27.36-11.27V352H128v136c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H376c-13.2 0-24-10.8-24-24zm153-31L407.1 7c-4.5-4.5-10.6-7-17-7H384v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Import
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        Import
+      </a>
+    </li>
+    <li
+      className="is-active"
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-export"
-          icon="export"
+          className="icon is-small"
         >
           <svg
-            data-icon="export"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-export fa-w-18 "
+            data-icon="file-export"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 576 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              export
-            </desc>
             <path
-              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zM192 336v-32c0-8.84 7.16-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.84 0-16-7.16-16-16zm379.05-28.02l-95.7-96.43c-10.06-10.14-27.36-3.01-27.36 11.27V288H384v64h63.99v65.18c0 14.28 17.29 21.41 27.36 11.27l95.7-96.42c6.6-6.66 6.6-17.4 0-24.05z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Export
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Export
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-pie-chart"
-          icon="pie-chart"
+          className="icon is-small"
         >
           <svg
-            data-icon="pie-chart"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-chart-pie fa-w-17 "
+            data-icon="chart-pie"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 544 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              pie-chart
-            </desc>
             <path
-              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
-              fillRule="evenodd"
-            />
-            <path
-              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
-              fillRule="evenodd"
+              d="M527.79 288H290.5l158.03 158.03c6.04 6.04 15.98 6.53 22.19.68 38.7-36.46 65.32-85.61 73.13-140.86 1.34-9.46-6.51-17.85-16.06-17.85zm-15.83-64.8C503.72 103.74 408.26 8.28 288.8.04 279.68-.59 272 7.1 272 16.24V240h223.77c9.14 0 16.82-7.68 16.19-16.8zM224 288V50.71c0-9.55-8.39-17.4-17.84-16.06C86.99 51.49-4.1 155.6.14 280.37 4.5 408.51 114.83 513.59 243.03 511.98c50.4-.63 96.97-16.87 135.26-44.03 7.9-5.6 8.42-17.23 1.57-24.08L224 288z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Statistics
-        </span>
-      </button>
-    </div>
-  </div>,
-  <div
-    className="pz-navtabs__border"
-  />,
-]
+        Statistics
+      </a>
+    </li>
+  </ul>
+</div>
 `;
 
 exports[`ToolsTabs should render with the 'import' tab active when the 'import' page is active 1`] = `
-Array [
-  <div
-    className="pz-navtabs"
-  >
-    <div
-      className="bp3-button-group bp3-minimal"
+<div
+  className="tabs is-centered"
+  style={
+    Object {
+      "marginBottom": "0px",
+    }
+  }
+>
+  <ul>
+    <li
+      className=""
     >
-      <button
-        className="bp3-button pz-navtabs-button"
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-calculator"
-          icon="calculator"
+          className="icon is-small"
         >
           <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-calculator fa-w-14 "
             data-icon="calculator"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              calculator
-            </desc>
             <path
-              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
-              fillRule="evenodd"
+              d="M400 0H48C22.4 0 0 22.4 0 48v416c0 25.6 22.4 48 48 48h352c25.6 0 48-22.4 48-48V48c0-25.6-22.4-48-48-48zM128 435.2c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8V268.8c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v166.4zm0-256c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8V76.8C64 70.4 70.4 64 76.8 64h294.4c6.4 0 12.8 6.4 12.8 12.8v102.4z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Calculator
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Calculator
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-time"
-          icon="time"
+          className="icon is-small"
         >
           <svg
-            data-icon="time"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-stopwatch fa-w-14 "
+            data-icon="stopwatch"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              time
-            </desc>
             <path
-              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
-              fillRule="evenodd"
+              d="M432 304c0 114.9-93.1 208-208 208S16 418.9 16 304c0-104 76.3-190.2 176-205.5V64h-28c-6.6 0-12-5.4-12-12V12c0-6.6 5.4-12 12-12h120c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-28v34.5c37.5 5.8 71.7 21.6 99.7 44.6l27.5-27.5c4.7-4.7 12.3-4.7 17 0l28.3 28.3c4.7 4.7 4.7 12.3 0 17l-29.4 29.4-.6.6C419.7 223.3 432 262.2 432 304zm-176 36V188.5c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12V340c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Timer
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        Timer
+      </a>
+    </li>
+    <li
+      className="is-active"
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-import"
-          icon="import"
+          className="icon is-small"
         >
           <svg
-            data-icon="import"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-import fa-w-16 "
+            data-icon="file-import"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              import
-            </desc>
             <path
-              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M16 288c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h112v-64H16zm336-152V0H152c-13.3 0-24 10.7-24 24v264h127.99v-65.18c0-14.28 17.29-21.41 27.36-11.27l95.7 96.43c6.6 6.65 6.6 17.39 0 24.04l-95.7 96.42c-10.06 10.14-27.36 3.01-27.36-11.27V352H128v136c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H376c-13.2 0-24-10.8-24-24zm153-31L407.1 7c-4.5-4.5-10.6-7-17-7H384v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Import
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Import
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-export"
-          icon="export"
+          className="icon is-small"
         >
           <svg
-            data-icon="export"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-export fa-w-18 "
+            data-icon="file-export"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 576 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              export
-            </desc>
             <path
-              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zM192 336v-32c0-8.84 7.16-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.84 0-16-7.16-16-16zm379.05-28.02l-95.7-96.43c-10.06-10.14-27.36-3.01-27.36 11.27V288H384v64h63.99v65.18c0 14.28 17.29 21.41 27.36 11.27l95.7-96.42c6.6-6.66 6.6-17.4 0-24.05z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Export
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Export
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-pie-chart"
-          icon="pie-chart"
+          className="icon is-small"
         >
           <svg
-            data-icon="pie-chart"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-chart-pie fa-w-17 "
+            data-icon="chart-pie"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 544 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              pie-chart
-            </desc>
             <path
-              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
-              fillRule="evenodd"
-            />
-            <path
-              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
-              fillRule="evenodd"
+              d="M527.79 288H290.5l158.03 158.03c6.04 6.04 15.98 6.53 22.19.68 38.7-36.46 65.32-85.61 73.13-140.86 1.34-9.46-6.51-17.85-16.06-17.85zm-15.83-64.8C503.72 103.74 408.26 8.28 288.8.04 279.68-.59 272 7.1 272 16.24V240h223.77c9.14 0 16.82-7.68 16.19-16.8zM224 288V50.71c0-9.55-8.39-17.4-17.84-16.06C86.99 51.49-4.1 155.6.14 280.37 4.5 408.51 114.83 513.59 243.03 511.98c50.4-.63 96.97-16.87 135.26-44.03 7.9-5.6 8.42-17.23 1.57-24.08L224 288z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Statistics
-        </span>
-      </button>
-    </div>
-  </div>,
-  <div
-    className="pz-navtabs__border"
-  />,
-]
+        Statistics
+      </a>
+    </li>
+  </ul>
+</div>
 `;
 
 exports[`ToolsTabs should render with the 'statistics' tab active when the 'statistics' page is active 1`] = `
-Array [
-  <div
-    className="pz-navtabs"
-  >
-    <div
-      className="bp3-button-group bp3-minimal"
+<div
+  className="tabs is-centered"
+  style={
+    Object {
+      "marginBottom": "0px",
+    }
+  }
+>
+  <ul>
+    <li
+      className=""
     >
-      <button
-        className="bp3-button pz-navtabs-button"
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-calculator"
-          icon="calculator"
+          className="icon is-small"
         >
           <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-calculator fa-w-14 "
             data-icon="calculator"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              calculator
-            </desc>
             <path
-              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
-              fillRule="evenodd"
+              d="M400 0H48C22.4 0 0 22.4 0 48v416c0 25.6 22.4 48 48 48h352c25.6 0 48-22.4 48-48V48c0-25.6-22.4-48-48-48zM128 435.2c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8V268.8c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v166.4zm0-256c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8V76.8C64 70.4 70.4 64 76.8 64h294.4c6.4 0 12.8 6.4 12.8 12.8v102.4z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Calculator
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Calculator
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-time"
-          icon="time"
+          className="icon is-small"
         >
           <svg
-            data-icon="time"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-stopwatch fa-w-14 "
+            data-icon="stopwatch"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              time
-            </desc>
             <path
-              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
-              fillRule="evenodd"
+              d="M432 304c0 114.9-93.1 208-208 208S16 418.9 16 304c0-104 76.3-190.2 176-205.5V64h-28c-6.6 0-12-5.4-12-12V12c0-6.6 5.4-12 12-12h120c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-28v34.5c37.5 5.8 71.7 21.6 99.7 44.6l27.5-27.5c4.7-4.7 12.3-4.7 17 0l28.3 28.3c4.7 4.7 4.7 12.3 0 17l-29.4 29.4-.6.6C419.7 223.3 432 262.2 432 304zm-176 36V188.5c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12V340c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Timer
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Timer
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-import"
-          icon="import"
+          className="icon is-small"
         >
           <svg
-            data-icon="import"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-import fa-w-16 "
+            data-icon="file-import"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              import
-            </desc>
             <path
-              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M16 288c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h112v-64H16zm336-152V0H152c-13.3 0-24 10.7-24 24v264h127.99v-65.18c0-14.28 17.29-21.41 27.36-11.27l95.7 96.43c6.6 6.65 6.6 17.39 0 24.04l-95.7 96.42c-10.06 10.14-27.36 3.01-27.36-11.27V352H128v136c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H376c-13.2 0-24-10.8-24-24zm153-31L407.1 7c-4.5-4.5-10.6-7-17-7H384v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Import
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Import
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-export"
-          icon="export"
+          className="icon is-small"
         >
           <svg
-            data-icon="export"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-export fa-w-18 "
+            data-icon="file-export"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 576 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              export
-            </desc>
             <path
-              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zM192 336v-32c0-8.84 7.16-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.84 0-16-7.16-16-16zm379.05-28.02l-95.7-96.43c-10.06-10.14-27.36-3.01-27.36 11.27V288H384v64h63.99v65.18c0 14.28 17.29 21.41 27.36 11.27l95.7-96.42c6.6-6.66 6.6-17.4 0-24.05z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Export
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        Export
+      </a>
+    </li>
+    <li
+      className="is-active"
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-pie-chart"
-          icon="pie-chart"
+          className="icon is-small"
         >
           <svg
-            data-icon="pie-chart"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-chart-pie fa-w-17 "
+            data-icon="chart-pie"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 544 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              pie-chart
-            </desc>
             <path
-              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
-              fillRule="evenodd"
-            />
-            <path
-              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
-              fillRule="evenodd"
+              d="M527.79 288H290.5l158.03 158.03c6.04 6.04 15.98 6.53 22.19.68 38.7-36.46 65.32-85.61 73.13-140.86 1.34-9.46-6.51-17.85-16.06-17.85zm-15.83-64.8C503.72 103.74 408.26 8.28 288.8.04 279.68-.59 272 7.1 272 16.24V240h223.77c9.14 0 16.82-7.68 16.19-16.8zM224 288V50.71c0-9.55-8.39-17.4-17.84-16.06C86.99 51.49-4.1 155.6.14 280.37 4.5 408.51 114.83 513.59 243.03 511.98c50.4-.63 96.97-16.87 135.26-44.03 7.9-5.6 8.42-17.23 1.57-24.08L224 288z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Statistics
-        </span>
-      </button>
-    </div>
-  </div>,
-  <div
-    className="pz-navtabs__border"
-  />,
-]
+        Statistics
+      </a>
+    </li>
+  </ul>
+</div>
 `;
 
 exports[`ToolsTabs should render with the 'timer' tab active when the 'timer' page is active 1`] = `
-Array [
-  <div
-    className="pz-navtabs"
-  >
-    <div
-      className="bp3-button-group bp3-minimal"
+<div
+  className="tabs is-centered"
+  style={
+    Object {
+      "marginBottom": "0px",
+    }
+  }
+>
+  <ul>
+    <li
+      className=""
     >
-      <button
-        className="bp3-button pz-navtabs-button"
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-calculator"
-          icon="calculator"
+          className="icon is-small"
         >
           <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-calculator fa-w-14 "
             data-icon="calculator"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              calculator
-            </desc>
             <path
-              d="M13 0H3c-.55 0-1 .45-1 1v14c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM6 14H4v-2h2v2zm0-3H4V9h2v2zm0-3H4V6h2v2zm3 6H7v-2h2v2zm0-3H7V9h2v2zm0-3H7V6h2v2zm3 6h-2V9h2v5zm0-6h-2V6h2v2zm0-3H4V2h8v3z"
-              fillRule="evenodd"
+              d="M400 0H48C22.4 0 0 22.4 0 48v416c0 25.6 22.4 48 48 48h352c25.6 0 48-22.4 48-48V48c0-25.6-22.4-48-48-48zM128 435.2c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8V268.8c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v166.4zm0-256c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8V76.8C64 70.4 70.4 64 76.8 64h294.4c6.4 0 12.8 6.4 12.8 12.8v102.4z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Calculator
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button pz-navtabs-button--active"
+        Calculator
+      </a>
+    </li>
+    <li
+      className="is-active"
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-time"
-          icon="time"
+          className="icon is-small"
         >
           <svg
-            data-icon="time"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-stopwatch fa-w-14 "
+            data-icon="stopwatch"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              time
-            </desc>
             <path
-              d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z"
-              fillRule="evenodd"
+              d="M432 304c0 114.9-93.1 208-208 208S16 418.9 16 304c0-104 76.3-190.2 176-205.5V64h-28c-6.6 0-12-5.4-12-12V12c0-6.6 5.4-12 12-12h120c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-28v34.5c37.5 5.8 71.7 21.6 99.7 44.6l27.5-27.5c4.7-4.7 12.3-4.7 17 0l28.3 28.3c4.7 4.7 4.7 12.3 0 17l-29.4 29.4-.6.6C419.7 223.3 432 262.2 432 304zm-176 36V188.5c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12V340c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Timer
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Timer
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-import"
-          icon="import"
+          className="icon is-small"
         >
           <svg
-            data-icon="import"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-import fa-w-16 "
+            data-icon="file-import"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              import
-            </desc>
             <path
-              d="M7.29 11.71c.18.18.43.29.71.29s.53-.11.71-.29l4-4a1.003 1.003 0 0 0-1.42-1.42L9 8.59V1c0-.55-.45-1-1-1S7 .45 7 1v7.59l-2.29-2.3a1.003 1.003 0 0 0-1.42 1.42l4 4zM15 11c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M16 288c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h112v-64H16zm336-152V0H152c-13.3 0-24 10.7-24 24v264h127.99v-65.18c0-14.28 17.29-21.41 27.36-11.27l95.7 96.43c6.6 6.65 6.6 17.39 0 24.04l-95.7 96.42c-10.06 10.14-27.36 3.01-27.36-11.27V352H128v136c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H376c-13.2 0-24-10.8-24-24zm153-31L407.1 7c-4.5-4.5-10.6-7-17-7H384v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Import
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Import
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-export"
-          icon="export"
+          className="icon is-small"
         >
           <svg
-            data-icon="export"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-file-export fa-w-18 "
+            data-icon="file-export"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 576 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              export
-            </desc>
             <path
-              d="M4 6c.28 0 .53-.11.71-.29L7 3.41V11c0 .55.45 1 1 1s1-.45 1-1V3.41l2.29 2.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71l-4-4C8.53.11 8.28 0 8 0s-.53.11-.71.29l-4 4A1.003 1.003 0 0 0 4 6zm11 5c-.55 0-1 .45-1 1v2H2v-2c0-.55-.45-1-1-1s-1 .45-1 1v3c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1z"
-              fillRule="evenodd"
+              d="M384 121.9c0-6.3-2.5-12.4-7-16.9L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1zM192 336v-32c0-8.84 7.16-16 16-16h176V160H248c-13.2 0-24-10.8-24-24V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V352H208c-8.84 0-16-7.16-16-16zm379.05-28.02l-95.7-96.43c-10.06-10.14-27.36-3.01-27.36 11.27V288H384v64h63.99v65.18c0 14.28 17.29 21.41 27.36 11.27l95.7-96.42c6.6-6.66 6.6-17.4 0-24.05z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Export
-        </span>
-      </button>
-      <button
-        className="bp3-button pz-navtabs-button"
+        Export
+      </a>
+    </li>
+    <li
+      className=""
+    >
+      <a
+        href="#"
         onClick={[Function]}
-        onKeyDown={[Function]}
-        onKeyUp={[Function]}
-        type="button"
       >
         <span
-          className="bp3-icon bp3-icon-pie-chart"
-          icon="pie-chart"
+          className="icon is-small"
         >
           <svg
-            data-icon="pie-chart"
-            height={16}
-            viewBox="0 0 16 16"
-            width={16}
+            aria-hidden="true"
+            className="svg-inline--fa fa-chart-pie fa-w-17 "
+            data-icon="chart-pie"
+            data-prefix="fas"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 544 512"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <desc>
-              pie-chart
-            </desc>
             <path
-              d="M7 1.08c-3.37.5-5.97 3.4-5.97 6.92 0 3.87 3.13 7 6.98 7 3.52 0 6.42-2.61 6.91-6H7V1.08z"
-              fillRule="evenodd"
-            />
-            <path
-              d="M8 0v8h8c0-4.42-3.58-8-8-8z"
-              fillRule="evenodd"
+              d="M527.79 288H290.5l158.03 158.03c6.04 6.04 15.98 6.53 22.19.68 38.7-36.46 65.32-85.61 73.13-140.86 1.34-9.46-6.51-17.85-16.06-17.85zm-15.83-64.8C503.72 103.74 408.26 8.28 288.8.04 279.68-.59 272 7.1 272 16.24V240h223.77c9.14 0 16.82-7.68 16.19-16.8zM224 288V50.71c0-9.55-8.39-17.4-17.84-16.06C86.99 51.49-4.1 155.6.14 280.37 4.5 408.51 114.83 513.59 243.03 511.98c50.4-.63 96.97-16.87 135.26-44.03 7.9-5.6 8.42-17.23 1.57-24.08L224 288z"
+              fill="currentColor"
+              style={Object {}}
             />
           </svg>
         </span>
-        <span
-          className="bp3-button-text"
-        >
-          Statistics
-        </span>
-      </button>
-    </div>
-  </div>,
-  <div
-    className="pz-navtabs__border"
-  />,
-]
+        Statistics
+      </a>
+    </li>
+  </ul>
+</div>
 `;

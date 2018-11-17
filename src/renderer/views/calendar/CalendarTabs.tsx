@@ -1,3 +1,4 @@
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -25,7 +26,7 @@ export const CalendarTabs: React.SFC<CalendarTabsProps> = props => (
     <Navtabs>
         <Navtab
             isActive={props.activePage === "calendar"}
-            icon="calendar"
+            icon={faCalendar}
             text="Calendar"
             onClick={props.onCalendarClick}
         />

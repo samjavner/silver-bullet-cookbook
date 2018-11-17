@@ -1,33 +1,32 @@
-import { Button, ButtonGroup, IconName } from "@blueprintjs/core";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import * as React from "react";
-import "./Navtabs.scss";
 
 export const Navtabs: React.SFC = props => (
-    <>
-        <div className="pz-navtabs">
-            <ButtonGroup minimal={true}>{props.children}</ButtonGroup>
-        </div>
-        <div className="pz-navtabs__border" />
-    </>
+    <div className="tabs is-centered" style={{ marginBottom: "0px" }}>
+        <ul>{props.children}</ul>
+    </div>
 );
 
 export interface NavtabProps {
-    icon: IconName;
+    icon: IconDefinition;
     isActive: boolean;
     onClick: () => void;
     text: string;
 }
 
 export const Navtab: React.SFC<NavtabProps> = props => (
-    <Button
+    <li
         className={classNames({
-            "pz-navtabs-button": true,
-            "pz-navtabs-button--active": props.isActive,
+            "is-active": props.isActive,
         })}
-        icon={props.icon}
-        onClick={props.onClick}
     >
-        {props.text}
-    </Button>
+        <a href="#" onClick={props.onClick}>
+            <span className="icon is-small">
+                <FontAwesomeIcon icon={props.icon} />
+            </span>
+            {props.text}
+        </a>
+    </li>
 );

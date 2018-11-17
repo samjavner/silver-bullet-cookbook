@@ -1,3 +1,4 @@
+import { faBook, faHeartbeat } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -27,13 +28,13 @@ export const ReferenceTabs: React.SFC<ReferenceTabsProps> = props => (
     <Navtabs>
         <Navtab
             isActive={props.activePage === "dictionary"}
-            icon="book"
+            icon={faBook}
             text="Dictionary"
             onClick={props.onDictionaryClick}
         />
         <Navtab
             isActive={props.activePage === "nutrition"}
-            icon="pulse"
+            icon={faHeartbeat}
             text="Nutrition"
             onClick={props.onNutritionClick}
         />

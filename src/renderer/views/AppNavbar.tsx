@@ -1,4 +1,5 @@
-import { Button, Navbar } from "@blueprintjs/core";
+import { faCog, faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import * as React from "react";
 import { connect } from "react-redux";
@@ -28,81 +29,84 @@ type AppNavbarProps = ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
 export const AppNavbar: React.SFC<AppNavbarProps> = props => (
-    <Navbar className="pz-navbar">
-        <Navbar.Group>
-            <Button
-                minimal={true}
+    <nav className="navbar is-fixed-top is-primary">
+        <div className="navbar-brand">
+            <a
+                href="#"
                 className={classNames({
-                    "pz-navbar-button": true,
-                    "pz-navbar-button--active": props.activeArea === "home",
+                    "navbar-item": true,
+                    "is-active": props.activeArea === "home",
                 })}
                 onClick={props.onHomeClick}
-                icon="home"
-            />
-            <Button
-                minimal={true}
+            >
+                <FontAwesomeIcon fixedWidth={true} icon={faHome} />
+            </a>
+            <a
+                href="#"
                 className={classNames({
-                    "pz-navbar-button": true,
-                    "pz-navbar-button--active": props.activeArea === "recipes",
+                    "navbar-item": true,
+                    "is-active": props.activeArea === "recipes",
                 })}
                 onClick={props.onRecipesClick}
             >
                 Recipes
-            </Button>
-            <Button
-                minimal={true}
+            </a>
+            <a
+                href="#"
                 className={classNames({
-                    "pz-navbar-button": true,
-                    "pz-navbar-button--active": props.activeArea === "calendar",
+                    "navbar-item": true,
+                    "is-active": props.activeArea === "calendar",
                 })}
                 onClick={props.onCalendarClick}
             >
                 Calendar
-            </Button>
-            <Button
-                minimal={true}
+            </a>
+            <a
+                href="#"
                 className={classNames({
-                    "pz-navbar-button": true,
-                    "pz-navbar-button--active": props.activeArea === "shopping",
+                    "navbar-item": true,
+                    "is-active": props.activeArea === "shopping",
                 })}
                 onClick={props.onShoppingClick}
             >
                 Shopping
-            </Button>
-            <Button
-                minimal={true}
+            </a>
+            <a
+                href="#"
                 className={classNames({
-                    "pz-navbar-button": true,
-                    "pz-navbar-button--active":
-                        props.activeArea === "reference",
+                    "navbar-item": true,
+                    "is-active": props.activeArea === "reference",
                 })}
                 onClick={props.onReferenceClick}
             >
                 Reference
-            </Button>
-            <Button
-                minimal={true}
+            </a>
+            <a
+                href="#"
                 className={classNames({
-                    "pz-navbar-button": true,
-                    "pz-navbar-button--active": props.activeArea === "tools",
+                    "navbar-item": true,
+                    "is-active": props.activeArea === "tools",
                 })}
                 onClick={props.onToolsClick}
             >
                 Tools
-            </Button>
-        </Navbar.Group>
-        <Navbar.Group align="right">
-            <Button
-                minimal={true}
-                className={classNames({
-                    "pz-navbar-button": true,
-                    "pz-navbar-button--active": props.activeArea === "settings",
-                })}
-                onClick={props.onSettingsClick}
-                icon="cog"
-            />
-        </Navbar.Group>
-    </Navbar>
+            </a>
+        </div>
+        <div className="navbar-menu">
+            <div className="navbar-end">
+                <a
+                    href="#"
+                    className={classNames({
+                        "navbar-item": true,
+                        "is-active": props.activeArea === "settings",
+                    })}
+                    onClick={props.onSettingsClick}
+                >
+                    <FontAwesomeIcon fixedWidth={true} icon={faCog} />
+                </a>
+            </div>
+        </div>
+    </nav>
 );
 
 export default connect(

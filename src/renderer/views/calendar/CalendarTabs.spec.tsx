@@ -26,8 +26,8 @@ describe("CalendarTabs", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navtabs-button--active") !== -1
-        );
+                node.props.className.indexOf("is-active") !== -1
+        ).children[0] as renderer.ReactTestInstance;
         expect(button.props.onClick).toBe(onCalendarClick);
     });
 });

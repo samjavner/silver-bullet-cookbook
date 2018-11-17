@@ -1,3 +1,10 @@
+import {
+    faCalculator,
+    faChartPie,
+    faFileExport,
+    faFileImport,
+    faStopwatch,
+} from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -30,31 +37,31 @@ export const ToolsTabs: React.SFC<ToolsTabsProps> = props => (
     <Navtabs>
         <Navtab
             isActive={props.activePage === "calculator"}
-            icon="calculator"
+            icon={faCalculator}
             text="Calculator"
             onClick={props.onCalculatorClick}
         />
         <Navtab
             isActive={props.activePage === "timer"}
-            icon="time"
+            icon={faStopwatch}
             text="Timer"
             onClick={props.onTimerClick}
         />
         <Navtab
             isActive={props.activePage === "import"}
-            icon="import"
+            icon={faFileImport}
             text="Import"
             onClick={props.onImportClick}
         />
         <Navtab
             isActive={props.activePage === "export"}
-            icon="export"
+            icon={faFileExport}
             text="Export"
             onClick={props.onExportClick}
         />
         <Navtab
             isActive={props.activePage === "statistics"}
-            icon="pie-chart"
+            icon={faChartPie}
             text="Statistics"
             onClick={props.onStatisticsClick}
         />

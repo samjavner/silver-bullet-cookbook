@@ -146,7 +146,7 @@ describe("AppNavbar", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navbar-button--active") !== -1
+                node.props.className.indexOf("is-active") !== -1
         );
         expect(button.props.onClick).toBe(onHomeClick);
     });
@@ -167,7 +167,7 @@ describe("AppNavbar", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navbar-button--active") !== -1
+                node.props.className.indexOf("is-active") !== -1
         );
         expect(button.props.onClick).toBe(onRecipesClick);
     });
@@ -188,7 +188,7 @@ describe("AppNavbar", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navbar-button--active") !== -1
+                node.props.className.indexOf("is-active") !== -1
         );
         expect(button.props.onClick).toBe(onCalendarClick);
     });
@@ -209,7 +209,7 @@ describe("AppNavbar", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navbar-button--active") !== -1
+                node.props.className.indexOf("is-active") !== -1
         );
         expect(button.props.onClick).toBe(onShoppingClick);
     });
@@ -230,7 +230,7 @@ describe("AppNavbar", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navbar-button--active") !== -1
+                node.props.className.indexOf("is-active") !== -1
         );
         expect(button.props.onClick).toBe(onReferenceClick);
     });
@@ -251,7 +251,7 @@ describe("AppNavbar", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navbar-button--active") !== -1
+                node.props.className.indexOf("is-active") !== -1
         );
         expect(button.props.onClick).toBe(onToolsClick);
     });
@@ -272,7 +272,7 @@ describe("AppNavbar", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navbar-button--active") !== -1
+                node.props.className.indexOf("is-active") !== -1
         );
         expect(button.props.onClick).toBe(onSettingsClick);
     });
