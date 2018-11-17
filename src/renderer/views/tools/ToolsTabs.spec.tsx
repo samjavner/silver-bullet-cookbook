@@ -98,8 +98,8 @@ describe("ToolsTabs", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navtabs-button--active") !== -1
-        );
+                node.props.className.indexOf("is-active") !== -1
+        ).children[0] as renderer.ReactTestInstance;
         expect(button.props.onClick).toBe(onCalculatorClick);
     });
 
@@ -117,8 +117,8 @@ describe("ToolsTabs", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navtabs-button--active") !== -1
-        );
+                node.props.className.indexOf("is-active") !== -1
+        ).children[0] as renderer.ReactTestInstance;
         expect(button.props.onClick).toBe(onTimerClick);
     });
 
@@ -136,8 +136,8 @@ describe("ToolsTabs", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navtabs-button--active") !== -1
-        );
+                node.props.className.indexOf("is-active") !== -1
+        ).children[0] as renderer.ReactTestInstance;
         expect(button.props.onClick).toBe(onImportClick);
     });
 
@@ -155,8 +155,8 @@ describe("ToolsTabs", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navtabs-button--active") !== -1
-        );
+                node.props.className.indexOf("is-active") !== -1
+        ).children[0] as renderer.ReactTestInstance;
         expect(button.props.onClick).toBe(onExportClick);
     });
 
@@ -174,8 +174,8 @@ describe("ToolsTabs", () => {
         const button = component.root.find(
             node =>
                 node.props.className &&
-                node.props.className.indexOf("pz-navtabs-button--active") !== -1
-        );
+                node.props.className.indexOf("is-active") !== -1
+        ).children[0] as renderer.ReactTestInstance;
         expect(button.props.onClick).toBe(onStatisticsClick);
     });
 });

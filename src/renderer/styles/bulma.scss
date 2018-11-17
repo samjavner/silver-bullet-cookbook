@@ -1,0 +1,72 @@
+@import "fonts";
+
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+@import "variables";
+
+$family-sans-serif: $pz-font-family;
+$family-monospace: $pz-font-family-monospace;
+
+$primary: $pz-color-primary;
+$link: $pz-color-secondary;
+$info: $pz-color-secondary;
+$success: $pz-color-success;
+$warning: $pz-color-warning;
+$danger: $pz-color-danger;
+
+$black: $pz-black;
+$black-bis: $pz-black-bis;
+$black-ter: $pz-black-ter;
+$grey-darker: $pz-grey-darker;
+$grey-dark: $pz-grey-dark;
+$grey: $pz-grey;
+$grey-light: $pz-grey-light;
+$grey-lighter: $pz-grey-lighter;
+$white-ter: $pz-white-ter;
+$white-bis: $pz-white-bis;
+$white: $pz-white;
+
+$body-size: $pz-body-size;
+
+$size-1: $pz-size-1;
+$size-2: $pz-size-2;
+$size-3: $pz-size-3;
+$size-4: $pz-size-4;
+$size-5: $pz-size-5;
+$size-6: $pz-size-6;
+$size-7: $pz-size-7;
+
+$radius-small: $pz-radius-small;
+$radius: $pz-radius;
+$radius-large: $pz-radius-large;
+
+$input-color: $black;
+
+$navbar-breakpoint: 0;
+
+@import "~bulma/bulma";
+
+// Fix for: https://github.com/jgthms/bulma/issues/460
+.modal {
+    flex-direction: column;
+}
+
+.button,
+.navbar,
+.tabs {
+    font-family: $pz-font-family-interface;
+    text-transform: lowercase;
+}
+
+.navbar-item,
+.tabs > ul > li > a {
+    &:focus {
+        outline-color: $link;
+    }
+}
+
+.input {
+    padding-bottom: 0.2rem;
+    padding-top: 0.3rem;
+}

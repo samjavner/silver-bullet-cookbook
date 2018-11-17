@@ -1,3 +1,4 @@
+import { faBox, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -27,13 +28,13 @@ export const ShoppingTabs: React.SFC<ShoppingTabsProps> = props => (
     <Navtabs>
         <Navtab
             isActive={props.activePage === "grocery_lists"}
-            icon="shopping-cart"
+            icon={faShoppingCart}
             text="Grocery Lists"
             onClick={props.onGroceryListsClick}
         />
         <Navtab
             isActive={props.activePage === "inventory"}
-            icon="inbox"
+            icon={faBox}
             text="Inventory"
             onClick={props.onInventoryClick}
         />
