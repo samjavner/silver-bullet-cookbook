@@ -24,14 +24,24 @@ type RecipesAreaProps = ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
 const RecipesArea: React.SFC<RecipesAreaProps> = props => (
-    <>
-        <RecipesTabs />
-        {props.activePage === "library" && <LibraryPage />}
-        {props.activePage === "recipe_box" && <RecipeBoxPage />}
-        {props.activePage === "favorites" && <FavoritesPage />}
-        {props.activePage === "tags" && <TagsPage />}
-        {props.activePage === "search" && <SearchPage />}
-    </>
+    <div
+        style={{
+            height: "100%",
+            display: "grid",
+            gridTemplateRows: "auto 1fr",
+        }}
+    >
+        <div style={{ gridRow: 1 }}>
+            <RecipesTabs />
+        </div>
+        <div style={{ gridRow: 2, overflow: "hidden" }}>
+            {props.activePage === "library" && <LibraryPage />}
+            {props.activePage === "recipe_box" && <RecipeBoxPage />}
+            {props.activePage === "favorites" && <FavoritesPage />}
+            {props.activePage === "tags" && <TagsPage />}
+            {props.activePage === "search" && <SearchPage />}
+        </div>
+    </div>
 );
 
 export default connect(

@@ -29,7 +29,7 @@ type AppNavbarProps = ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
 export const AppNavbar: React.SFC<AppNavbarProps> = props => (
-    <nav className="navbar is-fixed-top is-primary">
+    <nav className="navbar is-primary">
         <div className="navbar-brand">
             <a
                 href="#"

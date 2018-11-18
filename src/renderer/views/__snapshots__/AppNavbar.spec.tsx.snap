@@ -2,7 +2,7 @@
 
 exports[`AppNavbar should render with 'calendar' active when the 'calendar' area is active 1`] = `
 <nav
-  className="navbar is-fixed-top is-primary"
+  className="navbar is-primary"
 >
   <div
     className="navbar-brand"
@@ -100,7 +100,7 @@ exports[`AppNavbar should render with 'calendar' active when the 'calendar' area
 
 exports[`AppNavbar should render with 'home' active when the 'home' area is active 1`] = `
 <nav
-  className="navbar is-fixed-top is-primary"
+  className="navbar is-primary"
 >
   <div
     className="navbar-brand"
@@ -198,7 +198,7 @@ exports[`AppNavbar should render with 'home' active when the 'home' area is acti
 
 exports[`AppNavbar should render with 'recipes' active when the 'recipes' area is active 1`] = `
 <nav
-  className="navbar is-fixed-top is-primary"
+  className="navbar is-primary"
 >
   <div
     className="navbar-brand"
@@ -296,7 +296,7 @@ exports[`AppNavbar should render with 'recipes' active when the 'recipes' area i
 
 exports[`AppNavbar should render with 'reference' active when the 'reference' area is active 1`] = `
 <nav
-  className="navbar is-fixed-top is-primary"
+  className="navbar is-primary"
 >
   <div
     className="navbar-brand"
@@ -394,7 +394,7 @@ exports[`AppNavbar should render with 'reference' active when the 'reference' ar
 
 exports[`AppNavbar should render with 'settings' active when the 'settings' area is active 1`] = `
 <nav
-  className="navbar is-fixed-top is-primary"
+  className="navbar is-primary"
 >
   <div
     className="navbar-brand"
@@ -492,7 +492,7 @@ exports[`AppNavbar should render with 'settings' active when the 'settings' area
 
 exports[`AppNavbar should render with 'shopping' active when the 'shopping' area is active 1`] = `
 <nav
-  className="navbar is-fixed-top is-primary"
+  className="navbar is-primary"
 >
   <div
     className="navbar-brand"
@@ -590,7 +590,7 @@ exports[`AppNavbar should render with 'shopping' active when the 'shopping' area
 
 exports[`AppNavbar should render with 'tools' active when the 'tools' area is active 1`] = `
 <nav
-  className="navbar is-fixed-top is-primary"
+  className="navbar is-primary"
 >
   <div
     className="navbar-brand"

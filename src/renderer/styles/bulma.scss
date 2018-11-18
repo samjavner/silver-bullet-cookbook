@@ -47,6 +47,10 @@ $navbar-breakpoint: 0;
 
 @import "~bulma/bulma";
 
+html {
+    overflow: hidden;
+}
+
 // Fix for: https://github.com/jgthms/bulma/issues/460
 .modal {
     flex-direction: column;

@@ -36,16 +36,16 @@ type RecipesTabsProps = ReturnType<typeof mapStateToProps> &
 export const RecipesTabs: React.SFC<RecipesTabsProps> = props => (
     <Navtabs>
         <Navtab
-            isActive={props.activePage === "library"}
-            icon={faBook}
-            text="Library"
-            onClick={props.onLibraryClick}
-        />
-        <Navtab
             isActive={props.activePage === "recipe_box"}
             icon={faArchive}
             text="Recipe Box"
             onClick={props.onRecipeBoxClick}
+        />
+        <Navtab
+            isActive={props.activePage === "library"}
+            icon={faBook}
+            text="Library"
+            onClick={props.onLibraryClick}
         />
         <Navtab
             isActive={props.activePage === "favorites"}
