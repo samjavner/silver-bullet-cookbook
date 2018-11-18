@@ -26,16 +26,27 @@ type AppProps = ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
 const App: React.SFC<AppProps> = props => (
-    <>
-        <AppNavbar />
-        {props.activeArea === "home" && <HomeArea />}
-        {props.activeArea === "recipes" && <RecipesArea />}
-        {props.activeArea === "calendar" && <CalendarArea />}
-        {props.activeArea === "shopping" && <ShoppingArea />}
-        {props.activeArea === "reference" && <ReferenceArea />}
-        {props.activeArea === "tools" && <ToolsArea />}
-        {props.activeArea === "settings" && <SettingsArea />}
-    </>
+    <div
+        style={{
+            height: "100vh",
+            width: "100vw",
+            display: "grid",
+            gridTemplateRows: "auto 1fr",
+        }}
+    >
+        <div style={{ gridRow: 1 }}>
+            <AppNavbar />
+        </div>
+        <div style={{ gridRow: 2, overflow: "hidden" }}>
+            {props.activeArea === "home" && <HomeArea />}
+            {props.activeArea === "recipes" && <RecipesArea />}
+            {props.activeArea === "calendar" && <CalendarArea />}
+            {props.activeArea === "shopping" && <ShoppingArea />}
+            {props.activeArea === "reference" && <ReferenceArea />}
+            {props.activeArea === "tools" && <ToolsArea />}
+            {props.activeArea === "settings" && <SettingsArea />}
+        </div>
+    </div>
 );
 export default connect(
     mapStateToProps,

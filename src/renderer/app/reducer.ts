@@ -4,7 +4,7 @@ import { State } from "./state";
 const init: State = {
     activeArea: "home",
     activeHomePage: "home",
-    activeRecipesPage: "library",
+    activeRecipesPage: "recipe_box",
     activeCalendarPage: "calendar",
     activeShoppingPage: "grocery_lists",
     activeReferencePage: "dictionary",

@@ -13,7 +13,7 @@ describe("reducer", () => {
         const expected: State = {
             activeArea: "home",
             activeHomePage: "home",
-            activeRecipesPage: "library",
+            activeRecipesPage: "recipe_box",
             activeCalendarPage: "calendar",
             activeShoppingPage: "grocery_lists",
             activeReferencePage: "dictionary",

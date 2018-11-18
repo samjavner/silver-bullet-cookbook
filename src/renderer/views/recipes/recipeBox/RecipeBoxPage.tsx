@@ -16,7 +16,26 @@ type RecipeBoxPageProps = ReturnType<typeof mapStateToProps> &
     ReturnType<typeof mapDispatchToProps>;
 
 export const RecipeBoxPage: React.SFC<RecipeBoxPageProps> = props => (
-    <div>Recipe Box</div>
+    <div
+        style={{
+            height: "100%",
+            display: "grid",
+            gridTemplateColumns: "1fr 4fr",
+        }}
+    >
+        <div style={{ gridColumn: 1, overflowY: "auto" }}>
+            {[...Array(100).keys()].map(x => (
+                <div key={x}>Recipe {x}</div>
+            ))}
+        </div>
+        <div style={{ gridColumn: 2, overflowY: "auto" }}>
+            {[...Array(10).keys()].map(x => (
+                <div className="section" key={x}>
+                    Paragraph {x}
+                </div>
+            ))}
+        </div>
+    </div>
 );
 
 export default connect(
