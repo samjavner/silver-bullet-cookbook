@@ -10,6 +10,7 @@ const init: State = {
     activeReferencePage: "dictionary",
     activeToolsPage: "calculator",
     activeSettingsPage: "settings",
+    selectedRecipeIndex: 0,
 };
 
 export default function reducer(state: State = init, action: Action): State {
@@ -53,6 +54,11 @@ export default function reducer(state: State = init, action: Action): State {
             return {
                 ...state,
                 activeSettingsPage: action.payload,
+            };
+        case "setSelectedRecipeIndex":
+            return {
+                ...state,
+                selectedRecipeIndex: action.payload,
             };
     }
 

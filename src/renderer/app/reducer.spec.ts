@@ -19,6 +19,7 @@ describe("reducer", () => {
             activeReferencePage: "dictionary",
             activeToolsPage: "calculator",
             activeSettingsPage: "settings",
+            selectedRecipeIndex: 0,
         };
         expect(actual).toEqual(expected);
     });
@@ -147,6 +148,22 @@ describe("reducer", () => {
         const expected: State = {
             ...initialState,
             activeSettingsPage: "settings",
+        };
+        expect(actual).toEqual(expected);
+    });
+
+    it("should set the selected recipe index", () => {
+        initialState = {
+            ...initialState,
+            selectedRecipeIndex: 0,
+        };
+        const actual = reducer(initialState, {
+            type: "setSelectedRecipeIndex",
+            payload: 100,
+        });
+        const expected: State = {
+            ...initialState,
+            selectedRecipeIndex: 100,
         };
         expect(actual).toEqual(expected);
     });
