@@ -7,6 +7,7 @@ export interface State {
     activeReferencePage: ReferencePage;
     activeToolsPage: ToolsPage;
     activeSettingsPage: SettingsPage;
+    selectedRecipeIndex: number;
 }
 
 export type Area =

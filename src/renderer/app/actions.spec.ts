@@ -72,4 +72,13 @@ describe("actions", () => {
         };
         expect(actual).toEqual(expected);
     });
+
+    it("should create an action to set the selected recipe index", () => {
+        const actual = actions.setSelectedRecipeIndex(100);
+        const expected: actions.Action = {
+            type: "setSelectedRecipeIndex",
+            payload: 100,
+        };
+        expect(actual).toEqual(expected);
+    });
 });

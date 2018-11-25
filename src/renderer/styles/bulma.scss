@@ -64,7 +64,8 @@ html {
 }
 
 .navbar-item,
-.tabs > ul > li > a {
+.tabs > ul > li > a,
+.ReactVirtualized__Grid {
     &:focus {
         outline-color: $link;
     }

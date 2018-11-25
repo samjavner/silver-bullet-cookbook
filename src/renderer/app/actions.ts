@@ -41,6 +41,10 @@ export type Action =
     | {
           type: "setActiveSettingsPage";
           payload: SettingsPage;
+      }
+    | {
+          type: "setSelectedRecipeIndex";
+          payload: number;
       };
 
 export function setActiveArea(payload: Area): Action {
@@ -95,6 +99,13 @@ export function setActiveToolsPage(payload: ToolsPage): Action {
 export function setActiveSettingsPage(payload: SettingsPage): Action {
     return {
         type: "setActiveSettingsPage",
+        payload,
+    };
+}
+
+export function setSelectedRecipeIndex(payload: number): Action {
+    return {
+        type: "setSelectedRecipeIndex",
         payload,
     };
 }
