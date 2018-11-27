@@ -44,7 +44,7 @@ export const RecipeBoxPage: React.SFC<RecipeBoxPageProps> = props => (
         style={{
             height: "100%",
             display: "grid",
-            gridTemplateColumns: "1fr 4fr",
+            gridTemplateColumns: "20rem 4fr",
         }}
     >
         <div style={{ gridColumn: 1 }}>

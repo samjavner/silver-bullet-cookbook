@@ -5,7 +5,7 @@ exports[`RecipeBoxPage renders the master/detail view 1`] = `
   style={
     Object {
       "display": "grid",
-      "gridTemplateColumns": "1fr 4fr",
+      "gridTemplateColumns": "20rem 4fr",
       "height": "100%",
     }
   }
