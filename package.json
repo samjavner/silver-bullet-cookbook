@@ -62,7 +62,6 @@
         "bulma": "0.7.2",
         "classnames": "2.2.6",
         "electron-devtools-installer": "2.2.4",
-        "normalize.css": "8.0.0",
         "react": "16.6.0",
         "react-dom": "16.6.0",
         "react-hot-loader": "4.3.11",
