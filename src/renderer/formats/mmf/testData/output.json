@@ -1,0 +1,603 @@
+[
+    {
+        "title": "Recipe 1",
+        "categories": ["Casserole", "Potato"],
+        "yield": "8 Servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "lb",
+                "text": "Frozen hash brown potatoes"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "c",
+                "text": "Onions; diced"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "cn",
+                "text": "Cream of chicken soup"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "16",
+                "unit": "oz",
+                "text": "Sour cream"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Melted margarine"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "8",
+                "unit": "oz",
+                "text": "Grated sharp cheese"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "Salt and pepper to taste"
+            }
+        ],
+        "directions": [
+            "Thaw potatoes about 30 min., then mix all ingredients in a large bowl. Place in a 9 X 13 baking dish. Bake at 350 for one hour. Serves 8",
+            "Recipe by: From recipe files of Martha"
+        ],
+        "warnings": []
+    },
+    {
+        "title": "Recipe 2",
+        "categories": ["Casserole", "Potato"],
+        "servings": "8 Servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "lb",
+                "text": "Frozen hash brown potatoes"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "c",
+                "text": "Onions; diced"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "cn",
+                "text": "Cream of chicken soup"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "16",
+                "unit": "oz",
+                "text": "Sour cream"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Melted margarine"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "8",
+                "unit": "oz",
+                "text": "Grated sharp cheese"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "Salt and pepper to taste"
+            }
+        ],
+        "directions": [
+            "Thaw potatoes about 30 min., then mix all ingredients in a large bowl. Place in a 9 X 13 baking dish. Bake at 350 for one hour. Serves 8",
+            "Recipe by: From recipe files of Martha"
+        ],
+        "warnings": []
+    },
+    {
+        "title": "Recipe 3",
+        "categories": ["Casserole", "Potato"],
+        "yield": "8 Servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "lb",
+                "text": "Frozen hash brown potatoes"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "c",
+                "text": "Onions; diced"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "cn",
+                "text": "Cream of chicken soup"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "16",
+                "unit": "oz",
+                "text": "Sour cream"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Melted margarine"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "8",
+                "unit": "oz",
+                "text": "Grated sharp cheese"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "Salt and pepper to taste"
+            }
+        ],
+        "directions": [
+            "Thaw potatoes about 30 min., then mix all ingredients in a large bowl. Place in a 9 X 13 baking dish. Bake at 350 for one hour. Serves 8",
+            "Recipe by: From recipe files of Martha"
+        ],
+        "warnings": []
+    },
+    {
+        "title": "Recipe 4",
+        "categories": ["Casserole", "Potato"],
+        "yield": "8 Servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "lb",
+                "text": "Frozen hash brown potatoes"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "c",
+                "text": "Onions; diced"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "cn",
+                "text": "Cream of chicken soup"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "16",
+                "unit": "oz",
+                "text": "Sour cream"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Melted margarine"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "8",
+                "unit": "oz",
+                "text": "Grated sharp cheese"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "Salt and pepper to taste"
+            }
+        ],
+        "directions": [
+            "Thaw potatoes about 30 min., then mix all ingredients in a large bowl. Place in a 9 X 13 baking dish. Bake at 350 for one hour. Serves 8",
+            "Recipe by: From recipe files of Martha"
+        ],
+        "warnings": []
+    },
+    {
+        "title": "Recipe 5",
+        "categories": ["Casserole", "Potato"],
+        "yield": "8 Servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "lb",
+                "text": "Frozen hash brown potatoes"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "c",
+                "text": "Onions; diced"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "cn",
+                "text": "Cream of chicken soup"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "16",
+                "unit": "oz",
+                "text": "Sour cream"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Melted margarine"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "8",
+                "unit": "oz",
+                "text": "Grated sharp cheese"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "Salt and pepper to taste"
+            }
+        ],
+        "directions": [
+            "Thaw potatoes about 30 min., then mix all ingredients in a large bowl. Place in a 9 X 13 baking dish. Bake at 350 for one hour. Serves 8",
+            "Recipe by: From recipe files of Martha"
+        ],
+        "warnings": []
+    },
+    {
+        "title": "Recipe 6",
+        "categories": ["Casserole", "Potato"],
+        "yield": "8 Servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "lb",
+                "text": "Frozen hash brown potatoes"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "c",
+                "text": "Onions; diced"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "cn",
+                "text": "Cream of chicken soup"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "16",
+                "unit": "oz",
+                "text": "Sour cream"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Melted margarine"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "8",
+                "unit": "oz",
+                "text": "Grated sharp cheese"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "Salt and pepper to taste"
+            }
+        ],
+        "directions": [
+            "Thaw potatoes about 30 min., then mix all ingredients in a large bowl. Place in a 9 X 13 baking dish. Bake at 350 for one hour. Serves 8",
+            "Recipe by: From recipe files of Martha"
+        ],
+        "warnings": []
+    },
+    {
+        "categories": [],
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "lb",
+                "text": "Frozen hash brown potatoes"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "c",
+                "text": "Onions; diced"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "cn",
+                "text": "Cream of chicken soup"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "16",
+                "unit": "oz",
+                "text": "Sour cream"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Melted margarine"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "8",
+                "unit": "oz",
+                "text": "Grated sharp cheese"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "Salt and pepper to taste"
+            }
+        ],
+        "directions": [
+            "Thaw potatoes about 30 min., then mix all ingredients in a large bowl. Place in a 9 X 13 baking dish. Bake at 350 for one hour. Serves 8",
+            "Recipe by: From recipe files of Martha"
+        ],
+        "warnings": []
+    },
+    {
+        "title": "Recipe 8",
+        "categories": ["Casserole", "Potato"],
+        "yield": "8 Servings",
+        "ingredients": [],
+        "directions": [
+            "Thaw potatoes about 30 min., then mix all ingredients in a large bowl. Place in a 9 X 13 baking dish. Bake at 350 for one hour. Serves 8",
+            "Recipe by: From recipe files of Martha"
+        ],
+        "warnings": []
+    },
+    {
+        "title": "Recipe 9",
+        "categories": ["Casserole", "Potato"],
+        "yield": "8 Servings",
+        "ingredients": [],
+        "directions": [],
+        "warnings": []
+    },
+    {
+        "title": "Recipe 10",
+        "categories": ["Soup/stew", "Vegetarian"],
+        "yield": "6 servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "4",
+                "unit": "tb",
+                "text": "Butter"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "7",
+                "unit": "c",
+                "text": "Water"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "3",
+                "unit": "md",
+                "text": "Leeks; the white parts only chopped or cut into 1/4-inch rounds"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "ts",
+                "text": "Salt (to taste)"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1 1/2",
+                "unit": "lb",
+                "text": "Red potatoes; quartered lengthwise & thinly sliced"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "Freshly ground pepper"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "Creme fraiche"
+            },
+            {
+                "type": "ingredient_heading",
+                "text": "TOPPING"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "6",
+                "unit": "c",
+                "text": "Loosely packed sorrel leaves the stems removed and leaves roughly chopped"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "tb",
+                "text": "Chives thinly sliced or snipped"
+            },
+            {
+                "type": "ingredient_heading",
+                "text": "HEADING"
+            }
+        ],
+        "directions": [
+            "This is a rather rustic soup. For a more refined version, pass it through a food mill before serving."
+        ],
+        "warnings": []
+    },
+    {
+        "title": "Deluxe Salmon Spread",
+        "categories": ["Dips", "Appetizers"],
+        "servings": "4",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "lb",
+                "text": "Cooked canned salmon"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "T",
+                "text": "Green pepper (diced)"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "t",
+                "text": "Lemon juice"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "t",
+                "text": "Horseradish"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "c",
+                "text": "Mayonnaise"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "2",
+                "unit": "T",
+                "text": "Pimento diced"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "t",
+                "text": "Tarragon vinegar"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "1",
+                "unit": "t",
+                "text": "Chopped dried dill"
+            }
+        ],
+        "directions": [
+            "Put mayonnaise, pepper and pimento into blender on low until smooth. Turn into bowl with rest of ingredients. Mix well. Chill. Serve with brown bread."
+        ],
+        "warnings": []
+    },
+    {
+        "title": "Cheese-Stuffed Manicotti 1",
+        "categories": ["Italian", "Pasta", "Cheese/eggs"],
+        "yield": "6 servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Freshly grated Parmesan"
+            }
+        ],
+        "directions": ["TO MAKE THE FILLING:", "Mix very thoroughly."],
+        "warnings": ["First direction looks like an ingredient."]
+    },
+    {
+        "title": "Cheese-Stuffed Manicotti 2",
+        "categories": ["Italian", "Pasta", "Cheese/eggs"],
+        "yield": "6 servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Freshly grated Parmesan"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "TO MAKE THE FILLING:"
+            }
+        ],
+        "directions": ["Mix very thoroughly."],
+        "warnings": ["Last ingredient looks like a direction."]
+    },
+    {
+        "title": "Cheese-Stuffed Manicotti 3",
+        "categories": ["Italian", "Pasta", "Cheese/eggs"],
+        "yield": "6 servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Freshly grated Parmesan"
+            },
+            {
+                "type": "ingredient",
+                "quantity": "",
+                "unit": "",
+                "text": "TO MAKE THE FILLING:"
+            }
+        ],
+        "directions": ["Mix very thoroughly."],
+        "warnings": []
+    },
+    {
+        "title": "Cheese-Stuffed Manicotti 4",
+        "categories": ["Italian", "Pasta", "Cheese/eggs"],
+        "yield": "6 servings",
+        "ingredients": [
+            {
+                "type": "ingredient",
+                "quantity": "1/2",
+                "unit": "c",
+                "text": "Freshly grated Parmesan"
+            }
+        ],
+        "directions": [
+            "TO MAKE THE FILLING: combine all the filling ingredients and mix very thoroughly."
+        ],
+        "warnings": []
+    }
+]
