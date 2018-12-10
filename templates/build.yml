@@ -12,11 +12,28 @@ jobs:
             inputs:
                 targetFiles: package.json
 
-          - script: yarn install
-            displayName: yarn install
+          - task: NodeTool@0
+            displayName: Use node 10.x
+            inputs:
+                versionSpec: 10.x
 
-          - script: yarn run build
-            displayName: yarn run build
+          - script: yarn install
+            displayName: Install packages
+
+          - script: yarn run build:tslint
+            displayName: Run tslint
+
+          - script: yarn run build:stylelint
+            displayName: Run stylelint
+
+          - script: yarn run build:test
+            displayName: Run jest
+
+          - script: yarn run build:webpack
+            displayName: Run electron-webpack
+
+          - script: yarn run build:electron
+            displayName: Run electron-builder
 
           - task: PublishTestResults@2
             displayName: Publish test results
