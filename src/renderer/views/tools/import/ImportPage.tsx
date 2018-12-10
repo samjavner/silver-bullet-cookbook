@@ -8,6 +8,7 @@ import * as fdx from "../../../formats/fdx";
 import * as mmf from "../../../formats/mmf/parser";
 import * as mx2 from "../../../formats/mx2";
 import * as mxp from "../../../formats/mxp/parser";
+import * as paprika from "../../../formats/paprika/parser";
 
 function mapStateToProps(state: State) {
     return {};
@@ -37,7 +38,7 @@ export const ImportPage: React.SFC<ImportPageProps> = props => (
                                     "mmf",
                                     "mx2",
                                     "mxp",
-                                    // "paprikarecipes",
+                                    "paprikarecipes",
                                 ],
                             },
                         ],
@@ -67,7 +68,9 @@ export const ImportPage: React.SFC<ImportPageProps> = props => (
                     // tslint:disable-next-line:no-console
                     console.log(recipes);
                 } else if (path.toLowerCase().endsWith(".paprikarecipes")) {
-                    // TODO
+                    const recipes = paprika.parseFile(path);
+                    // tslint:disable-next-line:no-console
+                    console.log(recipes);
                 } else if (path.toLowerCase().endsWith(".json")) {
                     // TODO
                 }
