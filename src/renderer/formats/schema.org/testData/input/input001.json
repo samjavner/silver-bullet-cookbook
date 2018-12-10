@@ -1,0 +1,187 @@
+
+{
+    "@context": "http://schema.org",
+    "@type": "Recipe",
+    "mainEntityOfPage": true,
+    "name": "Soft Pretzels",
+    "url": "http://www.example.com/recipes/kitchen/soft-pretzels-2269150",
+    "headline": "Soft Pretzels",
+    "author": [{
+      "@type": "Person",
+      "name": "Kitchen",
+      "url": "http://www.example.com/profiles/talent/kitchen"
+      }],
+    "image": {
+      "@type": "ImageObject",
+      "url": "http://food.example.com/content/dam/images/food/fullset/2013/8/27/1/13825454.jpeg",
+      "height": "406",
+      "width": "305"
+      },
+    "datePublished": "2015-06-07T10:34:32.152-04:00",
+    "dateModified": "2014-01-29T09:38:56.267-05:00",
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Network",
+      "url": "http://www.example.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http://food.example.com/content/dam/images/food/unsized/2016/5/5/0/FN-Amp-Logo-Transparent.png",
+        "height": "60",
+        "width": "60"
+        }
+      },
+    "cookTime": "P0Y0M0DT0H20M0.000S",
+    "prepTime": "P0Y0M0DT2H40M0.000S",
+    "totalTime": "P0Y0M0DT3H0M0.000S",
+    "recipeCategory": ["Appetizer"],
+    "recipeIngredient": [
+      "3 tablespoons ingredient 1",
+      "2 tablespoons ingredient 2",
+      "1 1/4-ounce packet ingredient 3 (2 1/4 teaspoons)",
+      "6 cups ingredient 4",
+      "2 teaspoons ingredient 5",
+      "Ingredient 6",
+      "2/3 cup ingredient 7",
+      "Ingredient 8, for dipping (optional)"
+    ],
+    "recipeInstructions": [
+      "Step 1",
+      "Step 2",
+      "Step 3",
+      "Step 4",
+      "Step 5",
+      "Step 6",
+      "Step 7",
+      "Step 8",
+      "Step 9"
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.1,
+      "reviewCount": 8
+      },
+    "recipeYield": "12 large pretzels",
+    "review": [
+      {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Guest"
+        },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "worstRating": "1",
+        "bestRating": "5"
+        },
+      "reviewBody": "Review 1",
+      "datePublished": "2013-11-29"
+      },
+      {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Leah H."
+        },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "worstRating": "1",
+        "bestRating": "5"
+        },
+      "reviewBody": "Review 2",
+      "datePublished": "2014-02-03"
+      },
+      {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "jankahsvk"
+        },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "worstRating": "1",
+        "bestRating": "5"
+        },
+      "reviewBody": "Review 3",
+      "datePublished": "2013-12-09"
+      },
+      {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "mcgrele"
+        },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 4,
+        "worstRating": "1",
+        "bestRating": "5"
+        },
+      "reviewBody": "Review 4",
+      "datePublished": "2016-07-08"
+      },
+      {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Kmcgrain"
+        },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "worstRating": "1",
+        "bestRating": "5"
+        },
+      "reviewBody": "Review 5",
+      "datePublished": "2013-11-02"
+      },
+      {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Jessica.L.R."
+        },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "worstRating": "1",
+        "bestRating": "5"
+        },
+      "reviewBody": "Review 6",
+      "datePublished": "2013-10-23"
+      },
+      {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Rick R."
+        },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 1,
+        "worstRating": "1",
+        "bestRating": "5"
+        },
+      "reviewBody": "Review 7",
+      "datePublished": "2013-10-13"
+      },
+      {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Mary S."
+        },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 3,
+        "worstRating": "1",
+        "bestRating": "5"
+        },
+      "reviewBody": "Review 8",
+      "datePublished": "2013-10-12"
+      }
+    ]
+}
+  

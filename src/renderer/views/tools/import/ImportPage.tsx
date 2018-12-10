@@ -9,6 +9,7 @@ import * as mmf from "../../../formats/mmf/parser";
 import * as mx2 from "../../../formats/mx2";
 import * as mxp from "../../../formats/mxp/parser";
 import * as paprika from "../../../formats/paprika/parser";
+import * as schemaorg from "../../../formats/schema.org";
 
 function mapStateToProps(state: State) {
     return {};
@@ -34,7 +35,7 @@ export const ImportPage: React.SFC<ImportPageProps> = props => (
                                 name: "Recipe files",
                                 extensions: [
                                     "fdx",
-                                    // "json",
+                                    "json",
                                     "mmf",
                                     "mx2",
                                     "mxp",
@@ -72,7 +73,9 @@ export const ImportPage: React.SFC<ImportPageProps> = props => (
                     // tslint:disable-next-line:no-console
                     console.log(recipes);
                 } else if (path.toLowerCase().endsWith(".json")) {
-                    // TODO
+                    const recipes = schemaorg.parseFile(path);
+                    // tslint:disable-next-line:no-console
+                    console.log(recipes);
                 }
             }}
         >
