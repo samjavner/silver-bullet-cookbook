@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<fdx Source="Living Cookbook 4.0" FileVersion="2.0" date="2018-12-09">
+  <Cookbooks>
+    <Cookbook Name="Test Cookbook 1" ID="13" Comments="Cookbook comments.&#xD;&#xA;&#xD;&#xA;On multiple lines." />
+  </Cookbooks>
+  <CookbookChapters />
+  <Recipes>
+    <Recipe Name="Recipe with only a name" ID="1759" CookbookID="13" CookbookChapterID="0" CreateDate="2018-12-09" ColorFlag="&lt;None&gt;" />
+  </Recipes>
+</fdx>
