@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="yes"?><!DOCTYPE mx2 SYSTEM "mx2.dtd">
+<mx2 source="Living Cookbook 4.0" date="2018-12-09">
+  <Summ>
+    <Nam>Recipe with everything filled out</Nam>
+  </Summ>
+  <RcpE name="Recipe with everything filled out" author="The Author">
+    <Serv qty="6" />
+    <PrpT elapsed="1:11" />
+    <CatS>
+      <CatT>Barbecue</CatT>
+      <CatT>Cakes</CatT>
+      <CatT>Pastries</CatT>
+      <CatT>and Desserts</CatT>
+      <CatT>Potatoes</CatT>
+      <CatT>Pasta</CatT>
+      <CatT>and Grains</CatT>
+      <CatT>Salad</CatT>
+    </CatS>
+    <Desc>It's recipe comments.
+
+On multiple lines.</Desc>
+    <IngR name="Heading" code="S" />
+    <IngR name="egg yolks" unit="cups" qty="1 1/2" />
+    <IngR name="apple" unit="medium" />
+    <IngR name="peaches, pitted and chopped" qty="four" />
+    <IngR name="Another recipe with only a name" unit="cup" qty="1" />
+    <DirS>
+      <DirT>Heading</DirT>
+      <DirT>Procedure without image</DirT>
+      <DirT>Procedure with image</DirT>
+      <DirT>Line 1
+
+Line 2</DirT>
+    </DirS>
+    <Srce>The Source</Srce>
+    <AltS label="Internet address" source="The Webpage" />
+    <Yield unit="1/2 cups" qty="6" />
+    <TTim elapsed="4:44" />
+    <AltT label="Cooking Time" elapsed="2:22" />
+    <Note>Cooking Tip: Heading
+Cooking Tip: Tippy
+Cooking Tip: Line 1
+
+Line 2
+Author Note: Heading
+Author Note: Author note
+Author Note: Line 1
+
+Line 2</Note>
+    <Nutr>Per Serving (excluding unknown items): 236 Calories; 16g Fat (61.8% calories from fat); 11g Protein; 12g Carbohydrate; 2g Dietary Fiber; 659g Cholesterol; 29g Sodium.</Nutr>
+  </RcpE>
+</mx2>

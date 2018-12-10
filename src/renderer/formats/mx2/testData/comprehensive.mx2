@@ -1,0 +1,107 @@
+<?xml version="1.0" standalone="yes" encoding="ISO-8859-1"?>
+<!DOCTYPE mx2 SYSTEM "mx2.dtd">
+<mx2 source="MasterCook" date="December 09, 2018">
+<Summ>
+<Nam>
+Recipe with only a name
+</Nam>
+<Nam>
+Recipe with everything filled out, including an embedded recipe
+</Nam>
+<Nam>
+Another recipe with only a name
+</Nam></Summ>
+<RcpE name="Recipe with only a name" author="" img="">
+<Serv qty="0"/>
+<PrpT elapsed="0:00"/>
+<Nutr>
+Per Serving (excluding unknown items): 0 Calories; 0g Fat (0.0% calories from fat); 0g Protein; 0g Carbohydrate; 0g Dietary Fiber; 0mg Cholesterol; 0mg Sodium.  Exchanges: .
+</Nutr>
+</RcpE>
+<RcpE name="Recipe with everything filled out, including an embedded recipe" author="John Smith" img="">
+<Serv qty="42"/>
+<PrpT elapsed="2:50"/>
+<CatS>
+<CatT>
+Category 1
+</CatT>
+<CatT>
+Category 3
+</CatT>
+</CatS>
+<IngR name="It&apos;s a subtitle!" code="S"></IngR>
+<IngR code="S"></IngR>
+<IngR name="ingredient that is unknown" unit="pint" qty="3/4"></IngR>
+<IngR name="egg bagel" unit="cups" qty="1 1/2">
+<IPrp>
+but cook it
+</IPrp>
+<INtI>
+3219
+</INtI>
+</IngR>
+<IngR code="I"></IngR>
+<IngR name="recipe that is unknown" unit="cup" qty="1" code="R"></IngR>
+<IngR name="Recipe with only a name" unit="tablespoons" qty="2 5/8" code="R">
+<IPrp>
+prepared first, of course
+</IPrp>
+</IngR>
+<IngR code="R"></IngR>
+<IngR></IngR>
+<IngR name="This is just some text." code="T"></IngR>
+<IngR code="T"></IngR>
+<DirS>
+<DirT img="">
+This direction does not have a picture.
+</DirT>
+<DirT img="">
+This direction does have a picture.
+</DirT>
+</DirS>
+<Desc>
+Here is a description
+</Desc>
+<Natn>
+Cuisine 2
+</Natn>
+<Srce>
+The Big Cookbook
+</Srce>
+<AltS label="Source 2" source="On the web"/>
+<CpyR>
+© 1992
+</CpyR>
+<Yield unit="cups" qty="5.500000"/>
+<TTim elapsed="4:44"/>
+<AltT label="Time 2" elapsed="1:08"/>
+<RatS>
+<RatE name="Rating 1" value="3"/>
+<RatE name="Rating 2" value="6"/>
+</RatS>
+<Wine>
+Cabernet
+</Wine>
+<SrvI>Here are serving ideas.&#013;&#010;&#013;&#010;On multiple lines.
+</SrvI>
+<Note>
+Here are notes.&#013;&#010;&#013;&#010;On multiple lines.
+</Note>
+<Nutr>
+Per Serving (excluding unknown items): 23 Calories; trace Fat (6.9% calories from fat); 1g Protein; 4g Carbohydrate; trace Dietary Fiber; 2mg Cholesterol; 43mg Sodium.  Exchanges: 1/2 Grain(Starch); 0 Fat.
+</Nutr>
+</RcpE>
+<RcpE name="Recipe with only a name" author="" img="">
+<Serv qty="0"/>
+<PrpT elapsed="0:00"/>
+<Nutr>
+Per Serving (excluding unknown items): 0 Calories; 0g Fat (0.0% calories from fat); 0g Protein; 0g Carbohydrate; 0g Dietary Fiber; 0mg Cholesterol; 0mg Sodium.  Exchanges: .
+</Nutr>
+</RcpE>
+<RcpE name="Another recipe with only a name" author="" img="">
+<Serv qty="0"/>
+<PrpT elapsed="0:00"/>
+<Nutr>
+Per Serving (excluding unknown items): 0 Calories; 0g Fat (0.0% calories from fat); 0g Protein; 0g Carbohydrate; 0g Dietary Fiber; 0mg Cholesterol; 0mg Sodium.  Exchanges: .
+</Nutr>
+</RcpE></mx2>

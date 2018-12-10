@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<fdx Source="Living Cookbook 4.0" FileVersion="2.0" date="2018-12-09">
+  <Cookbooks>
+    <Cookbook Name="Test Cookbook 2" ID="14" Comments="It's comments.&#xD;&#xA;&#xD;&#xA;On multiple lines." />
+    <Cookbook Name="Test Cookbook 1" ID="13">
+      <AutoArchiveRules>
+        <AutoArchiveRule Attribute="Recipe Name" ExpressionType="Standard">abc</AutoArchiveRule>
+        <AutoArchiveRule Attribute="Recipe Name" ExpressionType="Regular Expression">def</AutoArchiveRule>
+        <AutoArchiveRule Attribute="Comments" ExpressionType="Standard">abc</AutoArchiveRule>
+      </AutoArchiveRules>
+    </Cookbook>
+  </Cookbooks>
+  <CookbookChapters>
+    <CookbookChapter Name="Chapter 2" ID="161" CookbookID="14" ParentChapterID="0" />
+    <CookbookChapter Name="Chapter 1" ID="159" CookbookID="14" ParentChapterID="0" Comments="It's chapter comments.&#xD;&#xA;&#xD;&#xA;On multiple lines.">
+      <AutoArchiveRules>
+        <AutoArchiveRule Attribute="Webpage" ExpressionType="Regular Expression">xyz</AutoArchiveRule>
+      </AutoArchiveRules>
+    </CookbookChapter>
+    <CookbookChapter Name="Chapter 1a" ID="160" CookbookID="14" ParentChapterID="159" />
+  </CookbookChapters>
+  <Recipes>
+    <Recipe Name="Recipe with everything filled out" ID="1762" CookbookID="14" CookbookChapterID="161" Comments="It's recipe comments.&#xD;&#xA;&#xD;&#xA;On multiple lines." Servings="6" Yield="6 1/2 cups" PreparationTime="71" CookingTime="142" InactiveTime="213" ReadyInTime="284" OvenTemperatureF="450" OvenTemperatureC="232" DegreeOfDifficulty="5" RecipeTypes="Barbecue, Cakes, Pastries, and Desserts, Potatoes, Pasta, and Grains, Salad" Author="The Author" Source="The Source" SourcePageNumber="iii" WebPage="The Webpage" Copyright="© 1994" UserData1="Un" UserData2="Deux" UserData3="Trois" UserData4="Quatre" UserData5="Cinq" UserData6="6" UserData7="7" UserData8="8" UserData9="9" UserData10="-10" UserData11="www.example.com/11" UserData12="www.example.com/12" UserData13="www.example.com/13" UserData14="www.example.com/14" UserData15="anything I want" CreateDate="2018-12-09" ColorFlag="Purple">
+      <RecipeMeasures>
+        <RecipeMeasure MeasureID="10205" Description="1 cup" GramWeight="101.1" MeasureType="Volume" />
+        <RecipeMeasure MeasureID="101648" Description="handful" GramWeight="57.2" MeasureType="Unit" />
+      </RecipeMeasures>
+      <RecipeIngredients>
+        <RecipeIngredient Quantity="" Unit="" Ingredient="Heading" Heading="Y" />
+        <RecipeIngredient Quantity="1 1/2" Unit="cups" Ingredient="egg yolks" Heading="N" LinkType="Ingredient" IngredientID="1125" IngredientName="Egg, yolk, raw, fresh" MeasureID="10205" Measure="1 cup" MeasureQuantity="1.5" MeasureGramWeight="243" />
+        <RecipeIngredient Quantity="" Unit="medium" Ingredient="apple" Heading="N" LinkType="Unlinked" IngredientID="0" />
+        <RecipeIngredient Quantity="four" Unit="" Ingredient="peaches, pitted and chopped" Heading="N" LinkType="Ingredient" IngredientID="9236" IngredientName="Peaches, raw" MeasureID="60927" Measure="1 large (2-3/4&quot; dia) (approx 2-1/2 per lb)" MeasureQuantity="4" MeasureGramWeight="157" />
+        <RecipeIngredient Quantity="1" Unit="cup" Ingredient="Another recipe with only a name" Heading="N" LinkType="Recipe" RecipeID="1760" RecipeName="Another recipe with only a name" MeasureQuantity="1" />
+      </RecipeIngredients>
+      <RecipeProcedures>
+        <RecipeProcedure Heading="Y">
+          <ProcedureText>Heading</ProcedureText>
+        </RecipeProcedure>
+        <RecipeProcedure Heading="N">
+          <ProcedureText>Procedure without image</ProcedureText>
+        </RecipeProcedure>
+        <RecipeProcedure Heading="N">
+          <ProcedureText>Procedure with image</ProcedureText>
+          <ProcedureImage xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileType="PNG">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</ProcedureImage>
+        </RecipeProcedure>
+        <RecipeProcedure Heading="N">
+          <ProcedureText>Line 1
+
+Line 2</ProcedureText>
+        </RecipeProcedure>
+      </RecipeProcedures>
+      <RecipeNutrition ServingSize="1 Serving" NutritionCalculationMode="Manual" CalculatedFromRecipeFlag="N" Calories="236.44" Energy="989.29" TotalFat="16.38" SaturatedFat="5.82" SaturatedFattyAcid4_0="0" SaturatedFattyAcid6_0="0" SaturatedFattyAcid8_0="0.01" SaturatedFattyAcid10_0="0.01" SaturatedFattyAcid12_0="0.01" SaturatedFattyAcid13_0="9001" SaturatedFattyAcid14_0="0.06" SaturatedFattyAcid15_0="0.01" SaturatedFattyAcid16_0="4.19" SaturatedFattyAcid17_0="0.03" SaturatedFattyAcid18_0="1.47" SaturatedFattyAcid20_0="0.02" SaturatedFattyAcid22_0="0.02" SaturatedFattyAcid24_0="0.01" MonounsaturatedFat="7.2" MonounsaturatedFattyAcid14_1="0.01" MonounsaturatedFattyAcid15_1="9002" MonounsaturatedFattyAcid16_1="0.56" MonounsaturatedFattyAcid17_1="9003" MonounsaturatedFattyAcid18_1="6.57" MonounsaturatedFattyAcid20_1="0.05" MonounsaturatedFattyAcid22_1="0.01" MonounsaturatedFattyAcid24_1="9004" PolyunsaturatedFat="2.64" PolyunsaturatedFattyAcid18_2="2.24" PolyunsaturatedFattyAcid18_3="0.06" PolyunsaturatedFattyAcid18_4="0" PolyunsaturatedFattyAcid20_3="9005" PolyunsaturatedFattyAcid20_4="0.27" PolyunsaturatedFattyAcid21_5="9006" PolyunsaturatedFattyAcid22_4="9007" Omega3FattyAcids="9008" AlphaLinolenicAcid="9009" EicosapentaenoicAcid="0.01" DocosapentaenoicAcid="0" DocosahexaenoicAcid="0.07" Omega6FattyAcids="9010" LinoleicAcid="9011" GammaLinolenicAcid="9012" EicosadienoicAcid="9013" DihomoGammaLinolenicAcid="9014" ArachidonicAcid="9015" TransFattyAcids="9016" TransMonoenoicFattyAcids="9017" TransPolyenoicFattyAcids="9018" Cholesterol="659.14" Phytosterols="10.47" BetaSitosterol="9019" Stigmasterol="9020" Campesterol="9021" Sodium="29.16" Potassium="265.08" TotalCarbohydrate="12.17" Fiber="1.57" Starch="0" Sugar="9.12" Sucrose="5.02" Glucose="2.15" Fructose="1.64" Lactose="0.04" Maltose="0.13" Galactose="0.11" SugarAlcohols="9022" Protein="10.59" VitaminA="1217.23" Retinol="1217.23" BetaCarotene="225.38" AlphaCarotene="223.02" BetaCryptoxanthin="23.09" Lycopene="90.17" VitaminC="0" Calcium="6.91" Iron="84.65" VitaminE="1.92" BetaTocopherol="2.33" GammaTocopherol="0.03" DeltaTocopherol="0.83" VitaminD="0.04" Thiamin="132.44" Riboflavin="0.13" Niacin="0.35" VitaminB6="0.86" Folate="0.24" VitaminB12="92.88" PantothenicAcid="1.18" VitaminK="1.98" Phosphorus="3.15" Magnesium="257.86" Zinc="12.46" Copper="1.58" Manganese="0.12" Selenium="0.1" Biotin="34.12" Chromium="9023" Fluoride="9024" Iodine="4.19" Molybdenum="9025" Chloride="9026" Choline="420.88" Tryptophan="0.12" Threonine="0.43" Isoleucine="0.54" Leucine="0.88" Lysine="0.77" Methionine="0.24" Cystine="0.17" Phenylalanine="0.43" Tyrosine="0.43" Valine="0.6" Arginine="0.69" Histidine="0.27" Alanine="0.54" AsparticAcid="1.38" GlutamicAcid="1.26" Glycine="0.32" Proline="0.41" Serine="0.84" Hydroxyproline="9026" Alcohol="0" Caffeine="0" Theobromine="0" Water="124.8" Ash="1.49" Refuse="4.19" Mass="165.42" Volume="234.01" FatFactor="9" ProteinFactor="4" CarbohydrateFactor="4" AlcoholFactor="7" CaloriesFromFat="9027" />
+      <RecipeTips>
+        <RecipeTip Heading="True">Heading</RecipeTip>
+        <RecipeTip>Tippy</RecipeTip>
+        <RecipeTip>Line 1
+
+Line 2</RecipeTip>
+      </RecipeTips>
+      <RecipeReviews>
+        <RecipeReview Rating="3" Reviewer="Joe Smith" ReviewDate="2018-12-05">Review
+
+On multiple lines.</RecipeReview>
+      </RecipeReviews>
+      <RecipeImage xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileType="PNG">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</RecipeImage>
+      <RecipeImages>
+        <RecipeImage xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileType="PNG" Description="It's a tiny pan.">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</RecipeImage>
+      </RecipeImages>
+      <RecipeMedia>
+        <RecipeMediaFile xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileType="x2a5e9acb67e2aeee" FileName="small.mp4" Description="Not a real video, so this will error importing to Living Cookbook.">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</RecipeMediaFile>
+      </RecipeMedia>
+      <RecipeAttachments>
+        <RecipeAttachment xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileName="tinypan.png" Description="Tiny pan - make copy">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</RecipeAttachment>
+        <RecipeAttachment xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileName="tinypan.png" Description="Tiny pan - no copy">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</RecipeAttachment>
+      </RecipeAttachments>
+      <RecipeAuthorNotes>
+        <RecipeAuthorNote Heading="True">Heading</RecipeAuthorNote>
+        <RecipeAuthorNote>Author note</RecipeAuthorNote>
+        <RecipeAuthorNote>Line 1
+
+Line 2</RecipeAuthorNote>
+      </RecipeAuthorNotes>
+      <SourceImage xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileType="GIF">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</SourceImage>
+    </Recipe>
+    <Recipe Name="Another recipe with only a name" ID="1760" CookbookID="14" CookbookChapterID="159" CreateDate="2018-12-09" ColorFlag="&lt;None&gt;" />
+    <Recipe Name="Recipe with only a name" ID="1759" CookbookID="13" CookbookChapterID="0" CreateDate="2018-12-09" ColorFlag="&lt;None&gt;" />
+    <Recipe Name="Yet another recipe with only a name" ID="1761" CookbookID="14" CookbookChapterID="160" CreateDate="2018-12-09" ColorFlag="&lt;None&gt;" />
+  </Recipes>
+  <IngredientFolders>
+    <IngredientFolder Name="Dairy and Egg Products" ID="100" ParentFolderID="0" Comments="Ingredient folder comments.&#xD;&#xA;&#xD;&#xA;On multiple lines.">
+      <AutoArchiveRules>
+        <AutoArchiveRule Attribute="Ingredient Name" ExpressionType="Standard">xyz</AutoArchiveRule>
+      </AutoArchiveRules>
+    </IngredientFolder>
+    <IngredientFolder Name="Eggs" ID="2509" ParentFolderID="100" />
+  </IngredientFolders>
+  <Ingredients>
+    <Ingredient Name="Egg, yolk, raw, fresh" CommonName="Egg yolk" ID="1125" IngredientFolderID="2509" Comments="They're yolks.&#xD;&#xA;&#xD;&#xA;On multiple lines." Source="The Source" WebPage="The Webpage" Copyright="© 1995" UserData1="Un" UserData2="Deux" UserData3="Trois" UserData4="Quatre" UserData5="Cinq" UserData6="6" UserData7="7" UserData8="8" UserData9="9" UserData10="-10" UserData11="www.example.com/11" UserData12="www.example.com/12" UserData13="www.example.com/13" UserData14="www.example.com/14" UserData15="anything I want" CreateDate="0001-01-01" ColorFlag="&lt;None&gt;" GroceryAisle="Dairy">
+      <IngredientMeasures>
+        <IngredientMeasure MeasureID="10205" Description="1 cup" GramWeight="243" MeasureType="Volume" MeasureCost="175.663" />
+        <IngredientMeasure MeasureID="60919" Description="1 large" GramWeight="17" MeasureType="Unit" MeasureCost="12.289" />
+        <IngredientMeasure MeasureID="62740" Description="1 large egg yolk" GramWeight="16.6" MeasureType="Unit" MeasureCost="12" />
+        <IngredientMeasure MeasureID="99995" Description="1 lb" GramWeight="453.6" MeasureType="Mass" MeasureCost="327.904" />
+        <IngredientMeasure MeasureID="99996" Description="1 ounce" GramWeight="28.35" MeasureType="Mass" MeasureCost="20.494" />
+        <IngredientMeasure MeasureID="100000" Description="100g" GramWeight="100" MeasureType="Weight (Mass)" MeasureCost="72.289" />
+      </IngredientMeasures>
+      <IngredientNotes>
+        <IngredientNote Heading="True">Heading</IngredientNote>
+        <IngredientNote>Note</IngredientNote>
+        <IngredientNote>Line 1
+
+Line 2</IngredientNote>
+      </IngredientNotes>
+      <IngredientNutrition ServingSize="1" ServingSizeMeasureID="100000" DefaultMeasureID="62740" NutritionSource="USDA SR-23" NutritionCalculationMode="Semi-Automatic" Calories="322" Energy="1347.28" TotalFat="26.54" SaturatedFat="9.55" SaturatedFattyAcid4_0="0" SaturatedFattyAcid6_0="0" SaturatedFattyAcid8_0="0.01" SaturatedFattyAcid10_0="0.01" SaturatedFattyAcid12_0="0.01" SaturatedFattyAcid14_0="0.1" SaturatedFattyAcid15_0="0.01" SaturatedFattyAcid16_0="6.86" SaturatedFattyAcid17_0="0.05" SaturatedFattyAcid18_0="2.42" SaturatedFattyAcid20_0="0.03" SaturatedFattyAcid22_0="0.04" SaturatedFattyAcid24_0="0.01" MonounsaturatedFat="11.74" MonounsaturatedFattyAcid14_1="0.02" MonounsaturatedFattyAcid16_1="0.92" MonounsaturatedFattyAcid18_1="10.7" MonounsaturatedFattyAcid20_1="0.09" MonounsaturatedFattyAcid22_1="0.01" PolyunsaturatedFat="4.2" PolyunsaturatedFattyAcid18_2="3.54" PolyunsaturatedFattyAcid18_3="0.1" PolyunsaturatedFattyAcid18_4="0" PolyunsaturatedFattyAcid20_4="0.44" EicosapentaenoicAcid="0.01" DocosapentaenoicAcid="0" DocosahexaenoicAcid="0.11" Cholesterol="1085" Sodium="48" Potassium="109" TotalCarbohydrate="3.59" Fiber="0" Sugar="0.56" Sucrose="0.07" Glucose="0.18" Fructose="0.07" Lactose="0.07" Maltose="0.07" Galactose="0.07" Protein="15.86" VitaminA="1442" Retinol="1442" BetaCarotene="371" AlphaCarotene="88" BetaCryptoxanthin="38" Lycopene="33" VitaminC="0" Calcium="0" Iron="129" VitaminE="2.73" BetaTocopherol="2.58" GammaTocopherol="0.05" DeltaTocopherol="1.33" VitaminD="0.06" Thiamin="218" Riboflavin="0.18" Niacin="0.53" VitaminB6="0.02" Folate="0.35" VitaminB12="146" PantothenicAcid="1.95" VitaminK="2.99" Phosphorus="0.7" Magnesium="390" Zinc="5" Copper="2.3" Manganese="0.08" Selenium="0.06" Biotin="56" Choline="682.3" Tryptophan="0.18" Threonine="0.69" Isoleucine="0.87" Leucine="1.4" Lysine="1.22" Methionine="0.38" Cystine="0.26" Phenylalanine="0.68" Tyrosine="0.68" Valine="0.95" Arginine="1.1" Histidine="0.42" Alanine="0.84" AsparticAcid="1.55" GlutamicAcid="1.97" Glycine="0.49" Proline="0.65" Serine="1.33" Alcohol="0" Caffeine="0" Theobromine="0" Water="52.31" Ash="1.71" Refuse="0" Mass="100" Volume="97.36" FatFactor="9.02" ProteinFactor="4.36" CarbohydrateFactor="3.68" AlcoholFactor="7" />
+      <IngredientImage xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileType="PNG">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</IngredientImage>
+      <IngredientImages>
+        <IngredientImage xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileType="PNG" Description="It's a tiny pan.">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</IngredientImage>
+      </IngredientImages>
+      <IngredientAttachments>
+        <IngredientAttachment xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileName="tinypan.png" Description="It's a tiny pan.">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</IngredientAttachment>
+      </IngredientAttachments>
+      <SourceImage xmlns:dt="urn:schemas-microsoft-com:datatypes" dt:dt="bin.base64" FileType="GIF">iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAAd0SU1FB9sIHxceL+re/TcAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuMWMqnEsAAABOSURBVBhXY/iPBG7evAniP3ny5OHDh4cOHXr+/DlDeVlZYGBgTk5OV1cXiL+1rjZZUz1aTzfNzPTj27cMf3//vrlp47G5c948evT//38ANTI3RDD4h/cAAAAASUVORK5CYII=</SourceImage>
+    </Ingredient>
+  </Ingredients>
+</fdx>

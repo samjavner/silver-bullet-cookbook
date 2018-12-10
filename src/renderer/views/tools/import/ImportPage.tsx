@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import * as actions from "../../../app/actions";
 import { State } from "../../../app/state";
+import * as fdx from "../../../formats/fdx";
 import * as mmf from "../../../formats/mmf/parser";
+import * as mx2 from "../../../formats/mx2";
 import * as mxp from "../../../formats/mxp/parser";
 
 function mapStateToProps(state: State) {
@@ -22,7 +24,7 @@ export const ImportPage: React.SFC<ImportPageProps> = props => (
     <div>
         <button
             className="button"
-            onClick={() => {
+            onClick={async () => {
                 const paths = remote.dialog.showOpenDialog(
                     remote.getCurrentWindow(),
                     {
@@ -30,10 +32,10 @@ export const ImportPage: React.SFC<ImportPageProps> = props => (
                             {
                                 name: "Recipe files",
                                 extensions: [
-                                    // "fdx",
+                                    "fdx",
                                     // "json",
                                     "mmf",
-                                    // "mx2",
+                                    "mx2",
                                     "mxp",
                                     // "paprikarecipes",
                                 ],
@@ -57,9 +59,13 @@ export const ImportPage: React.SFC<ImportPageProps> = props => (
                     // tslint:disable-next-line:no-console
                     console.log(recipes);
                 } else if (path.toLowerCase().endsWith(".mx2")) {
-                    // TODO
+                    const recipes = await mx2.parseFile(path);
+                    // tslint:disable-next-line:no-console
+                    console.log(recipes);
                 } else if (path.toLowerCase().endsWith(".fdx")) {
-                    // TODO
+                    const recipes = await fdx.parseFile(path);
+                    // tslint:disable-next-line:no-console
+                    console.log(recipes);
                 } else if (path.toLowerCase().endsWith(".paprikarecipes")) {
                     // TODO
                 } else if (path.toLowerCase().endsWith(".json")) {
