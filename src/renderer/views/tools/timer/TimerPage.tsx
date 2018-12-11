@@ -1,23 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../../app/actions";
-import { State } from "../../../app/state";
+import { GlobalState } from "../../../core/model";
 
-function mapStateToProps(state: State) {
-    return {};
-}
+export const TimerPage: React.SFC = props => <div>Timer</div>;
 
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
+const mapStateToProps = (state: GlobalState) => ({});
 
-type TimerPageProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
-
-export const TimerPage: React.SFC<TimerPageProps> = props => <div>Timer</div>;
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TimerPage);
+export default connect(mapStateToProps)(TimerPage);

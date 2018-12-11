@@ -1,24 +1,14 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 import GroceryListsPage from "./groceryLists/GroceryListsPage";
 import InventoryPage from "./inventory/InventoryPage";
 import ShoppingTabs from "./ShoppingTabs";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeShoppingPage,
-    };
+interface ShoppingAreaProps {
+    activePage: navigation.ShoppingPage;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
-
-type ShoppingAreaProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 const ShoppingArea: React.SFC<ShoppingAreaProps> = props => (
     <>
@@ -28,7 +18,8 @@ const ShoppingArea: React.SFC<ShoppingAreaProps> = props => (
     </>
 );
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ShoppingArea);
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveShoppingPage(state),
+});
+
+export default connect(mapStateToProps)(ShoppingArea);

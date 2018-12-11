@@ -1,8 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 import CalculatorPage from "./calculator/CalculatorPage";
 import ExportPage from "./export/ExportPage";
 import ImportPage from "./import/ImportPage";
@@ -10,18 +9,9 @@ import StatisticsPage from "./statistics/StatisticsPage";
 import TimerPage from "./timer/TimerPage";
 import ToolsTabs from "./ToolsTabs";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeToolsPage,
-    };
+interface ToolsAreaProps {
+    activePage: navigation.ToolsPage;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
-
-type ToolsAreaProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 const ToolsArea: React.SFC<ToolsAreaProps> = props => (
     <>
@@ -34,7 +24,8 @@ const ToolsArea: React.SFC<ToolsAreaProps> = props => (
     </>
 );
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ToolsArea);
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveToolsPage(state),
+});
+
+export default connect(mapStateToProps)(ToolsArea);

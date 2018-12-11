@@ -1,25 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../../app/actions";
-import { State } from "../../../app/state";
+import { GlobalState } from "../../../core/model";
 
-function mapStateToProps(state: State) {
-    return {};
-}
+export const ExportPage: React.SFC = props => <div>Export</div>;
 
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
+const mapStateToProps = (state: GlobalState) => ({});
 
-type ExportPageProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
-
-export const ExportPage: React.SFC<ExportPageProps> = props => (
-    <div>Export</div>
-);
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ExportPage);
+export default connect(mapStateToProps)(ExportPage);

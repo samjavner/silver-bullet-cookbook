@@ -1,24 +1,14 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 import DictionaryPage from "./dictionary/DictionaryPage";
 import NutritionPage from "./nutrition/NutritionPage";
 import ReferenceTabs from "./ReferenceTabs";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeReferencePage,
-    };
+interface ReferenceAreaProps {
+    activePage: navigation.ReferencePage;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
-
-type ReferenceAreaProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 const ReferenceArea: React.SFC<ReferenceAreaProps> = props => (
     <>
@@ -28,7 +18,8 @@ const ReferenceArea: React.SFC<ReferenceAreaProps> = props => (
     </>
 );
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ReferenceArea);
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveReferencePage(state),
+});
+
+export default connect(mapStateToProps)(ReferenceArea);

@@ -1,23 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../../app/actions";
-import { State } from "../../../app/state";
+import { GlobalState } from "../../../core/model";
 
-function mapStateToProps(state: State) {
-    return {};
-}
+export const TagsPage: React.SFC = props => <div>Tags</div>;
 
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
+const mapStateToProps = (state: GlobalState) => ({});
 
-type TagsPageProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
-
-export const TagsPage: React.SFC<TagsPageProps> = props => <div>Tags</div>;
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TagsPage);
+export default connect(mapStateToProps)(TagsPage);

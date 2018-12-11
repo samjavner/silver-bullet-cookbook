@@ -1,5 +1,7 @@
-import { Action } from "./actions";
-import { State } from "./state";
+import { Reducer } from "redux";
+import { ActionType, getType } from "typesafe-actions";
+import * as actions from "./actions";
+import { State } from "./model";
 
 const init: State = {
     activeArea: "home",
@@ -10,57 +12,53 @@ const init: State = {
     activeReferencePage: "dictionary",
     activeToolsPage: "calculator",
     activeSettingsPage: "settings",
-    selectedRecipeIndex: 0,
 };
 
-export default function reducer(state: State = init, action: Action): State {
+export type Action = ActionType<typeof actions>;
+
+export const reducer: Reducer<State, Action> = (state = init, action) => {
     switch (action.type) {
-        case "setActiveArea":
+        case getType(actions.setActiveArea):
             return {
                 ...state,
                 activeArea: action.payload,
             };
-        case "setActiveHomePage":
+        case getType(actions.setActiveHomePage):
             return {
                 ...state,
                 activeHomePage: action.payload,
             };
-        case "setActiveRecipesPage":
+        case getType(actions.setActiveRecipesPage):
             return {
                 ...state,
                 activeRecipesPage: action.payload,
             };
-        case "setActiveCalendarPage":
+        case getType(actions.setActiveCalendarPage):
             return {
                 ...state,
                 activeCalendarPage: action.payload,
             };
-        case "setActiveShoppingPage":
+        case getType(actions.setActiveShoppingPage):
             return {
                 ...state,
                 activeShoppingPage: action.payload,
             };
-        case "setActiveReferencePage":
+        case getType(actions.setActiveReferencePage):
             return {
                 ...state,
                 activeReferencePage: action.payload,
             };
-        case "setActiveToolsPage":
+        case getType(actions.setActiveToolsPage):
             return {
                 ...state,
                 activeToolsPage: action.payload,
             };
-        case "setActiveSettingsPage":
+        case getType(actions.setActiveSettingsPage):
             return {
                 ...state,
                 activeSettingsPage: action.payload,
             };
-        case "setSelectedRecipeIndex":
-            return {
-                ...state,
-                selectedRecipeIndex: action.payload,
-            };
     }
 
     return state;
-}
+};

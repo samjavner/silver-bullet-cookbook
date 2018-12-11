@@ -7,4 +7,4 @@ require("./styles/bulma.scss");
 require("react-virtualized/styles.css");
 
 // tslint:disable-next-line:no-var-requires
-require("./main.tsx");
+require("./main").main();

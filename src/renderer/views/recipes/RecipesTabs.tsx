@@ -7,31 +7,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { bindActionCreators, Dispatch } from "redux";
 import { Navtab, Navtabs } from "../../components/Navtabs";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeRecipesPage,
-    };
+interface RecipesTabsProps {
+    activePage: navigation.RecipesPage;
+    onRecipeBoxClick: () => void;
+    onLibraryClick: () => void;
+    onFavoritesClick: () => void;
+    onTagsClick: () => void;
+    onSearchClick: () => void;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {
-        onLibraryClick: () => dispatch(actions.setActiveRecipesPage("library")),
-        onRecipeBoxClick: () =>
-            dispatch(actions.setActiveRecipesPage("recipe_box")),
-        onFavoritesClick: () =>
-            dispatch(actions.setActiveRecipesPage("favorites")),
-        onTagsClick: () => dispatch(actions.setActiveRecipesPage("tags")),
-        onSearchClick: () => dispatch(actions.setActiveRecipesPage("search")),
-    };
-}
-
-type RecipesTabsProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 export const RecipesTabs: React.SFC<RecipesTabsProps> = props => (
     <Navtabs>
@@ -67,6 +55,26 @@ export const RecipesTabs: React.SFC<RecipesTabsProps> = props => (
         />
     </Navtabs>
 );
+
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveRecipesPage(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators(
+        {
+            onRecipeBoxClick: () =>
+                navigation.actions.setActiveRecipesPage("recipe_box"),
+            onLibraryClick: () =>
+                navigation.actions.setActiveRecipesPage("library"),
+            onFavoritesClick: () =>
+                navigation.actions.setActiveRecipesPage("favorites"),
+            onTagsClick: () => navigation.actions.setActiveRecipesPage("tags"),
+            onSearchClick: () =>
+                navigation.actions.setActiveRecipesPage("search"),
+        },
+        dispatch
+    );
 
 export default connect(
     mapStateToProps,

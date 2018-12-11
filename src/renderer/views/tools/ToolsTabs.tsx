@@ -7,31 +7,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { bindActionCreators, Dispatch } from "redux";
 import { Navtab, Navtabs } from "../../components/Navtabs";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeToolsPage,
-    };
+interface ToolsTabsProps {
+    activePage: navigation.ToolsPage;
+    onCalculatorClick: () => void;
+    onTimerClick: () => void;
+    onImportClick: () => void;
+    onExportClick: () => void;
+    onStatisticsClick: () => void;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {
-        onCalculatorClick: () =>
-            dispatch(actions.setActiveToolsPage("calculator")),
-        onTimerClick: () => dispatch(actions.setActiveToolsPage("timer")),
-        onImportClick: () => dispatch(actions.setActiveToolsPage("import")),
-        onExportClick: () => dispatch(actions.setActiveToolsPage("export")),
-        onStatisticsClick: () =>
-            dispatch(actions.setActiveToolsPage("statistics")),
-    };
-}
-
-type ToolsTabsProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 export const ToolsTabs: React.SFC<ToolsTabsProps> = props => (
     <Navtabs>
@@ -67,6 +55,26 @@ export const ToolsTabs: React.SFC<ToolsTabsProps> = props => (
         />
     </Navtabs>
 );
+
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveToolsPage(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators(
+        {
+            onCalculatorClick: () =>
+                navigation.actions.setActiveToolsPage("calculator"),
+            onTimerClick: () => navigation.actions.setActiveToolsPage("timer"),
+            onImportClick: () =>
+                navigation.actions.setActiveToolsPage("import"),
+            onExportClick: () =>
+                navigation.actions.setActiveToolsPage("export"),
+            onStatisticsClick: () =>
+                navigation.actions.setActiveToolsPage("statistics"),
+        },
+        dispatch
+    );
 
 export default connect(
     mapStateToProps,

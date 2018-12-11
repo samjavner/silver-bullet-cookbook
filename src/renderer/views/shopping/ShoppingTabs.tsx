@@ -1,28 +1,16 @@
 import { faBox, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { bindActionCreators, Dispatch } from "redux";
 import { Navtab, Navtabs } from "../../components/Navtabs";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeShoppingPage,
-    };
+interface ShoppingTabsProps {
+    activePage: navigation.ShoppingPage;
+    onGroceryListsClick: () => void;
+    onInventoryClick: () => void;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {
-        onGroceryListsClick: () =>
-            dispatch(actions.setActiveShoppingPage("grocery_lists")),
-        onInventoryClick: () =>
-            dispatch(actions.setActiveShoppingPage("inventory")),
-    };
-}
-
-type ShoppingTabsProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 export const ShoppingTabs: React.SFC<ShoppingTabsProps> = props => (
     <Navtabs>
@@ -40,6 +28,21 @@ export const ShoppingTabs: React.SFC<ShoppingTabsProps> = props => (
         />
     </Navtabs>
 );
+
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveShoppingPage(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators(
+        {
+            onGroceryListsClick: () =>
+                navigation.actions.setActiveShoppingPage("grocery_lists"),
+            onInventoryClick: () =>
+                navigation.actions.setActiveShoppingPage("inventory"),
+        },
+        dispatch
+    );
 
 export default connect(
     mapStateToProps,

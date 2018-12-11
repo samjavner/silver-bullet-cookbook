@@ -1,3 +1,5 @@
+export const moduleName = "navigation";
+
 export interface State {
     activeArea: Area;
     activeHomePage: HomePage;
@@ -7,7 +9,6 @@ export interface State {
     activeReferencePage: ReferencePage;
     activeToolsPage: ToolsPage;
     activeSettingsPage: SettingsPage;
-    selectedRecipeIndex: number;
 }
 
 export type Area =

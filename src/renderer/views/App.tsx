@@ -1,8 +1,8 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../app/actions";
-import { State } from "../app/state";
+import { GlobalState } from "../core/model";
+import * as navigation from "../core/navigation";
+import { Area } from "../core/navigation/model";
 import AppNavbar from "./AppNavbar";
 import CalendarArea from "./calendar/CalendarArea";
 import HomeArea from "./home/HomeArea";
@@ -12,18 +12,9 @@ import SettingsArea from "./settings/SettingsArea";
 import ShoppingArea from "./shopping/ShoppingArea";
 import ToolsArea from "./tools/ToolsArea";
 
-function mapStateToProps(state: State) {
-    return {
-        activeArea: state.activeArea,
-    };
+interface AppProps {
+    activeArea: Area;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
-
-type AppProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 const App: React.SFC<AppProps> = props => (
     <div
@@ -48,7 +39,9 @@ const App: React.SFC<AppProps> = props => (
         </div>
     </div>
 );
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(App);
+
+const mapStateToProps = (state: GlobalState) => ({
+    activeArea: navigation.selectors.getActiveArea(state),
+});
+
+export default connect(mapStateToProps)(App);

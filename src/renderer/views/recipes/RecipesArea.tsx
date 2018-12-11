@@ -1,8 +1,7 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 import FavoritesPage from "./favorites/FavoritesPage";
 import LibraryPage from "./library/LibraryPage";
 import RecipeBoxPage from "./recipeBox/RecipeBoxPage";
@@ -10,18 +9,9 @@ import RecipesTabs from "./RecipesTabs";
 import SearchPage from "./search/SearchPage";
 import TagsPage from "./tags/TagsPage";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeRecipesPage,
-    };
+interface RecipesAreaProps {
+    activePage: navigation.RecipesPage;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
-
-type RecipesAreaProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 const RecipesArea: React.SFC<RecipesAreaProps> = props => (
     <div
@@ -44,7 +34,8 @@ const RecipesArea: React.SFC<RecipesAreaProps> = props => (
     </div>
 );
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(RecipesArea);
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveRecipesPage(state),
+});
+
+export default connect(mapStateToProps)(RecipesArea);
