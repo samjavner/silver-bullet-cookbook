@@ -1,26 +1,15 @@
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { bindActionCreators, Dispatch } from "redux";
 import { Navtab, Navtabs } from "../../components/Navtabs";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeCalendarPage,
-    };
+interface CalendarTabsProps {
+    activePage: navigation.CalendarPage;
+    onCalendarClick: () => void;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {
-        onCalendarClick: () =>
-            dispatch(actions.setActiveCalendarPage("calendar")),
-    };
-}
-
-type CalendarTabsProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 export const CalendarTabs: React.SFC<CalendarTabsProps> = props => (
     <Navtabs>
@@ -32,6 +21,19 @@ export const CalendarTabs: React.SFC<CalendarTabsProps> = props => (
         />
     </Navtabs>
 );
+
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveCalendarPage(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators(
+        {
+            onCalendarClick: () =>
+                navigation.actions.setActiveCalendarPage("calendar"),
+        },
+        dispatch
+    );
 
 export default connect(
     mapStateToProps,

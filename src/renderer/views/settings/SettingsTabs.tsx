@@ -1,27 +1,16 @@
 import { faCog, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { bindActionCreators, Dispatch } from "redux";
 import { Navtab, Navtabs } from "../../components/Navtabs";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeSettingsPage,
-    };
+interface SettingsTabsProps {
+    activePage: navigation.SettingsPage;
+    onSettingsClick: () => void;
+    onAboutClick: () => void;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {
-        onSettingsClick: () =>
-            dispatch(actions.setActiveSettingsPage("settings")),
-        onAboutClick: () => dispatch(actions.setActiveSettingsPage("about")),
-    };
-}
-
-type SettingsTabsProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 export const SettingsTabs: React.SFC<SettingsTabsProps> = props => (
     <Navtabs>
@@ -39,6 +28,21 @@ export const SettingsTabs: React.SFC<SettingsTabsProps> = props => (
         />
     </Navtabs>
 );
+
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveSettingsPage(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators(
+        {
+            onSettingsClick: () =>
+                navigation.actions.setActiveSettingsPage("settings"),
+            onAboutClick: () =>
+                navigation.actions.setActiveSettingsPage("about"),
+        },
+        dispatch
+    );
 
 export default connect(
     mapStateToProps,

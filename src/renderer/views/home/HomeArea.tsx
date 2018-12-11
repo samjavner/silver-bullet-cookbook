@@ -1,23 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 import HomePage from "./home/HomePage";
 import HomeTabs from "./HomeTabs";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeHomePage,
-    };
+interface HomeAreaProps {
+    activePage: navigation.HomePage;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
-
-type HomeAreaProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 const HomeArea: React.SFC<HomeAreaProps> = props => (
     <>
@@ -26,7 +16,8 @@ const HomeArea: React.SFC<HomeAreaProps> = props => (
     </>
 );
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(HomeArea);
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveHomePage(state),
+});
+
+export default connect(mapStateToProps)(HomeArea);

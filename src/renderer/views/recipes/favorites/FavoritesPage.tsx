@@ -1,25 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../../app/actions";
-import { State } from "../../../app/state";
+import { GlobalState } from "../../../core/model";
 
-function mapStateToProps(state: State) {
-    return {};
-}
+export const FavoritesPage: React.SFC = props => <div>Favorites</div>;
 
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
+const mapStateToProps = (state: GlobalState) => ({});
 
-type FavoritesPageProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
-
-export const FavoritesPage: React.SFC<FavoritesPageProps> = props => (
-    <div>Favorites</div>
-);
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(FavoritesPage);
+export default connect(mapStateToProps)(FavoritesPage);

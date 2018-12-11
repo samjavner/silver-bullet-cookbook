@@ -1,25 +1,15 @@
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { bindActionCreators, Dispatch } from "redux";
 import { Navtab, Navtabs } from "../../components/Navtabs";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeHomePage,
-    };
+interface HomeTabsProps {
+    activePage: navigation.HomePage;
+    onHomeClick: () => void;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {
-        onHomeClick: () => dispatch(actions.setActiveHomePage("home")),
-    };
-}
-
-type HomeTabsProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 export const HomeTabs: React.SFC<HomeTabsProps> = props => (
     <Navtabs>
@@ -31,6 +21,18 @@ export const HomeTabs: React.SFC<HomeTabsProps> = props => (
         />
     </Navtabs>
 );
+
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveHomePage(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators(
+        {
+            onHomeClick: () => navigation.actions.setActiveHomePage("home"),
+        },
+        dispatch
+    );
 
 export default connect(
     mapStateToProps,

@@ -8,22 +8,9 @@ import {
     Grid,
     GridCellRangeProps,
 } from "react-virtualized";
-import { Dispatch } from "redux";
-import * as actions from "../../../app/actions";
-import { State } from "../../../app/state";
-
-function mapStateToProps(state: State) {
-    return {
-        selectedIndex: state.selectedRecipeIndex,
-    };
-}
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {
-        setSelectedIndex: (index: number) =>
-            dispatch(actions.setSelectedRecipeIndex(index)),
-    };
-}
+import { bindActionCreators, Dispatch } from "redux";
+import { GlobalState } from "../../../core/model";
+import * as recipeBox from "../../../core/recipeBox";
 
 /**
  * Implementation of cellRangeRenderer with caching disabled.
@@ -36,8 +23,10 @@ function uncachedCellRangeRenderer(gridCellRangeProps: GridCellRangeProps) {
     });
 }
 
-type RecipeBoxPageProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
+interface RecipeBoxPageProps {
+    selectedIndex: number;
+    setSelectedIndex: (index: number) => void;
+}
 
 export const RecipeBoxPage: React.SFC<RecipeBoxPageProps> = props => (
     <div
@@ -111,6 +100,18 @@ export const RecipeBoxPage: React.SFC<RecipeBoxPageProps> = props => (
         </div>
     </div>
 );
+
+const mapStateToProps = (state: GlobalState) => ({
+    selectedIndex: recipeBox.selectors.getSelectedIndex(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators(
+        {
+            setSelectedIndex: recipeBox.actions.setSelectedIndex,
+        },
+        dispatch
+    );
 
 export default connect(
     mapStateToProps,

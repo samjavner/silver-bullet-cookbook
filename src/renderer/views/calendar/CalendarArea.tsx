@@ -1,23 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../../app/actions";
-import { State } from "../../app/state";
+import { GlobalState } from "../../core/model";
+import * as navigation from "../../core/navigation";
 import CalendarPage from "./calendar/CalendarPage";
 import CalendarTabs from "./CalendarTabs";
 
-function mapStateToProps(state: State) {
-    return {
-        activePage: state.activeCalendarPage,
-    };
+interface CalendarAreaProps {
+    activePage: navigation.CalendarPage;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {};
-}
-
-type CalendarAreaProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 export const CalendarArea: React.SFC<CalendarAreaProps> = props => (
     <>
@@ -26,7 +16,8 @@ export const CalendarArea: React.SFC<CalendarAreaProps> = props => (
     </>
 );
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(CalendarArea);
+const mapStateToProps = (state: GlobalState) => ({
+    activePage: navigation.selectors.getActiveCalendarPage(state),
+});
+
+export default connect(mapStateToProps)(CalendarArea);

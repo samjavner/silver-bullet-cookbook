@@ -3,30 +3,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import * as React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import * as actions from "../app/actions";
-import { State } from "../app/state";
+import { bindActionCreators, Dispatch } from "redux";
+import { GlobalState } from "../core/model";
+import * as navigation from "../core/navigation";
 
-function mapStateToProps(state: State) {
-    return {
-        activeArea: state.activeArea,
-    };
+interface AppNavbarProps {
+    activeArea: navigation.Area;
+    onHomeClick: () => void;
+    onRecipesClick: () => void;
+    onCalendarClick: () => void;
+    onShoppingClick: () => void;
+    onReferenceClick: () => void;
+    onToolsClick: () => void;
+    onSettingsClick: () => void;
 }
-
-function mapDispatchToProps(dispatch: Dispatch<actions.Action>) {
-    return {
-        onHomeClick: () => dispatch(actions.setActiveArea("home")),
-        onRecipesClick: () => dispatch(actions.setActiveArea("recipes")),
-        onCalendarClick: () => dispatch(actions.setActiveArea("calendar")),
-        onShoppingClick: () => dispatch(actions.setActiveArea("shopping")),
-        onReferenceClick: () => dispatch(actions.setActiveArea("reference")),
-        onToolsClick: () => dispatch(actions.setActiveArea("tools")),
-        onSettingsClick: () => dispatch(actions.setActiveArea("settings")),
-    };
-}
-
-type AppNavbarProps = ReturnType<typeof mapStateToProps> &
-    ReturnType<typeof mapDispatchToProps>;
 
 export const AppNavbar: React.SFC<AppNavbarProps> = props => (
     <nav className="navbar is-primary">
@@ -108,6 +98,25 @@ export const AppNavbar: React.SFC<AppNavbarProps> = props => (
         </div>
     </nav>
 );
+
+const mapStateToProps = (state: GlobalState) => ({
+    activeArea: navigation.selectors.getActiveArea(state),
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+    bindActionCreators(
+        {
+            onHomeClick: () => navigation.actions.setActiveArea("home"),
+            onRecipesClick: () => navigation.actions.setActiveArea("recipes"),
+            onCalendarClick: () => navigation.actions.setActiveArea("calendar"),
+            onShoppingClick: () => navigation.actions.setActiveArea("shopping"),
+            onReferenceClick: () =>
+                navigation.actions.setActiveArea("reference"),
+            onToolsClick: () => navigation.actions.setActiveArea("tools"),
+            onSettingsClick: () => navigation.actions.setActiveArea("settings"),
+        },
+        dispatch
+    );
 
 export default connect(
     mapStateToProps,
