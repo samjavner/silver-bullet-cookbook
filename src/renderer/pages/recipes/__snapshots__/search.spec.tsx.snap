@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search Page renders the text 'Search' 1`] = `
+<div>
+  Search
+</div>
+`;

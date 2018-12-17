@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`TimerPage renders the text 'Timer' 1`] = `
-<div>
-  Timer
-</div>
-`;

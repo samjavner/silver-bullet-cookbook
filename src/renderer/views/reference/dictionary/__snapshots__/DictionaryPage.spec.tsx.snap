@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`DictionaryPage renders the text 'Dictionary' 1`] = `
-<div>
-  Dictionary
-</div>
-`;

@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CalculatorPage renders the text 'Calculator' 1`] = `
-<div>
-  Calculator
-</div>
-`;
