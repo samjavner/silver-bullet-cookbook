@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`recipeBox Page renders the master/detail view 1`] = `
+<div
+  style={
+    Object {
+      "display": "grid",
+      "gridTemplateColumns": "20rem 4fr",
+      "height": "100%",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "gridColumn": 1,
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": 0,
+          "overflow": "visible",
+          "width": 0,
+        }
+      }
+    >
+      <div
+        onKeyDown={[Function]}
+      >
+        <div
+          aria-label="grid"
+          aria-readonly={true}
+          className="ReactVirtualized__Grid"
+          onScroll={[Function]}
+          role="grid"
+          style={
+            Object {
+              "WebkitOverflowScrolling": "touch",
+              "boxSizing": "border-box",
+              "direction": "ltr",
+              "height": 0,
+              "overflowX": "hidden",
+              "overflowY": "auto",
+              "position": "relative",
+              "width": 0,
+              "willChange": "transform",
+            }
+          }
+          tabIndex={0}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "gridColumn": 2,
+        "overflowY": "auto",
+      }
+    }
+  >
+    <div>
+      Random number: 
+      1
+    </div>
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Do It!
+    </button>
+    <div>
+      Index: 
+      10
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      0
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      1
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      2
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      3
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      4
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      5
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      6
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      7
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      8
+    </div>
+    <div
+      className="section"
+    >
+      Paragraph 
+      9
+    </div>
+  </div>
+</div>
+`;

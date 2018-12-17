@@ -27,12 +27,6 @@ function createMainWindow() {
             .then(name => console.log(`Added Extension:  ${name}`))
             // tslint:disable-next-line:no-console
             .catch(err => console.log("An error occurred: ", err));
-
-        // installExtension(REDUX_DEVTOOLS)
-        //     // tslint:disable-next-line:no-console
-        //     .then(name => console.log(`Added Extension:  ${name}`))
-        //     // tslint:disable-next-line:no-console
-        //     .catch(err => console.log("An error occurred: ", err));
     } else {
         window.loadURL(
             formatUrl({

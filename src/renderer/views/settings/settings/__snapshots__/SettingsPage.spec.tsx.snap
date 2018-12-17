@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SettingsPage renders the text 'Settings' 1`] = `
-<div>
-  Settings
-</div>
-`;

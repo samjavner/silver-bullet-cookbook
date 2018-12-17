@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`library Page renders the text 'Library' 1`] = `
+<div>
+  Library
+</div>
+`;

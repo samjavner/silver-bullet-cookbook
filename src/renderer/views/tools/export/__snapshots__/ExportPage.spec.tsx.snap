@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ExportPage renders the text 'Export' 1`] = `
-<div>
-  Export
-</div>
-`;

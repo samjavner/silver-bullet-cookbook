@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`export Page renders the text 'Export' 1`] = `
+<div>
+  Export
+</div>
+`;
