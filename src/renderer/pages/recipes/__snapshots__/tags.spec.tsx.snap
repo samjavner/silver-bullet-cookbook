@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`tags Page renders the text 'Tags' 1`] = `
-<div>
-  Tags
-</div>
-`;

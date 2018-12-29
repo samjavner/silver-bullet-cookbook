@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeBoxPage renders the master/detail view 1`] = `
+<div
+  style={
+    Object {
+      "display": "grid",
+      "gridTemplateColumns": "20rem 4fr",
+      "height": "100%",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "gridColumn": 1,
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": 0,
+          "overflow": "visible",
+          "width": 0,
+        }
+      }
+    >
+      <div
+        onKeyDown={[Function]}
+      >
+        <div
+          aria-label="grid"
+          aria-readonly={true}
+          className="ReactVirtualized__Grid"
+          onScroll={[Function]}
+          role="grid"
+          style={
+            Object {
+              "WebkitOverflowScrolling": "touch",
+              "boxSizing": "border-box",
+              "direction": "ltr",
+              "height": 0,
+              "overflowX": "hidden",
+              "overflowY": "hidden",
+              "position": "relative",
+              "width": 0,
+              "willChange": "transform",
+            }
+          }
+          tabIndex={0}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "gridColumn": 2,
+        "overflowY": "auto",
+      }
+    }
+  >
+    <button
+      className="button"
+      onClick={[Function]}
+    >
+      Add Recipe
+    </button>
+  </div>
+</div>
+`;
