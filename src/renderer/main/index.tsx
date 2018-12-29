@@ -1,21 +1,27 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { AppContainer } from "react-hot-loader";
-import { Navigation } from "../pages/navigation";
+import sqlite from "sqlite";
+import Layout from "../views/Layout";
 import { App } from "./app";
 
-export function main() {
-    const render = (Component: typeof Navigation) => {
+declare const __static: string;
+
+export async function main() {
+    const db = await sqlite.open(":memory:");
+    await db.migrate({ migrationsPath: `${__static}/migrations` });
+
+    const render = (Component: typeof Layout) => {
         ReactDOM.render(
             <AppContainer>
-                <App Component={Component} />
+                <App Component={Component} db={db} />
             </AppContainer>,
             document.getElementById("app")
         );
     };
 
-    render(Navigation);
+    render(Layout);
     if (module.hot) {
-        module.hot.accept("../pages/navigation", () => render(Navigation));
+        module.hot.accept("../views/Layout", () => render(Layout));
     }
 }

@@ -1,12 +1,17 @@
 import * as React from "react";
-import * as navigation from "../pages/navigation";
-import * as recipeBox from "../pages/recipes/recipeBox";
-import * as statistics from "../pages/tools/statistics";
-import { useViewModel } from "../pages/util";
+import * as sqlite from "sqlite";
+import { useCommandProvider } from "../core/commandProvider";
+import { useNavigation } from "../core/navigation";
+import { useRecipeBox } from "../core/recipes/recipeBox";
+import { useImport } from "../core/tools/import";
+import { useStatistics } from "../core/tools/statistics";
+import { useLocalStore } from "../store/react";
+import { LayoutProps } from "../views/Layout";
 
 export const App: React.FunctionComponent<{
-    Component: React.FunctionComponent<navigation.Props>;
-}> = ({ Component }) => {
+    Component: React.FunctionComponent<LayoutProps>;
+    db: sqlite.Database;
+}> = ({ Component, db }) => {
     const log = (vm: string) => (msg: any) => {
         // tslint:disable-next-line:no-console
         console.log(
@@ -16,26 +21,26 @@ export const App: React.FunctionComponent<{
         );
     };
 
-    const vms = {
-        vm: useViewModel({
-            init: navigation.init,
-            update: navigation.update,
-            log: log("navigation"),
-        }),
+    const commandProvider = useCommandProvider(
+        useLocalStore(log("command")),
+        db
+    );
+    const navigation = useNavigation(useLocalStore(log("navigation")));
+    const recipeBox = useRecipeBox(
+        useLocalStore(log("recipeBox")),
+        commandProvider,
+        db
+    );
+    const toolsImport = useImport(useLocalStore(log("import")), recipeBox);
+    const statistics = useStatistics(useLocalStore(log("statistics")));
 
-        recipeBoxVm: useViewModel({
-            init: recipeBox.init,
-            update: recipeBox.update,
-            log: log("recipeBox"),
-        }),
-
-        statisticsVm: useViewModel({
-            init: statistics.init,
-            update: statistics.update,
-            commands: statistics.commands,
-            log: log("statistics"),
-        }),
-    };
-
-    return <Component {...vms} />;
+    return (
+        <Component
+            navigation={navigation}
+            recipeBox={recipeBox}
+            import={toolsImport}
+            statistics={statistics}
+            commandProvider={commandProvider}
+        />
+    );
 };

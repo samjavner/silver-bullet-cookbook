@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`groceryLists Page renders the text 'GroceryLists' 1`] = `
-<div>
-  Grocery Lists
-</div>
-`;
