@@ -57,7 +57,19 @@ export const NavigationLayout: React.FunctionComponent<
                 <div style={{ gridRow: 1 }}>
                     <Tabs tabs={tabs} />
                 </div>
-                <div style={{ gridRow: 2, overflow: "hidden" }}>{page}</div>
+                {/* Margin at top of gridRow 2 so that borders and box shadow from page buttons overlaps gridRow 1 */}
+                <div
+                    style={{
+                        gridRow: 2,
+                        overflow: "hidden",
+                        marginTop: "-3px",
+                    }}
+                >
+                    {/* Compensating padding */}
+                    <div style={{ paddingTop: "3px", height: "100%" }}>
+                        {page}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

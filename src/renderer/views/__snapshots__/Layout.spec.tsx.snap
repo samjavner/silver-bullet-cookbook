@@ -185,12 +185,22 @@ Array [
           style={
             Object {
               "gridRow": 2,
+              "marginTop": "-3px",
               "overflow": "hidden",
             }
           }
         >
-          <div>
-            Home
+          <div
+            style={
+              Object {
+                "height": "100%",
+                "paddingTop": "3px",
+              }
+            }
+          >
+            <div>
+              Home
+            </div>
           </div>
         </div>
       </div>
@@ -398,12 +408,22 @@ Array [
           style={
             Object {
               "gridRow": 2,
+              "marginTop": "-3px",
               "overflow": "hidden",
             }
           }
         >
-          <div>
-            Home
+          <div
+            style={
+              Object {
+                "height": "100%",
+                "paddingTop": "3px",
+              }
+            }
+          >
+            <div>
+              Home
+            </div>
           </div>
         </div>
       </div>
@@ -610,12 +630,22 @@ exports[`Layout renders the navbar, tabs, and active page 1`] = `
         style={
           Object {
             "gridRow": 2,
+            "marginTop": "-3px",
             "overflow": "hidden",
           }
         }
       >
-        <div>
-          Home
+        <div
+          style={
+            Object {
+              "height": "100%",
+              "paddingTop": "3px",
+            }
+          }
+        >
+          <div>
+            Home
+          </div>
         </div>
       </div>
     </div>
