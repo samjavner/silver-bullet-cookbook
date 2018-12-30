@@ -13,6 +13,7 @@ exports[`RecipeBoxPage renders the master/detail view 1`] = `
   <div
     style={
       Object {
+        "borderRight": "1px solid #c8cfd0",
         "gridColumn": 1,
       }
     }
@@ -58,12 +59,18 @@ exports[`RecipeBoxPage renders the master/detail view 1`] = `
       Object {
         "gridColumn": 2,
         "overflowY": "auto",
+        "padding": "1rem",
       }
     }
   >
     <button
       className="button"
       onClick={[Function]}
+      style={
+        Object {
+          "marginBottom": "1rem",
+        }
+      }
     >
       Add Recipe
     </button>

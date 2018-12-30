@@ -91,7 +91,20 @@ export const createCommands = (recipeBox: RecipeBox) => (
                     id: uuid.v4(),
                     name: recipe[1].title || "Imported Recipe",
                     ingredients: recipe[1].ingredients
-                        .map(ingredient => ingredient.text)
+                        .map(
+                            ingredient =>
+                                ingredient.type === "ingredient"
+                                    ? (
+                                          ingredient.quantity +
+                                          " " +
+                                          (
+                                              ingredient.unit +
+                                              " " +
+                                              ingredient.text
+                                          ).trim()
+                                      ).trim()
+                                    : ingredient.text
+                        )
                         .join("\n"),
                     directions: recipe[1].directions.join("\n"),
                 }))
