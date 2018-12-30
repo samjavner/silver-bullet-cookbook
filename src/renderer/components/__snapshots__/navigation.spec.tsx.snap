@@ -72,10 +72,20 @@ exports[`navigation components NavigationLayout should have expected layout 1`] 
         style={
           Object {
             "gridRow": 2,
+            "marginTop": "-3px",
             "overflow": "hidden",
           }
         }
-      />
+      >
+        <div
+          style={
+            Object {
+              "height": "100%",
+              "paddingTop": "3px",
+            }
+          }
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -274,11 +284,21 @@ exports[`navigation components NavigationLayout should have expected navbar, tab
         style={
           Object {
             "gridRow": 2,
+            "marginTop": "-3px",
             "overflow": "hidden",
           }
         }
       >
-        Hello!
+        <div
+          style={
+            Object {
+              "height": "100%",
+              "paddingTop": "3px",
+            }
+          }
+        >
+          Hello!
+        </div>
       </div>
     </div>
   </div>
