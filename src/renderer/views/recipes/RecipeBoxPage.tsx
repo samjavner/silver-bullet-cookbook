@@ -11,6 +11,7 @@ import * as uuid from "uuid";
 import { RecipeBox } from "../../core/recipes/recipeBox";
 import { Recipe } from "../../db/recipe";
 import RecipeEditModal from "./RecipeEditModal";
+import RecipeView from "./RecipeView";
 
 /**
  * Implementation of cellRangeRenderer with caching disabled.
@@ -38,7 +39,12 @@ export const RecipeBoxPage: React.FunctionComponent<{
                     gridTemplateColumns: "20rem 4fr",
                 }}
             >
-                <div style={{ gridColumn: 1 }}>
+                <div
+                    style={{
+                        gridColumn: 1,
+                        borderRight: "1px solid #c8cfd0", // $border
+                    }}
+                >
                     <AutoSizer>
                         {({ height, width }) => (
                             <ArrowKeyStepper
@@ -103,20 +109,21 @@ export const RecipeBoxPage: React.FunctionComponent<{
                         )}
                     </AutoSizer>
                 </div>
-                <div style={{ gridColumn: 2, overflowY: "auto" }}>
+                <div
+                    style={{
+                        gridColumn: 2,
+                        overflowY: "auto",
+                        padding: "1rem",
+                    }}
+                >
                     <button
                         className="button"
                         onClick={recipeBox.openAddRecipe}
+                        style={{ marginBottom: "1rem" }}
                     >
                         Add Recipe
                     </button>
-                    {recipe && (
-                        <div>
-                            <div>{recipe.name}</div>
-                            <div>{recipe.ingredients}</div>
-                            <div>{recipe.directions}</div>
-                        </div>
-                    )}
+                    {recipe && <RecipeView recipe={recipe} />}
                 </div>
             </div>
             {recipeBox.isAddRecipeActive && (
