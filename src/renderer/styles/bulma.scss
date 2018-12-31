@@ -64,10 +64,18 @@ html {
 }
 
 .navbar-item,
-.tabs > ul > li > a,
-.ReactVirtualized__Grid {
+.tabs > ul > li > a {
     &:focus {
         outline-color: $link;
+    }
+}
+
+.ReactVirtualized__Grid:focus {
+    outline-color: transparent;
+
+    .is-selected-item {
+        border: 1px dotted $white;
+        margin: -1px;
     }
 }
 

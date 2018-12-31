@@ -129,10 +129,21 @@ export const RecipeBoxPage: React.FunctionComponent<{
                                             }) => (
                                                 <div
                                                     key={key}
-                                                    style={style}
+                                                    style={{
+                                                        ...style,
+                                                        overflow: "hidden",
+                                                        textOverflow:
+                                                            "ellipsis",
+                                                        userSelect: "none",
+                                                        whiteSpace: "nowrap",
+                                                        width: "100%",
+                                                    }}
                                                     className={classNames({
-                                                        "has-background-link has-text-white":
+                                                        "has-background-link has-text-white is-selected-item":
                                                             rowIndex ===
+                                                            recipeBox.selectedIndex,
+                                                        "has-background-white":
+                                                            rowIndex !==
                                                             recipeBox.selectedIndex,
                                                     })}
                                                     onClick={() =>
