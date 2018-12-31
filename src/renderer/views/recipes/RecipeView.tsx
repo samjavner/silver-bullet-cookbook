@@ -166,18 +166,25 @@ const ContentView: React.FunctionComponent<{ recipe: Recipe }> = ({
             <div className="columns is-multiline">
                 <div className="column is-two-fifths">
                     <ul>
-                        {recipe.ingredients.split("\n").map(ingredient => (
-                            <li>{ingredient}</li>
-                        ))}
+                        {recipe.ingredients
+                            .split("\n")
+                            .map((ingredient, index) => (
+                                <li key={index}>{ingredient}</li>
+                            ))}
                     </ul>
                 </div>
                 <div className="column is-three-fifths">
                     <ul>
-                        {recipe.directions.split("\n").map(direction => (
-                            <li style={{ marginBottom: "1rem" }}>
-                                {direction}
-                            </li>
-                        ))}
+                        {recipe.directions
+                            .split("\n")
+                            .map((direction, index) => (
+                                <li
+                                    key={index}
+                                    style={{ marginBottom: "1rem" }}
+                                >
+                                    {direction}
+                                </li>
+                            ))}
                     </ul>
                 </div>
             </div>
