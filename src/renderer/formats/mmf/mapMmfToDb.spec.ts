@@ -174,4 +174,11 @@ describe("mapMmfToDb", () => {
             expect(actual.sourceText).toBe("Line 1\nLine 2");
         });
     });
+
+    describe("id", () => {
+        it("should be mapped to id", () => {
+            const actual = mapMmfToDb(recipe, source, id);
+            expect(actual.id).toBe("85f1d9f0-4542-43a2-805d-cb9713ba0b65");
+        });
+    });
 });

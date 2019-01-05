@@ -4,6 +4,7 @@ import * as fdx from "../../formats/fdx";
 import { mapMmfToDb } from "../../formats/mmf/mapMmfToDb";
 import * as mmf from "../../formats/mmf/parser";
 import * as mx2 from "../../formats/mx2";
+import { mapMxpToDb } from "../../formats/mxp/mapMxpToDb";
 import * as mxp from "../../formats/mxp/parser";
 import * as paprika from "../../formats/paprika/parser";
 import * as schemaorg from "../../formats/schema.org";
@@ -94,8 +95,11 @@ export const createCommands = (recipeBox: RecipeBox) => (
             );
         } else if (path.toLowerCase().endsWith(".mxp")) {
             const recipes = mxp.parseFileWithSource(path);
-            // tslint:disable-next-line:no-console
-            console.log(recipes);
+            await recipeBox.addMultiple(
+                recipes.map(([source, recipe]) =>
+                    mapMxpToDb(recipe, source, uuid.v4())
+                )
+            );
         } else if (path.toLowerCase().endsWith(".mx2")) {
             const recipes = await mx2.parseFile(path);
             // tslint:disable-next-line:no-console
