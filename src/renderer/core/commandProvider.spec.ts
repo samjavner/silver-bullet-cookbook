@@ -1,5 +1,6 @@
 import * as sqlite from "sqlite";
 import { getById, put } from "../db/recipe";
+import { recipe1, recipe2, recipe3, recipe4, recipe5 } from "../db/recipe.mock";
 import { MockDispatch, mockDispatch } from "../store/test";
 import {
     canRedo,
@@ -17,12 +18,7 @@ describe("commandProvider", () => {
 
     const command5: Command = {
         type: "recipe_create",
-        recipe: {
-            id: "1a739dae-668e-49f3-b739-c85b39259ab2",
-            name: "Test Recipe 5",
-            ingredients: "Ingredient 5a\nIngredient 5b",
-            directions: "Direction 5a\nDirection 5b",
-        },
+        recipe: recipe5,
     };
 
     beforeEach(() => {
@@ -31,41 +27,21 @@ describe("commandProvider", () => {
             undoStack: [
                 {
                     type: "recipe_create",
-                    recipe: {
-                        id: "2218d7ea-5bab-4323-a29e-710ff02fa620",
-                        name: "Test Recipe 1",
-                        ingredients: "Ingredient 1a\nIngredient 1b",
-                        directions: "Direction 1a\nDirection 1b",
-                    },
+                    recipe: recipe1,
                 },
                 {
                     type: "recipe_create",
-                    recipe: {
-                        id: "a122b9d7-6263-4996-a383-9172e0e52011",
-                        name: "Test Recipe 2",
-                        ingredients: "Ingredient 2a\nIngredient 2b",
-                        directions: "Direction 2a\nDirection 2b",
-                    },
+                    recipe: recipe2,
                 },
             ],
             redoStack: [
                 {
                     type: "recipe_create",
-                    recipe: {
-                        id: "1d58b6c8-c606-4485-920f-db5afa2c660c",
-                        name: "Test Recipe 3",
-                        ingredients: "Ingredient 3a\nIngredient 3b",
-                        directions: "Direction 3a\nDirection 3b",
-                    },
+                    recipe: recipe3,
                 },
                 {
                     type: "recipe_create",
-                    recipe: {
-                        id: "7906f799-a6fd-4e0a-9a72-caf67fcffdd3",
-                        name: "Test Recipe 4",
-                        ingredients: "Ingredient 4a\nIngredient 4b",
-                        directions: "Direction 4a\nDirection 4b",
-                    },
+                    recipe: recipe4,
                 },
             ],
         };

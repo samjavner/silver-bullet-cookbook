@@ -11,6 +11,7 @@ import {
     faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
 import * as React from "react";
 import { Recipe } from "../../db/recipe";
 
@@ -31,7 +32,7 @@ const HeaderView: React.FunctionComponent<{
     <div className="columns">
         <div className="column">
             <h1 className="title is-4">{recipe.name}</h1>
-            <h2 className="subtitle is-6">
+            <h2 className="subtitle is-6" style={{ marginBottom: 0 }}>
                 <FontAwesomeIcon
                     fixedWidth={true}
                     icon={faStar}
@@ -50,6 +51,32 @@ const HeaderView: React.FunctionComponent<{
                 <FontAwesomeIcon fixedWidth={true} icon={faStar} />
                 <FontAwesomeIcon fixedWidth={true} icon={faStar} />
             </h2>
+            {recipe.servings && (
+                <div style={{ marginTop: "0.4rem" }}>
+                    <span className="has-text-weight-bold">Servings:</span>
+                    &nbsp;
+                    {recipe.servings}
+                </div>
+            )}
+            {recipe.yield && (
+                <div style={{ marginTop: "0.4rem" }}>
+                    <span className="has-text-weight-bold">Yield:</span>
+                    &nbsp;
+                    {recipe.yield}
+                </div>
+            )}
+            {recipe.categories.length > 0 && (
+                <div style={{ marginTop: "0.4rem" }}>
+                    {recipe.categories.map((category, index) => (
+                        <>
+                            <span className="tag is-dark" key={index}>
+                                {category}
+                            </span>
+                            &nbsp;
+                        </>
+                    ))}
+                </div>
+            )}
         </div>
         <div className="column is-narrow">
             <div className="field is-grouped">
@@ -175,7 +202,18 @@ const ContentView: React.FunctionComponent<{ recipe: Recipe }> = ({
                         {recipe.ingredients
                             .split("\n")
                             .map((ingredient, index) => (
-                                <li key={index}>{ingredient}</li>
+                                <li
+                                    key={index}
+                                    className={classNames({
+                                        "has-text-weight-bold": ingredient.startsWith(
+                                            "# "
+                                        ),
+                                    })}
+                                >
+                                    {ingredient.startsWith("# ")
+                                        ? ingredient.slice(2)
+                                        : ingredient}
+                                </li>
                             ))}
                     </ul>
                 </div>
