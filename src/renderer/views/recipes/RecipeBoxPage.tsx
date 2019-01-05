@@ -170,7 +170,7 @@ export const RecipeBoxPage: React.FunctionComponent<{
                 <div
                     style={{
                         gridColumn: 2,
-                        overflowY: "auto",
+                        overflowY: "scroll",
                         padding: "2rem",
                     }}
                 >
@@ -190,6 +190,11 @@ export const RecipeBoxPage: React.FunctionComponent<{
                         name: "New Recipe",
                         ingredients: "",
                         directions: "",
+                        servings: "",
+                        yield: "",
+                        categories: [],
+                        sourceText: "",
+                        importWarnings: [],
                     }}
                     onSave={recipeBox.saveAddRecipe}
                     onClose={recipeBox.closeAddRecipe}
@@ -199,12 +204,7 @@ export const RecipeBoxPage: React.FunctionComponent<{
                 recipe && (
                     <RecipeEditModal
                         title="Edit Recipe"
-                        init={{
-                            id: recipe.id,
-                            name: recipe.name,
-                            ingredients: recipe.ingredients,
-                            directions: recipe.directions,
-                        }}
+                        init={recipe}
                         onSave={recipeBox.saveEditRecipe}
                         onClose={recipeBox.closeEditRecipe}
                     />

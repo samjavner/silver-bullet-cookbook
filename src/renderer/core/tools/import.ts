@@ -87,10 +87,10 @@ export const createCommands = (recipeBox: RecipeBox) => (
         if (path.toLowerCase().endsWith(".mmf")) {
             const recipes = mmf.parseFileWithSource(path);
             await recipeBox.addMultiple(
-                recipes.map(recipe => ({
+                recipes.map(([source, recipe]) => ({
                     id: uuid.v4(),
-                    name: recipe[1].title || "Imported Recipe",
-                    ingredients: recipe[1].ingredients
+                    name: recipe.title || "Imported Recipe",
+                    ingredients: recipe.ingredients
                         .map(
                             ingredient =>
                                 ingredient.type === "ingredient"
@@ -103,10 +103,15 @@ export const createCommands = (recipeBox: RecipeBox) => (
                                               ingredient.text
                                           ).trim()
                                       ).trim()
-                                    : ingredient.text
+                                    : `# ${ingredient.text}`
                         )
                         .join("\n"),
-                    directions: recipe[1].directions.join("\n"),
+                    directions: recipe.directions.join("\n"),
+                    servings: recipe.servings || "",
+                    yield: recipe.yield || "",
+                    categories: recipe.categories,
+                    sourceText: source.join("\n"),
+                    importWarnings: recipe.warnings,
                 }))
             );
         } else if (path.toLowerCase().endsWith(".mxp")) {

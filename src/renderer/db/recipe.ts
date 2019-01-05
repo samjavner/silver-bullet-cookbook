@@ -6,6 +6,11 @@ export interface Recipe {
     name: string;
     ingredients: string;
     directions: string;
+    servings: string;
+    yield: string;
+    categories: string[];
+    sourceText: string;
+    importWarnings: string[];
 }
 
 export async function putMultiple(
@@ -18,10 +23,16 @@ export async function putMultiple(
 }
 
 export async function put(db: sqlite.Database, recipe: Recipe): Promise<void> {
+    const categories = recipe.categories.join(";");
+    const importWarnings = recipe.importWarnings.join(";");
     await db.run(
-        SQL`REPLACE INTO Recipe (id, name, ingredients, directions) VALUES (${
+        SQL`REPLACE INTO Recipe (id, name, ingredients, directions, servings, yield, categories, sourceText, importWarnings) VALUES (${
             recipe.id
-        }, ${recipe.name}, ${recipe.ingredients}, ${recipe.directions})`
+        }, ${recipe.name}, ${recipe.ingredients}, ${recipe.directions}, ${
+            recipe.servings
+        }, ${recipe.yield}, ${categories}, ${
+            recipe.sourceText
+        }, ${importWarnings})`
     );
 }
 
@@ -33,12 +44,30 @@ export async function remove(
 }
 
 export async function getAll(db: sqlite.Database): Promise<Recipe[]> {
-    return db.all(SQL`SELECT * FROM Recipe`);
+    const recipes = await db.all(SQL`SELECT * FROM Recipe`);
+    return recipes.map(mapDbRecipe);
 }
 
 export async function getById(
     db: sqlite.Database,
     id: string
 ): Promise<Recipe | undefined> {
-    return db.get(SQL`SELECT * FROM Recipe WHERE id = ${id}`);
+    const recipe = await db.get(SQL`SELECT * FROM Recipe WHERE id = ${id}`);
+    return recipe ? mapDbRecipe(recipe) : undefined;
+}
+
+function mapDbRecipe(recipe: any): Recipe {
+    return {
+        id: recipe.id,
+        name: recipe.name,
+        ingredients: recipe.ingredients,
+        directions: recipe.directions,
+        servings: recipe.servings,
+        yield: recipe.yield,
+        categories: (recipe.categories as string).split(";").filter(x => x),
+        sourceText: recipe.sourceText,
+        importWarnings: (recipe.importWarnings as string)
+            .split(";")
+            .filter(x => x),
+    };
 }

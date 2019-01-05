@@ -1,5 +1,6 @@
 import * as sqlite from "sqlite";
 import { putMultiple, Recipe } from "../../db/recipe";
+import { recipe1, recipe2, recipe3, recipe4 } from "../../db/recipe.mock";
 import { MockDispatch, mockDispatch, useTestStore } from "../../store/test";
 import { useCommandProvider } from "../commandProvider";
 import * as recipeBox from "./recipeBox";
@@ -7,14 +8,7 @@ import * as recipeBox from "./recipeBox";
 describe("recipeBox", () => {
     describe("update", () => {
         it("should handle refreshSuccess", () => {
-            const recipes = [
-                {
-                    id: "a5e692ac-fbef-40e0-ad59-270ca75476a4",
-                    name: "Test Recipe!",
-                    ingredients: "Ingredient a\nIngredient b",
-                    directions: "Direction a\nDirection b",
-                },
-            ];
+            const recipes = [recipe1];
             const actual = recipeBox.update.refreshSuccess(
                 recipeBox.init,
                 recipes
@@ -82,48 +76,23 @@ describe("recipeBox", () => {
 
         describe("refresh", () => {
             it("should get all recipes from the database and then dispatch refreshSuccess", async () => {
-                const test: Recipe[] = [
-                    {
-                        id: "48e1a9ca-b128-41dd-83c3-d79d8133a209",
-                        name: "Test Recipe 1",
-                        ingredients: "Ingredient 1a\nIngredient 1b",
-                        directions: "Direction 1a\nDirection 1b",
-                    },
-                    {
-                        id: "d4101c33-3ed0-471f-af6e-aff7ecd988cf",
-                        name: "Test Recipe 2",
-                        ingredients: "Ingredient 2a\nIngredient 2b",
-                        directions: "Direction 2a\nDirection 2b",
-                    },
-                ];
-                await putMultiple(db, test);
+                const recipes: Recipe[] = [recipe1, recipe2];
+                await putMultiple(db, recipes);
                 await commands.refresh();
                 expect(mock.history.messages).toEqual([
-                    ["refreshSuccess", test],
+                    ["refreshSuccess", recipes],
                 ]);
             });
         });
 
         describe("saveAddRecipe", () => {
             it("should save the recipe, refresh the recipes, and then dispatch closeAddRecipe", async () => {
-                const test1: Recipe = {
-                    id: "48e1a9ca-b128-41dd-83c3-d79d8133a209",
-                    name: "Test Recipe 1",
-                    ingredients: "Ingredient 1a\nIngredient 1b",
-                    directions: "Direction 1a\nDirection 1b",
-                };
-                const test2: Recipe = {
-                    id: "d4101c33-3ed0-471f-af6e-aff7ecd988cf",
-                    name: "Test Recipe 2",
-                    ingredients: "Ingredient 2a\nIngredient 2b",
-                    directions: "Direction 2a\nDirection 2b",
-                };
-                await commands.saveAddRecipe(test1);
-                await commands.saveAddRecipe(test2);
+                await commands.saveAddRecipe(recipe1);
+                await commands.saveAddRecipe(recipe2);
                 expect(mock.history.messages).toEqual([
-                    ["refreshSuccess", [test1]],
+                    ["refreshSuccess", [recipe1]],
                     ["closeAddRecipe", undefined],
-                    ["refreshSuccess", [test1, test2]],
+                    ["refreshSuccess", [recipe1, recipe2]],
                     ["closeAddRecipe", undefined],
                 ]);
             });
@@ -131,22 +100,16 @@ describe("recipeBox", () => {
 
         describe("saveEditRecipe", () => {
             it("should save the recipe, refresh the recipes, and then dispatch closeEditRecipe", async () => {
-                const test1: Recipe = {
-                    id: "48e1a9ca-b128-41dd-83c3-d79d8133a209",
-                    name: "Test Recipe 1",
-                    ingredients: "Ingredient 1a\nIngredient 1b",
-                    directions: "Direction 1a\nDirection 1b",
-                };
-                await commands.saveAddRecipe(test1);
+                await commands.saveAddRecipe(recipe1);
 
                 const updated1: Recipe = {
-                    ...test1,
+                    ...recipe1,
                     name: "Test Recipe One",
                 };
                 await commands.saveEditRecipe(updated1);
 
                 expect(mock.history.messages).toEqual([
-                    ["refreshSuccess", [test1]],
+                    ["refreshSuccess", [recipe1]],
                     ["closeAddRecipe", undefined],
                     ["refreshSuccess", [updated1]],
                     ["closeEditRecipe", undefined],
@@ -156,35 +119,11 @@ describe("recipeBox", () => {
 
         describe("addMultiple", () => {
             it("should save multiple recipes and then dispatch refresh", async () => {
-                const test1: Recipe = {
-                    id: "0033d412-ab27-479b-98ba-ca8c5b71a635",
-                    name: "Test Recipe 1",
-                    ingredients: "Ingredient 1a\nIngredient 1b",
-                    directions: "Direction 1a\nDirection 1b",
-                };
-                const test2: Recipe = {
-                    id: "22f22dae-a73b-4b61-8012-a653121f3998",
-                    name: "Test Recipe 2",
-                    ingredients: "Ingredient 2a\nIngredient 2b",
-                    directions: "Direction 2a\nDirection 2b",
-                };
-                const test3: Recipe = {
-                    id: "48e1a9ca-b128-41dd-83c3-d79d8133a209",
-                    name: "Test Recipe 3",
-                    ingredients: "Ingredient 3a\nIngredient 3b",
-                    directions: "Direction 3a\nDirection 3b",
-                };
-                const test4: Recipe = {
-                    id: "d4101c33-3ed0-471f-af6e-aff7ecd988cf",
-                    name: "Test Recipe 4",
-                    ingredients: "Ingredient 4a\nIngredient 4b",
-                    directions: "Direction 4a\nDirection 4b",
-                };
-                await commands.addMultiple([test1, test2]);
-                await commands.addMultiple([test3, test4]);
+                await commands.addMultiple([recipe1, recipe2]);
+                await commands.addMultiple([recipe3, recipe4]);
                 expect(mock.history.messages).toEqual([
-                    ["refreshSuccess", [test1, test2]],
-                    ["refreshSuccess", [test1, test2, test3, test4]],
+                    ["refreshSuccess", [recipe1, recipe2]],
+                    ["refreshSuccess", [recipe1, recipe2, recipe3, recipe4]],
                 ]);
             });
         });

@@ -162,7 +162,7 @@ exports[`RecipeBoxPage renders the master/detail view 1`] = `
     style={
       Object {
         "gridColumn": 2,
-        "overflowY": "auto",
+        "overflowY": "scroll",
         "padding": "2rem",
       }
     }

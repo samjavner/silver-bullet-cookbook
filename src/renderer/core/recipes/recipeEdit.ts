@@ -1,3 +1,4 @@
+import { Recipe } from "../../db/recipe";
 import { Store, UseStore } from "../../store";
 
 export type RecipeEdit = Store<Model, Update>;
@@ -14,12 +15,7 @@ export function useRecipeEdit(
 
 // MODEL
 
-export interface Model {
-    id: string;
-    name: string;
-    ingredients: string;
-    directions: string;
-}
+export type Model = Recipe;
 
 // SELECTORS
 
