@@ -1,6 +1,7 @@
 import { remote } from "electron";
 import * as uuid from "uuid";
 import * as fdx from "../../formats/fdx";
+import { mapMmfToDb } from "../../formats/mmf/mapMmfToDb";
 import * as mmf from "../../formats/mmf/parser";
 import * as mx2 from "../../formats/mx2";
 import * as mxp from "../../formats/mxp/parser";
@@ -87,32 +88,9 @@ export const createCommands = (recipeBox: RecipeBox) => (
         if (path.toLowerCase().endsWith(".mmf")) {
             const recipes = mmf.parseFileWithSource(path);
             await recipeBox.addMultiple(
-                recipes.map(([source, recipe]) => ({
-                    id: uuid.v4(),
-                    name: recipe.title || "Imported Recipe",
-                    ingredients: recipe.ingredients
-                        .map(
-                            ingredient =>
-                                ingredient.type === "ingredient"
-                                    ? (
-                                          ingredient.quantity +
-                                          " " +
-                                          (
-                                              ingredient.unit +
-                                              " " +
-                                              ingredient.text
-                                          ).trim()
-                                      ).trim()
-                                    : `# ${ingredient.text}`
-                        )
-                        .join("\n"),
-                    directions: recipe.directions.join("\n"),
-                    servings: recipe.servings || "",
-                    yield: recipe.yield || "",
-                    categories: recipe.categories,
-                    sourceText: source.join("\n"),
-                    importWarnings: recipe.warnings,
-                }))
+                recipes.map(([source, recipe]) =>
+                    mapMmfToDb(recipe, source, uuid.v4())
+                )
             );
         } else if (path.toLowerCase().endsWith(".mxp")) {
             const recipes = mxp.parseFileWithSource(path);
