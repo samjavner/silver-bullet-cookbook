@@ -14,18 +14,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import { Recipe } from "../../db/recipe";
 
-export const RecipeView: React.FunctionComponent<{ recipe: Recipe }> = ({
-    recipe,
-}) => (
+export const RecipeView: React.FunctionComponent<{
+    recipe: Recipe;
+    onEdit: () => void;
+}> = ({ recipe, onEdit }) => (
     <>
-        <HeaderView recipe={recipe} />
+        <HeaderView recipe={recipe} onEdit={onEdit} />
         <ContentView recipe={recipe} />
     </>
 );
 
-const HeaderView: React.FunctionComponent<{ recipe: Recipe }> = ({
-    recipe,
-}) => (
+const HeaderView: React.FunctionComponent<{
+    recipe: Recipe;
+    onEdit: () => void;
+}> = ({ recipe, onEdit }) => (
     <div className="columns">
         <div className="column">
             <h1 className="title is-4">{recipe.name}</h1>
@@ -104,7 +106,11 @@ const HeaderView: React.FunctionComponent<{ recipe: Recipe }> = ({
                     </div>
                     <div className="dropdown-menu">
                         <div className="dropdown-content">
-                            <a className="dropdown-item" href="#">
+                            <a
+                                className="dropdown-item"
+                                href="#"
+                                onClick={onEdit}
+                            >
                                 <span className="icon is-small">
                                     <FontAwesomeIcon
                                         fixedWidth={true}

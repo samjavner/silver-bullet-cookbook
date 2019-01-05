@@ -99,6 +99,15 @@ export const createCommands = (
         dispatch.closeAddRecipe();
     }
 
+    async function saveEditRecipe(recipe: Recipe): Promise<void> {
+        await commandProvider.execute({
+            type: "recipe_edit",
+            recipe,
+        });
+        await refresh();
+        dispatch.closeEditRecipe();
+    }
+
     async function addMultiple(recipes: Recipe[]): Promise<void> {
         await commandProvider.execute({
             type: "recipe_import",
@@ -109,6 +118,7 @@ export const createCommands = (
 
     return {
         saveAddRecipe,
+        saveEditRecipe,
         refresh,
         addMultiple,
     };

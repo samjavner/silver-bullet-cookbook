@@ -129,6 +129,31 @@ describe("recipeBox", () => {
             });
         });
 
+        describe("saveEditRecipe", () => {
+            it("should save the recipe, refresh the recipes, and then dispatch closeEditRecipe", async () => {
+                const test1: Recipe = {
+                    id: "48e1a9ca-b128-41dd-83c3-d79d8133a209",
+                    name: "Test Recipe 1",
+                    ingredients: "Ingredient 1a\nIngredient 1b",
+                    directions: "Direction 1a\nDirection 1b",
+                };
+                await commands.saveAddRecipe(test1);
+
+                const updated1: Recipe = {
+                    ...test1,
+                    name: "Test Recipe One",
+                };
+                await commands.saveEditRecipe(updated1);
+
+                expect(mock.history.messages).toEqual([
+                    ["refreshSuccess", [test1]],
+                    ["closeAddRecipe", undefined],
+                    ["refreshSuccess", [updated1]],
+                    ["closeEditRecipe", undefined],
+                ]);
+            });
+        });
+
         describe("addMultiple", () => {
             it("should save multiple recipes and then dispatch refresh", async () => {
                 const test1: Recipe = {

@@ -30,6 +30,10 @@ export type Command =
           recipe: recipe.Recipe;
       }
     | {
+          type: "recipe_edit";
+          recipe: recipe.Recipe;
+      }
+    | {
           type: "recipe_import";
           recipes: recipe.Recipe[];
       };
@@ -162,6 +166,7 @@ export const createCommands = (db: sqlite.Database) => (
 async function executeCommand(db: sqlite.Database, command: Command) {
     switch (command.type) {
         case "recipe_create":
+        case "recipe_edit":
             return recipe.put(db, command.recipe);
         case "recipe_import":
             return recipe.putMultiple(db, command.recipes);
