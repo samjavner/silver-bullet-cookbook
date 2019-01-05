@@ -18,6 +18,7 @@ describe("RecipeBoxPage", () => {
                     closeEditRecipe: () => ({}),
                     refresh: () => Promise.resolve(),
                     saveAddRecipe: () => Promise.resolve(),
+                    saveEditRecipe: () => Promise.resolve(),
                     addMultiple: () => Promise.resolve(),
                 }}
             />

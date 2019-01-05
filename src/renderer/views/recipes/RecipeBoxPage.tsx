@@ -174,7 +174,12 @@ export const RecipeBoxPage: React.FunctionComponent<{
                         padding: "2rem",
                     }}
                 >
-                    {recipe && <RecipeView recipe={recipe} />}
+                    {recipe && (
+                        <RecipeView
+                            recipe={recipe}
+                            onEdit={recipeBox.openEditRecipe}
+                        />
+                    )}
                 </div>
             </div>
             {recipeBox.isAddRecipeActive && (
@@ -186,23 +191,24 @@ export const RecipeBoxPage: React.FunctionComponent<{
                         ingredients: "",
                         directions: "",
                     }}
-                    save={recipeBox.saveAddRecipe}
-                    close={recipeBox.closeAddRecipe}
+                    onSave={recipeBox.saveAddRecipe}
+                    onClose={recipeBox.closeAddRecipe}
                 />
             )}
-            {recipeBox.isEditRecipeActive && (
-                <RecipeEditModal
-                    title="Edit Recipe"
-                    init={{
-                        id: uuid.v4(),
-                        name: "",
-                        ingredients: "",
-                        directions: "",
-                    }}
-                    save={recipeBox.closeEditRecipe}
-                    close={recipeBox.closeEditRecipe}
-                />
-            )}
+            {recipeBox.isEditRecipeActive &&
+                recipe && (
+                    <RecipeEditModal
+                        title="Edit Recipe"
+                        init={{
+                            id: recipe.id,
+                            name: recipe.name,
+                            ingredients: recipe.ingredients,
+                            directions: recipe.directions,
+                        }}
+                        onSave={recipeBox.saveEditRecipe}
+                        onClose={recipeBox.closeEditRecipe}
+                    />
+                )}
         </>
     );
 };
