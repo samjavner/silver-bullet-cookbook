@@ -312,6 +312,13 @@ describe("mapMx2ToDb", () => {
         });
     });
 
+    describe("id", () => {
+        it("should be mapped to id", () => {
+            const actual = mapMx2ToDb(recipe, mx2, id);
+            expect(actual.id).toBe("85f1d9f0-4542-43a2-805d-cb9713ba0b65");
+        });
+    });
+
     describe("irrelevant db fields", () => {
         it("should have empty string for sourceText", () => {
             const actual = mapMx2ToDb(recipe, mx2, id);

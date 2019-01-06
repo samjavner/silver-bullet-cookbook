@@ -1,5 +1,6 @@
 import { remote } from "electron";
 import * as uuid from "uuid";
+import { Recipe } from "../../db/recipe";
 import * as fdx from "../../formats/fdx";
 import { mapFdxToDb } from "../../formats/fdx/mapFdxToDb";
 import { mapMmfToDb } from "../../formats/mmf/mapMmfToDb";
@@ -10,7 +11,8 @@ import { mapMxpToDb } from "../../formats/mxp/mapMxpToDb";
 import * as mxp from "../../formats/mxp/parser";
 import { mapPaprikaToDb } from "../../formats/paprika/mapPaprikaToDb";
 import * as paprika from "../../formats/paprika/parser";
-import * as schemaorg from "../../formats/schema.org";
+import * as schemaOrg from "../../formats/schema.org";
+import { mapSchemaOrgToDb } from "../../formats/schema.org/mapSchemaOrgToDb";
 import { Dispatch, Store, UseStore } from "../../store";
 import { RecipeBox } from "../recipes/recipeBox";
 
@@ -89,45 +91,49 @@ export const createCommands = (recipeBox: RecipeBox) => (
         await dispatch.importRequest();
         const path = paths[0];
 
-        if (path.toLowerCase().endsWith(".mmf")) {
-            const recipes = mmf.parseFileWithSource(path);
-            await recipeBox.addMultiple(
-                recipes.map(([source, recipe]) =>
-                    mapMmfToDb(recipe, source, uuid.v4())
-                )
-            );
-        } else if (path.toLowerCase().endsWith(".mxp")) {
-            const recipes = mxp.parseFileWithSource(path);
-            await recipeBox.addMultiple(
-                recipes.map(([source, recipe]) =>
-                    mapMxpToDb(recipe, source, uuid.v4())
-                )
-            );
-        } else if (path.toLowerCase().endsWith(".mx2")) {
-            const mx2Recipes = await mx2.parseFile(path);
-            await recipeBox.addMultiple(
-                mx2Recipes.recipes.map(recipe =>
-                    mapMx2ToDb(recipe, mx2Recipes, uuid.v4())
-                )
-            );
-        } else if (path.toLowerCase().endsWith(".fdx")) {
-            const fdxRecipes = await fdx.parseFile(path);
-            await recipeBox.addMultiple(
-                fdxRecipes.recipes.map(recipe =>
-                    mapFdxToDb(recipe, fdxRecipes, uuid.v4())
-                )
-            );
-        } else if (path.toLowerCase().endsWith(".paprikarecipes")) {
-            const recipes = paprika.parseFile(path);
-            await recipeBox.addMultiple(
-                recipes.map(recipe => mapPaprikaToDb(recipe, uuid.v4()))
-            );
-        } else if (path.toLowerCase().endsWith(".json")) {
-            const recipes = schemaorg.parseFile(path);
-            // tslint:disable-next-line:no-console
-            console.log(recipes);
+        async function getRecipes(): Promise<Recipe[]> {
+            const extension = path
+                .slice(path.lastIndexOf(".") + 1)
+                .toLowerCase();
+
+            switch (extension) {
+                case "mmf":
+                    const mmfRecipes = mmf.parseFileWithSource(path);
+                    return mmfRecipes.map(([source, recipe]) =>
+                        mapMmfToDb(recipe, source, uuid.v4())
+                    );
+                case "mxp":
+                    const mxpRecipes = mxp.parseFileWithSource(path);
+                    return mxpRecipes.map(([source, recipe]) =>
+                        mapMxpToDb(recipe, source, uuid.v4())
+                    );
+                case "mx2":
+                    const mx2Recipes = await mx2.parseFile(path);
+                    return mx2Recipes.recipes.map(recipe =>
+                        mapMx2ToDb(recipe, mx2Recipes, uuid.v4())
+                    );
+                case "fdx":
+                    const fdxRecipes = await fdx.parseFile(path);
+                    return fdxRecipes.recipes.map(recipe =>
+                        mapFdxToDb(recipe, fdxRecipes, uuid.v4())
+                    );
+                case "paprikarecipes":
+                    const paprikaRecipes = paprika.parseFile(path);
+                    return paprikaRecipes.map(recipe =>
+                        mapPaprikaToDb(recipe, uuid.v4())
+                    );
+                case "json":
+                    const schemaOrgRecipes = schemaOrg.parseFile(path);
+                    return schemaOrgRecipes.map(recipe =>
+                        mapSchemaOrgToDb(recipe, uuid.v4())
+                    );
+                default:
+                    return [];
+            }
         }
 
+        const recipes = await getRecipes();
+        await recipeBox.addMultiple(recipes);
         await dispatch.importSuccess();
     }
 
