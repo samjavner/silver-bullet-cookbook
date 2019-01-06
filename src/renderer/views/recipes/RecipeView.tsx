@@ -224,9 +224,16 @@ const ContentView: React.FunctionComponent<{ recipe: Recipe }> = ({
                             .map((direction, index) => (
                                 <li
                                     key={index}
+                                    className={classNames({
+                                        "has-text-weight-bold": direction.startsWith(
+                                            "# "
+                                        ),
+                                    })}
                                     style={{ marginBottom: "1rem" }}
                                 >
-                                    {direction}
+                                    {direction.startsWith("# ")
+                                        ? direction.slice(2)
+                                        : direction}
                                 </li>
                             ))}
                     </ul>

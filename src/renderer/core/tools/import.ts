@@ -1,6 +1,7 @@
 import { remote } from "electron";
 import * as uuid from "uuid";
 import * as fdx from "../../formats/fdx";
+import { mapFdxToDb } from "../../formats/fdx/mapFdxToDb";
 import { mapMmfToDb } from "../../formats/mmf/mapMmfToDb";
 import * as mmf from "../../formats/mmf/parser";
 import * as mx2 from "../../formats/mx2";
@@ -110,9 +111,12 @@ export const createCommands = (recipeBox: RecipeBox) => (
                 )
             );
         } else if (path.toLowerCase().endsWith(".fdx")) {
-            const recipes = await fdx.parseFile(path);
-            // tslint:disable-next-line:no-console
-            console.log(recipes);
+            const fdxRecipes = await fdx.parseFile(path);
+            await recipeBox.addMultiple(
+                fdxRecipes.recipes.map(recipe =>
+                    mapFdxToDb(recipe, fdxRecipes, uuid.v4())
+                )
+            );
         } else if (path.toLowerCase().endsWith(".paprikarecipes")) {
             const recipes = paprika.parseFile(path);
             await recipeBox.addMultiple(
