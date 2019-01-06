@@ -4,6 +4,7 @@ import * as fdx from "../../formats/fdx";
 import { mapMmfToDb } from "../../formats/mmf/mapMmfToDb";
 import * as mmf from "../../formats/mmf/parser";
 import * as mx2 from "../../formats/mx2";
+import { mapMx2ToDb } from "../../formats/mx2/mapMx2ToDb";
 import { mapMxpToDb } from "../../formats/mxp/mapMxpToDb";
 import * as mxp from "../../formats/mxp/parser";
 import { mapPaprikaToDb } from "../../formats/paprika/mapPaprikaToDb";
@@ -102,9 +103,12 @@ export const createCommands = (recipeBox: RecipeBox) => (
                 )
             );
         } else if (path.toLowerCase().endsWith(".mx2")) {
-            const recipes = await mx2.parseFile(path);
-            // tslint:disable-next-line:no-console
-            console.log(recipes);
+            const mx2Recipes = await mx2.parseFile(path);
+            await recipeBox.addMultiple(
+                mx2Recipes.recipes.map(recipe =>
+                    mapMx2ToDb(recipe, mx2Recipes, uuid.v4())
+                )
+            );
         } else if (path.toLowerCase().endsWith(".fdx")) {
             const recipes = await fdx.parseFile(path);
             // tslint:disable-next-line:no-console
