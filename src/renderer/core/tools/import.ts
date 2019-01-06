@@ -6,6 +6,7 @@ import * as mmf from "../../formats/mmf/parser";
 import * as mx2 from "../../formats/mx2";
 import { mapMxpToDb } from "../../formats/mxp/mapMxpToDb";
 import * as mxp from "../../formats/mxp/parser";
+import { mapPaprikaToDb } from "../../formats/paprika/mapPaprikaToDb";
 import * as paprika from "../../formats/paprika/parser";
 import * as schemaorg from "../../formats/schema.org";
 import { Dispatch, Store, UseStore } from "../../store";
@@ -110,8 +111,9 @@ export const createCommands = (recipeBox: RecipeBox) => (
             console.log(recipes);
         } else if (path.toLowerCase().endsWith(".paprikarecipes")) {
             const recipes = paprika.parseFile(path);
-            // tslint:disable-next-line:no-console
-            console.log(recipes);
+            await recipeBox.addMultiple(
+                recipes.map(recipe => mapPaprikaToDb(recipe, uuid.v4()))
+            );
         } else if (path.toLowerCase().endsWith(".json")) {
             const recipes = schemaorg.parseFile(path);
             // tslint:disable-next-line:no-console
