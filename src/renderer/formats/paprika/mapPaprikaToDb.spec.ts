@@ -23,7 +23,7 @@ const recipe: parser.Recipe = {
 
 const id = "85f1d9f0-4542-43a2-805d-cb9713ba0b65";
 
-describe("mapMxpToDb", () => {
+describe("mapPaprikaToDb", () => {
     describe("name", () => {
         it("should be mapped to name", () => {
             const actual = mapPaprikaToDb(recipe, id);
@@ -79,12 +79,34 @@ describe("mapMxpToDb", () => {
             const actual = mapPaprikaToDb(recipe, id);
             expect(actual.ingredients).toEqual("Ingredient A\nIngredient B");
         });
+
+        it("should set ingredients to empty string when not present", () => {
+            const actual = mapPaprikaToDb(
+                {
+                    ...recipe,
+                    ingredients: undefined,
+                },
+                id
+            );
+            expect(actual.ingredients).toBe("");
+        });
     });
 
     describe("directions", () => {
         it("should be mapped to directions", () => {
             const actual = mapPaprikaToDb(recipe, id);
             expect(actual.directions).toEqual("Direction A\n\nDirection B");
+        });
+
+        it("should set directions to empty string when not present", () => {
+            const actual = mapPaprikaToDb(
+                {
+                    ...recipe,
+                    directions: undefined,
+                },
+                id
+            );
+            expect(actual.directions).toBe("");
         });
     });
 
