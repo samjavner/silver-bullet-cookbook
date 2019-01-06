@@ -330,6 +330,13 @@ describe("mapFdxToDb", () => {
         });
     });
 
+    describe("id", () => {
+        it("should be mapped to id", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.id).toBe("85f1d9f0-4542-43a2-805d-cb9713ba0b65");
+        });
+    });
+
     describe("irrelevant db fields", () => {
         it("should have empty string for sourceText", () => {
             const actual = mapFdxToDb(recipe, fdx, id);
