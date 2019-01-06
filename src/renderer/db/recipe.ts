@@ -9,6 +9,13 @@ export interface Recipe {
     servings: string;
     yield: string;
     categories: string[];
+    source: string;
+    author: string;
+    webPage: string;
+    sourcePageNumber: string;
+    copyright: string;
+    publisher: string;
+    publishDate: string;
     sourceText: string;
     importWarnings: string[];
 }
@@ -26,11 +33,15 @@ export async function put(db: sqlite.Database, recipe: Recipe): Promise<void> {
     const categories = recipe.categories.join(";");
     const importWarnings = recipe.importWarnings.join(";");
     await db.run(
-        SQL`REPLACE INTO Recipe (id, name, ingredients, directions, servings, yield, categories, sourceText, importWarnings) VALUES (${
+        SQL`REPLACE INTO Recipe (id, name, ingredients, directions, servings, yield, categories, source, author, webPage, sourcePageNumber, copyright, publisher, publishDate, sourceText, importWarnings) VALUES (${
             recipe.id
         }, ${recipe.name}, ${recipe.ingredients}, ${recipe.directions}, ${
             recipe.servings
-        }, ${recipe.yield}, ${categories}, ${
+        }, ${recipe.yield}, ${categories}, ${recipe.source}, ${
+            recipe.author
+        }, ${recipe.webPage}, ${recipe.sourcePageNumber}, ${
+            recipe.copyright
+        }, ${recipe.publisher}, ${recipe.publishDate}, ${
             recipe.sourceText
         }, ${importWarnings})`
     );
@@ -66,6 +77,13 @@ function mapDbRecipe(recipe: any): Recipe {
         yield: recipe.yield,
         categories: (recipe.categories as string).split(";").filter(x => x),
         sourceText: recipe.sourceText,
+        source: recipe.source,
+        author: recipe.author,
+        webPage: recipe.webPage,
+        sourcePageNumber: recipe.sourcePageNumber,
+        copyright: recipe.copyright,
+        publisher: recipe.publisher,
+        publishDate: recipe.publishDate,
         importWarnings: (recipe.importWarnings as string)
             .split(";")
             .filter(x => x),

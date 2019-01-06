@@ -193,6 +193,13 @@ export const RecipeBoxPage: React.FunctionComponent<{
                         servings: "",
                         yield: "",
                         categories: [],
+                        source: "",
+                        author: "",
+                        webPage: "",
+                        sourcePageNumber: "",
+                        copyright: "",
+                        publisher: "",
+                        publishDate: "",
                         sourceText: "",
                         importWarnings: [],
                     }}
