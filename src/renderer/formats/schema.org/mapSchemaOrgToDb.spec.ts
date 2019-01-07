@@ -3,11 +3,24 @@ import * as model from "./model";
 
 const recipe: model.Recipe = {
     aggregateRating: undefined,
-    authors: [],
+    authors: [
+        {
+            name: "Author A",
+            url: "http://www.example.com/profiles/talent/author_a",
+        },
+        {
+            name: "Author B",
+            url: "http://www.example.com/profiles/talent/author_b",
+        },
+        {
+            name: "Author C",
+            url: "http://www.example.com/profiles/talent/author_c",
+        },
+    ],
     cookingMethods: [],
     cookTime: undefined,
     dateModified: undefined,
-    datePublished: undefined,
+    datePublished: "2015-06-07T10:34:32.152-04:00",
     description: undefined,
     headline: undefined,
     images: [],
@@ -15,14 +28,22 @@ const recipe: model.Recipe = {
     mainEntityOfPage: true,
     name: "Example Recipe",
     prepTime: undefined,
-    publisher: undefined,
+    publisher: {
+        logo: {
+            height: 60,
+            url: "https://www.example.com/sites/all/themes/emma/img/logo.png",
+            width: 118,
+        },
+        name: "Publisher A",
+        url: "https://www.example.com/publisher_a",
+    },
     recipeCategories: ["Category A", "Category B"],
     recipeIngredients: ["Ingredient A", "Ingredient B"],
     recipeInstructions: ["Instruction A", "Instruction B"],
     recipeYield: "12 large pretzels",
     reviews: [],
     totalTime: undefined,
-    url: undefined,
+    url: "https://www.example.com/recipe",
     warnings: ["Warning A", "Warning B"],
 };
 
@@ -86,6 +107,110 @@ describe("mapSchemaOrgToDb", () => {
         });
     });
 
+    describe("author.name", () => {
+        it("should be joined togther with '; ' and mapped to author", () => {
+            const actual = mapSchemaOrgToDb(recipe, id);
+            expect(actual.author).toBe("Author A; Author B; Author C");
+        });
+
+        it("should set author to empty string when no authors", () => {
+            const actual = mapSchemaOrgToDb(
+                {
+                    ...recipe,
+                    authors: [],
+                },
+                id
+            );
+            expect(actual.author).toBe("");
+        });
+
+        it("should not include authors without names in author", () => {
+            const actual = mapSchemaOrgToDb(
+                {
+                    ...recipe,
+                    authors: [
+                        recipe.authors[0],
+                        {
+                            ...recipe.authors[1],
+                            name: undefined,
+                        },
+                        recipe.authors[2],
+                    ],
+                },
+                id
+            );
+            expect(actual.author).toBe("Author A; Author C");
+        });
+    });
+
+    describe("url", () => {
+        it("should be mapped to webPage", () => {
+            const actual = mapSchemaOrgToDb(recipe, id);
+            expect(actual.webPage).toBe("https://www.example.com/recipe");
+        });
+
+        it("should set webPage to empty string when not present", () => {
+            const actual = mapSchemaOrgToDb(
+                {
+                    ...recipe,
+                    url: undefined,
+                },
+                id
+            );
+            expect(actual.webPage).toBe("");
+        });
+    });
+
+    describe("publisher.name", () => {
+        it("should be mapped to publisher", () => {
+            const actual = mapSchemaOrgToDb(recipe, id);
+            expect(actual.publisher).toBe("Publisher A");
+        });
+
+        it("should set publisher to empty string when publisher not present", () => {
+            const actual = mapSchemaOrgToDb(
+                {
+                    ...recipe,
+                    publisher: undefined,
+                },
+                id
+            );
+            expect(actual.publisher).toBe("");
+        });
+
+        it("should set publisher to empty string when publisher name not present", () => {
+            const actual = mapSchemaOrgToDb(
+                {
+                    ...recipe,
+                    publisher: {
+                        ...(recipe.publisher as model.Organization),
+                        name: undefined,
+                    },
+                },
+                id
+            );
+            expect(actual.publisher).toBe("");
+        });
+    });
+
+    describe("datePublished", () => {
+        it("should be mapped to publishDate", () => {
+            const actual = mapSchemaOrgToDb(recipe, id);
+            expect(actual.publishDate).toBe("2015-06-07T10:34:32.152-04:00");
+        });
+
+        it("should set publishDate to empty string when not present", () => {
+            const actual = mapSchemaOrgToDb(
+                {
+                    ...recipe,
+                    datePublished: undefined,
+                },
+                id
+            );
+            expect(actual.publishDate).toBe("");
+        });
+    });
+
     describe("warnings", () => {
         it("should be mapped to importWarnings", () => {
             const actual = mapSchemaOrgToDb(recipe, id);
@@ -100,15 +225,12 @@ describe("mapSchemaOrgToDb", () => {
         });
     });
 
-    describe("irrelevant db fields", () => {
-        it("should have empty string for servings", () => {
-            const actual = mapSchemaOrgToDb(recipe, id);
-            expect(actual.servings).toBe("");
-        });
-
-        it("should have empty string for sourceText", () => {
-            const actual = mapSchemaOrgToDb(recipe, id);
-            expect(actual.sourceText).toBe("");
-        });
+    it("should have default values for other fields", () => {
+        const actual = mapSchemaOrgToDb(recipe, id);
+        expect(actual.servings).toBe("");
+        expect(actual.source).toBe("");
+        expect(actual.sourcePageNumber).toBe("");
+        expect(actual.copyright).toBe("");
+        expect(actual.sourceText).toBe("");
     });
 });

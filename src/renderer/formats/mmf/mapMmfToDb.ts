@@ -14,6 +14,13 @@ export function mapMmfToDb(
         categories: recipe.categories,
         ingredients: recipe.ingredients.map(mapIngredientOrHeading).join("\n"),
         directions: recipe.directions.join("\n"),
+        source: "",
+        author: "",
+        webPage: "",
+        sourcePageNumber: "",
+        copyright: "",
+        publisher: "",
+        publishDate: "",
         sourceText: source.join("\n"),
         importWarnings: recipe.warnings,
     };

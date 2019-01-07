@@ -144,6 +144,25 @@ describe("mapMxpToDb", () => {
         });
     });
 
+    describe("recipeBy", () => {
+        it("should be mapped to author", () => {
+            const actual = mapMxpToDb(recipe, source, id);
+            expect(actual.author).toBe("James and Carol");
+        });
+
+        it("should set servings to empty string when not present", () => {
+            const actual = mapMxpToDb(
+                {
+                    ...recipe,
+                    recipeBy: undefined,
+                },
+                source,
+                id
+            );
+            expect(actual.author).toBe("");
+        });
+    });
+
     describe("source", () => {
         it("should join together source with newlines into sourceText", () => {
             const actual = mapMxpToDb(recipe, source, id);
@@ -158,15 +177,15 @@ describe("mapMxpToDb", () => {
         });
     });
 
-    describe("irrelevant db fields", () => {
-        it("should have empty string for yield", () => {
-            const actual = mapMxpToDb(recipe, source, id);
-            expect(actual.yield).toBe("");
-        });
-
-        it("should have empty array for importWarnings", () => {
-            const actual = mapMxpToDb(recipe, source, id);
-            expect(actual.importWarnings).toEqual([]);
-        });
+    it("should have default values for other fields", () => {
+        const actual = mapMxpToDb(recipe, source, id);
+        expect(actual.source).toBe("");
+        expect(actual.webPage).toBe("");
+        expect(actual.sourcePageNumber).toBe("");
+        expect(actual.copyright).toBe("");
+        expect(actual.publisher).toBe("");
+        expect(actual.publishDate).toBe("");
+        expect(actual.yield).toBe("");
+        expect(actual.importWarnings).toEqual([]);
     });
 });

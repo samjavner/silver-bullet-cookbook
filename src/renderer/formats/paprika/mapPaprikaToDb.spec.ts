@@ -10,7 +10,7 @@ const recipe: parser.Recipe = {
     categories: ["Category A", "Category B"],
     difficulty: "Easy",
     rating: 4,
-    source: "example.com",
+    source: "Source A",
     sourceUrl: "https://www.example.com/source_url",
     ingredients: "Ingredient A\nIngredient B",
     directions: "Direction A\n\nDirection B",
@@ -110,20 +110,51 @@ describe("mapPaprikaToDb", () => {
         });
     });
 
-    describe("irrelevant db fields", () => {
-        it("should have empty string for yield", () => {
+    describe("source", () => {
+        it("should be mapped to source", () => {
             const actual = mapPaprikaToDb(recipe, id);
-            expect(actual.yield).toBe("");
+            expect(actual.source).toBe("Source A");
         });
 
-        it("should have empty string for sourceText", () => {
+        it("should set source to empty string when not present", () => {
+            const actual = mapPaprikaToDb(
+                {
+                    ...recipe,
+                    source: undefined,
+                },
+                id
+            );
+            expect(actual.source).toBe("");
+        });
+    });
+
+    describe("sourceUrl", () => {
+        it("should be mapped to webPage", () => {
             const actual = mapPaprikaToDb(recipe, id);
-            expect(actual.sourceText).toBe("");
+            expect(actual.webPage).toBe("https://www.example.com/source_url");
         });
 
-        it("should have empty array for importWarnings", () => {
-            const actual = mapPaprikaToDb(recipe, id);
-            expect(actual.importWarnings).toEqual([]);
+        it("should set webPage to empty string when not present", () => {
+            const actual = mapPaprikaToDb(
+                {
+                    ...recipe,
+                    sourceUrl: undefined,
+                },
+                id
+            );
+            expect(actual.webPage).toBe("");
         });
+    });
+
+    it("should have default values for other fields", () => {
+        const actual = mapPaprikaToDb(recipe, id);
+        expect(actual.yield).toBe("");
+        expect(actual.author).toBe("");
+        expect(actual.sourcePageNumber).toBe("");
+        expect(actual.copyright).toBe("");
+        expect(actual.publisher).toBe("");
+        expect(actual.publishDate).toBe("");
+        expect(actual.sourceText).toBe("");
+        expect(actual.importWarnings).toEqual([]);
     });
 });

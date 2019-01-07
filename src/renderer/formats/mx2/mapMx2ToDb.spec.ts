@@ -312,6 +312,51 @@ describe("mapMx2ToDb", () => {
         });
     });
 
+    describe("source", () => {
+        it("should be mapped to source", () => {
+            const actual = mapMx2ToDb(recipe, mx2, id);
+            expect(actual.source).toBe("Source A");
+        });
+
+        it("should set source to empty string when not present", () => {
+            const actual = mapMx2ToDb(
+                {
+                    ...recipe,
+                    source: undefined,
+                },
+                mx2,
+                id
+            );
+            expect(actual.source).toBe("");
+        });
+    });
+
+    describe("author", () => {
+        it("should be mapped to author", () => {
+            const actual = mapMx2ToDb(recipe, mx2, id);
+            expect(actual.author).toBe("Author A");
+        });
+    });
+
+    describe("copyright", () => {
+        it("should be mapped to copyright", () => {
+            const actual = mapMx2ToDb(recipe, mx2, id);
+            expect(actual.copyright).toBe("© 1999");
+        });
+
+        it("should set copyright to empty string when not present", () => {
+            const actual = mapMx2ToDb(
+                {
+                    ...recipe,
+                    copyright: undefined,
+                },
+                mx2,
+                id
+            );
+            expect(actual.copyright).toBe("");
+        });
+    });
+
     describe("id", () => {
         it("should be mapped to id", () => {
             const actual = mapMx2ToDb(recipe, mx2, id);
@@ -319,15 +364,13 @@ describe("mapMx2ToDb", () => {
         });
     });
 
-    describe("irrelevant db fields", () => {
-        it("should have empty string for sourceText", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.sourceText).toBe("");
-        });
-
-        it("should have empty array for importWarnings", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.importWarnings).toEqual([]);
-        });
+    it("should have default values for other fields", () => {
+        const actual = mapMx2ToDb(recipe, mx2, id);
+        expect(actual.webPage).toBe("");
+        expect(actual.sourcePageNumber).toBe("");
+        expect(actual.publisher).toBe("");
+        expect(actual.publishDate).toBe("");
+        expect(actual.sourceText).toBe("");
+        expect(actual.importWarnings).toEqual([]);
     });
 });

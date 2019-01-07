@@ -10,6 +10,13 @@ export function mapPaprikaToDb(recipe: parser.Recipe, id: string): db.Recipe {
         categories: recipe.categories,
         ingredients: recipe.ingredients || "",
         directions: recipe.directions || "",
+        source: recipe.source || "",
+        author: "",
+        webPage: recipe.sourceUrl || "",
+        sourcePageNumber: "",
+        copyright: "",
+        publisher: "",
+        publishDate: "",
         sourceText: "",
         importWarnings: [],
         // TODO: created: string | undefined;
@@ -17,8 +24,6 @@ export function mapPaprikaToDb(recipe: parser.Recipe, id: string): db.Recipe {
         // TODO: cookTime: string | undefined;
         // TODO: difficulty: string | undefined;
         // TODO: rating: number;
-        // TODO: source: string | undefined;
-        // TODO: sourceUrl: string | undefined;
         // TODO: notes: string | undefined;
         // TODO: nutritionalInfo: string | undefined;
         // TODO: scale: string | undefined;

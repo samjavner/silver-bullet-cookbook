@@ -21,7 +21,7 @@ const recipe: model.Recipe = {
     author: "Author A",
     source: "Source A",
     sourcePageNumber: "156-157",
-    webPage: "http://example.com/webpage",
+    webPage: "http://example.com/recipe",
     copyright: "© 1999",
     userData1: "Un",
     userData2: "Deux",
@@ -330,6 +330,101 @@ describe("mapFdxToDb", () => {
         });
     });
 
+    describe("source", () => {
+        it("should be mapped to source", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.source).toBe("Source A");
+        });
+
+        it("should set source to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                {
+                    ...recipe,
+                    source: undefined,
+                },
+                fdx,
+                id
+            );
+            expect(actual.source).toBe("");
+        });
+    });
+
+    describe("author", () => {
+        it("should be mapped to author", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.author).toBe("Author A");
+        });
+
+        it("should set author to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                {
+                    ...recipe,
+                    author: undefined,
+                },
+                fdx,
+                id
+            );
+            expect(actual.author).toBe("");
+        });
+    });
+
+    describe("webPage", () => {
+        it("should be mapped to webPage", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.webPage).toBe("http://example.com/recipe");
+        });
+
+        it("should set webPage to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                {
+                    ...recipe,
+                    webPage: undefined,
+                },
+                fdx,
+                id
+            );
+            expect(actual.webPage).toBe("");
+        });
+    });
+
+    describe("sourcePageNumber", () => {
+        it("should be mapped to sourcePageNumber", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.sourcePageNumber).toBe("156-157");
+        });
+
+        it("should set sourcePageNumber to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                {
+                    ...recipe,
+                    sourcePageNumber: undefined,
+                },
+                fdx,
+                id
+            );
+            expect(actual.sourcePageNumber).toBe("");
+        });
+    });
+
+    describe("copyright", () => {
+        it("should be mapped to copyright", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.copyright).toBe("© 1999");
+        });
+
+        it("should set copyright to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                {
+                    ...recipe,
+                    copyright: undefined,
+                },
+                fdx,
+                id
+            );
+            expect(actual.copyright).toBe("");
+        });
+    });
+
     describe("id", () => {
         it("should be mapped to id", () => {
             const actual = mapFdxToDb(recipe, fdx, id);
@@ -337,15 +432,11 @@ describe("mapFdxToDb", () => {
         });
     });
 
-    describe("irrelevant db fields", () => {
-        it("should have empty string for sourceText", () => {
-            const actual = mapFdxToDb(recipe, fdx, id);
-            expect(actual.sourceText).toBe("");
-        });
-
-        it("should have empty array for importWarnings", () => {
-            const actual = mapFdxToDb(recipe, fdx, id);
-            expect(actual.importWarnings).toEqual([]);
-        });
+    it("should have default values for other fields", () => {
+        const actual = mapFdxToDb(recipe, fdx, id);
+        expect(actual.publisher).toBe("");
+        expect(actual.publishDate).toBe("");
+        expect(actual.sourceText).toBe("");
+        expect(actual.importWarnings).toEqual([]);
     });
 });

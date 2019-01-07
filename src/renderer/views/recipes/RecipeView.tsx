@@ -21,6 +21,7 @@ export const RecipeView: React.FunctionComponent<{
 }> = ({ recipe, onEdit }) => (
     <>
         <HeaderView recipe={recipe} onEdit={onEdit} />
+        <TagsView recipe={recipe} />
         <ContentView recipe={recipe} />
     </>
 );
@@ -51,32 +52,6 @@ const HeaderView: React.FunctionComponent<{
                 <FontAwesomeIcon fixedWidth={true} icon={faStar} />
                 <FontAwesomeIcon fixedWidth={true} icon={faStar} />
             </h2>
-            {recipe.servings && (
-                <div style={{ marginTop: "0.4rem" }}>
-                    <span className="has-text-weight-bold">Servings:</span>
-                    &nbsp;
-                    {recipe.servings}
-                </div>
-            )}
-            {recipe.yield && (
-                <div style={{ marginTop: "0.4rem" }}>
-                    <span className="has-text-weight-bold">Yield:</span>
-                    &nbsp;
-                    {recipe.yield}
-                </div>
-            )}
-            {recipe.categories.length > 0 && (
-                <div style={{ marginTop: "0.4rem" }}>
-                    {recipe.categories.map((category, index) => (
-                        <>
-                            <span className="tag is-dark" key={index}>
-                                {category}
-                            </span>
-                            &nbsp;
-                        </>
-                    ))}
-                </div>
-            )}
         </div>
         <div className="column is-narrow">
             <div className="field is-grouped">
@@ -186,6 +161,114 @@ const HeaderView: React.FunctionComponent<{
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+);
+
+const TagsView: React.FunctionComponent<{
+    recipe: Recipe;
+}> = ({ recipe }) => (
+    <div className="columns">
+        <div className="column">
+            <div className="field is-grouped is-grouped-multiline">
+                {recipe.categories.map((category, index) => (
+                    <div className="control">
+                        <div className="tags">
+                            <div className="tag is-dark" key={index}>
+                                {category}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+                {recipe.servings && (
+                    <div className="control">
+                        <div className="tags has-addons">
+                            <span className="tag is-dark">Servings:</span>
+                            <span className="tag is-light">
+                                {recipe.servings}
+                            </span>
+                        </div>
+                    </div>
+                )}
+                {recipe.yield && (
+                    <div className="control">
+                        <div className="tags has-addons">
+                            <span className="tag is-dark">Yield:</span>
+                            <span className="tag is-light">{recipe.yield}</span>
+                        </div>
+                    </div>
+                )}
+                {recipe.source && (
+                    <div className="control">
+                        <div className="tags has-addons">
+                            <span className="tag is-dark">Source:</span>
+                            <span className="tag is-light">
+                                {recipe.source}
+                            </span>
+                        </div>
+                    </div>
+                )}
+                {recipe.author && (
+                    <div className="control">
+                        <div className="tags has-addons">
+                            <span className="tag is-dark">Author:</span>
+                            <span className="tag is-light">
+                                {recipe.author}
+                            </span>
+                        </div>
+                    </div>
+                )}
+                {recipe.webPage && (
+                    <div className="control">
+                        <div className="tags has-addons">
+                            <span className="tag is-dark">Web Page:</span>
+                            <span className="tag is-light">
+                                {recipe.webPage}
+                            </span>
+                        </div>
+                    </div>
+                )}
+                {recipe.sourcePageNumber && (
+                    <div className="control">
+                        <div className="tags has-addons">
+                            <span className="tag is-dark">Page Number:</span>
+                            <span className="tag is-light">
+                                {recipe.sourcePageNumber}
+                            </span>
+                        </div>
+                    </div>
+                )}
+                {recipe.copyright && (
+                    <div className="control">
+                        <div className="tags has-addons">
+                            <span className="tag is-dark">Copyright:</span>
+                            <span className="tag is-light">
+                                {recipe.copyright}
+                            </span>
+                        </div>
+                    </div>
+                )}
+                {recipe.publisher && (
+                    <div className="control">
+                        <div className="tags has-addons">
+                            <span className="tag is-dark">Publisher:</span>
+                            <span className="tag is-light">
+                                {recipe.publisher}
+                            </span>
+                        </div>
+                    </div>
+                )}
+                {recipe.publishDate && (
+                    <div className="control">
+                        <div className="tags has-addons">
+                            <span className="tag is-dark">Publish Date:</span>
+                            <span className="tag is-light">
+                                {recipe.publishDate}
+                            </span>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     </div>

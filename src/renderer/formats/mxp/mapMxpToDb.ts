@@ -14,9 +14,15 @@ export function mapMxpToDb(
         categories: recipe.categories,
         ingredients: recipe.ingredients.map(mapIngredient).join("\n"),
         directions: recipe.directions.join("\n"),
+        source: "",
+        author: recipe.recipeBy || "",
+        webPage: "",
+        sourcePageNumber: "",
+        copyright: "",
+        publisher: "",
+        publishDate: "",
         sourceText: source.join("\n"),
         importWarnings: [],
-        // TODO: recipeBy: string | undefined;
         // TODO: preparationTime: string | undefined;
         // TODO: notes: string[];
     };

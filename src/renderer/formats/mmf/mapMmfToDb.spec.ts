@@ -181,4 +181,15 @@ describe("mapMmfToDb", () => {
             expect(actual.id).toBe("85f1d9f0-4542-43a2-805d-cb9713ba0b65");
         });
     });
+
+    it("should have default values for other fields", () => {
+        const actual = mapMmfToDb(recipe, source, id);
+        expect(actual.source).toBe("");
+        expect(actual.author).toBe("");
+        expect(actual.webPage).toBe("");
+        expect(actual.sourcePageNumber).toBe("");
+        expect(actual.copyright).toBe("");
+        expect(actual.publisher).toBe("");
+        expect(actual.publishDate).toBe("");
+    });
 });

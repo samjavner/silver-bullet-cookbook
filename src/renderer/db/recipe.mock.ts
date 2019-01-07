@@ -8,6 +8,13 @@ export const recipe1: Recipe = {
     servings: "2-4",
     yield: "4 dozen",
     categories: ["Category A", "B, C, D"],
+    source: "Source A",
+    author: "Author A",
+    webPage: "http://example.com/test_recipe",
+    sourcePageNumber: "50",
+    copyright: "© 2014",
+    publisher: "Publisher A",
+    publishDate: "2014-01-06",
     sourceText: "Source 1\nSource 2",
     importWarnings: ["Warning A", "B, C, D"],
 };

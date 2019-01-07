@@ -18,6 +18,13 @@ export function mapMx2ToDb(
         directions: recipe.directions
             .map(direction => direction.text)
             .join("\n"),
+        source: recipe.source || "",
+        author: recipe.author,
+        webPage: "",
+        sourcePageNumber: "",
+        copyright: recipe.copyright || "",
+        publisher: "",
+        publishDate: "",
         sourceText: "",
         importWarnings: [],
         // TODO: Recipe.description: string | undefined;
@@ -28,9 +35,6 @@ export function mapMx2ToDb(
         // TODO: Recipe.preparationTime: string | undefined;
         // TODO: Recipe.totalTime: string | undefined;
         // TODO: Recipe.alternateTime: AlternateTime | undefined;
-        // TODO: Recipe.author: string;
-        // TODO: Recipe.source: string | undefined;
-        // TODO: Recipe.copyright: string | undefined;
         // TODO: Recipe.alternateSource: AlternateSource | undefined;
         // TODO: Recipe.suggestedWine: string | undefined;
         // TODO: Recipe.ratings: Rating[];

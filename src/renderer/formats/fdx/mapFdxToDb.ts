@@ -14,6 +14,13 @@ export function mapFdxToDb(
         categories: recipe.recipeTypes,
         ingredients: recipe.ingredients.map(mapRecipeIngredient).join("\n"),
         directions: recipe.procedures.map(mapRecipeProcedure).join("\n"),
+        source: recipe.source || "",
+        author: recipe.author || "",
+        webPage: recipe.webPage || "",
+        sourcePageNumber: recipe.sourcePageNumber || "",
+        copyright: recipe.copyright || "",
+        publisher: "",
+        publishDate: "",
         sourceText: "",
         importWarnings: [],
         // TODO: Recipe.id: number;
@@ -28,11 +35,6 @@ export function mapFdxToDb(
         // TODO: Recipe.ovenTemperatureC: number | undefined;
         // TODO: Recipe.degreeOfDifficulty: number | undefined;
         // TODO: Recipe.comments: string | undefined;
-        // TODO: Recipe.author: string | undefined;
-        // TODO: Recipe.source: string | undefined;
-        // TODO: Recipe.sourcePageNumber: string | undefined;
-        // TODO: Recipe.webPage: string | undefined;
-        // TODO: Recipe.copyright: string | undefined;
         // TODO: Recipe.userData1: string | undefined;
         // TODO: Recipe.userData2: string | undefined;
         // TODO: Recipe.userData3: string | undefined;
