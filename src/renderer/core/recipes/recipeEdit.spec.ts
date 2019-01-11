@@ -31,6 +31,63 @@ describe("recipeEdit", () => {
             expect(actual.name).toBe("This is the new name");
         });
 
+        it("should handle setUrl", () => {
+            const actual = recipeEdit.update.setUrl(
+                recipe1,
+                "https://example.com/new_url"
+            );
+            expect(actual.url).toBe("https://example.com/new_url");
+        });
+
+        it("should handle setDescription", () => {
+            const actual = recipeEdit.update.setDescription(
+                recipe1,
+                "This is the new description"
+            );
+            expect(actual.description).toBe("This is the new description");
+        });
+
+        it("should handle setServings", () => {
+            const actual = recipeEdit.update.setServings(recipe1, "96");
+            expect(actual.servings).toBe("96");
+        });
+
+        it("should handle setYield", () => {
+            const actual = recipeEdit.update.setYield(recipe1, "96 cups");
+            expect(actual.yield).toBe("96 cups");
+        });
+
+        it("should handle setPrepTime", () => {
+            const actual = recipeEdit.update.setPrepTime(recipe1, "5:42");
+            expect(actual.prepTime).toBe("5:42");
+        });
+
+        it("should handle setCookTime", () => {
+            const actual = recipeEdit.update.setCookTime(recipe1, "5:42");
+            expect(actual.cookTime).toBe("5:42");
+        });
+
+        it("should handle setTotalTime", () => {
+            const actual = recipeEdit.update.setTotalTime(recipe1, "5:42");
+            expect(actual.totalTime).toBe("5:42");
+        });
+
+        it("should handle setOvenTemperature", () => {
+            const actual = recipeEdit.update.setOvenTemperature(
+                recipe1,
+                "487F"
+            );
+            expect(actual.ovenTemperature).toBe("487F");
+        });
+
+        it("should handle setNotes", () => {
+            const actual = recipeEdit.update.setNotes(
+                recipe1,
+                "This are the new notes"
+            );
+            expect(actual.notes).toBe("This are the new notes");
+        });
+
         it("should handle setIngredients", () => {
             const actual = recipeEdit.update.setIngredients(
                 recipe1,

@@ -64,22 +64,10 @@ describe("mapMmfToDb", () => {
         });
     });
 
-    describe("yield", () => {
-        it("should be mapped to yield", () => {
+    describe("categories", () => {
+        it("should be mapped to tags", () => {
             const actual = mapMmfToDb(recipe, source, id);
-            expect(actual.yield).toBe("4 servings");
-        });
-
-        it("should set yield to empty string when not present", () => {
-            const actual = mapMmfToDb(
-                {
-                    ...recipe,
-                    yield: undefined,
-                },
-                source,
-                id
-            );
-            expect(actual.yield).toBe("");
+            expect(actual.tags).toEqual(["Category A", "Category B"]);
         });
     });
 
@@ -103,10 +91,22 @@ describe("mapMmfToDb", () => {
         });
     });
 
-    describe("categories", () => {
-        it("should be mapped to categories", () => {
+    describe("yield", () => {
+        it("should be mapped to yield", () => {
             const actual = mapMmfToDb(recipe, source, id);
-            expect(actual.categories).toEqual(["Category A", "Category B"]);
+            expect(actual.yield).toBe("4 servings");
+        });
+
+        it("should set yield to empty string when not present", () => {
+            const actual = mapMmfToDb(
+                {
+                    ...recipe,
+                    yield: undefined,
+                },
+                source,
+                id
+            );
+            expect(actual.yield).toBe("");
         });
     });
 
@@ -184,12 +184,12 @@ describe("mapMmfToDb", () => {
 
     it("should have default values for other fields", () => {
         const actual = mapMmfToDb(recipe, source, id);
-        expect(actual.source).toBe("");
-        expect(actual.author).toBe("");
-        expect(actual.webPage).toBe("");
-        expect(actual.sourcePageNumber).toBe("");
-        expect(actual.copyright).toBe("");
-        expect(actual.publisher).toBe("");
-        expect(actual.publishDate).toBe("");
+        expect(actual.url).toBe("");
+        expect(actual.description).toBe("");
+        expect(actual.prepTime).toBe("");
+        expect(actual.cookTime).toBe("");
+        expect(actual.totalTime).toBe("");
+        expect(actual.ovenTemperature).toBe("");
+        expect(actual.notes).toBe("");
     });
 });

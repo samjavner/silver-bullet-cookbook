@@ -2,21 +2,26 @@ import * as db from "../../db/recipe";
 import * as parser from "./parser";
 
 export function mapPaprikaToDb(recipe: parser.Recipe, id: string): db.Recipe {
+    const tags = [...recipe.categories];
+    if (recipe.source) {
+        tags.push(`source: ${recipe.source}`);
+    }
+
     return {
         id,
         name: recipe.name || "Imported Recipe",
+        url: recipe.sourceUrl || "",
+        description: "",
+        tags,
         servings: recipe.servings || "",
         yield: "",
-        categories: recipe.categories,
+        prepTime: "",
+        cookTime: "",
+        totalTime: "",
+        ovenTemperature: "",
+        notes: "",
         ingredients: recipe.ingredients || "",
         directions: recipe.directions || "",
-        source: recipe.source || "",
-        author: "",
-        webPage: recipe.sourceUrl || "",
-        sourcePageNumber: "",
-        copyright: "",
-        publisher: "",
-        publishDate: "",
         sourceText: "",
         importWarnings: [],
         // TODO: created: string | undefined;

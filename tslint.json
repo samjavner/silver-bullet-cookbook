@@ -8,7 +8,7 @@
         "max-classes-per-file": false,
         "member-access": [true, "no-public"],
         "no-implicit-dependencies": [true, "dev"],
-        "no-submodule-imports": [true],
+        "no-submodule-imports": [true, "react-select/lib"],
         "no-unused-expression": [true, "allow-fast-null-checks"],
         "object-literal-sort-keys": false
     },

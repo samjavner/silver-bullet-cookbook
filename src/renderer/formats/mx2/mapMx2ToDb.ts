@@ -6,25 +6,36 @@ export function mapMx2ToDb(
     mx2: model.Mx2,
     id: string
 ): db.Recipe {
+    const tags = [...recipe.categories];
+    if (recipe.source) {
+        tags.push(`source: ${recipe.source}`);
+    }
+    if (recipe.author) {
+        tags.push(`author: ${recipe.author}`);
+    }
+    if (recipe.copyright) {
+        tags.push(`copyright: ${recipe.copyright}`);
+    }
+
     return {
         id,
         name: recipe.name || "Imported Recipe",
+        url: "",
+        description: "",
+        tags,
         servings: recipe.servings ? recipe.servings.toString() : "",
         yield: recipe.yield
             ? `${recipe.yield.quantity} ${recipe.yield.unit}`
             : "",
-        categories: recipe.categories,
+        prepTime: "",
+        cookTime: "",
+        totalTime: "",
+        ovenTemperature: "",
+        notes: "",
         ingredients: recipe.ingredients.map(mapIngredient).join("\n"),
         directions: recipe.directions
             .map(direction => direction.text)
             .join("\n"),
-        source: recipe.source || "",
-        author: recipe.author,
-        webPage: "",
-        sourcePageNumber: "",
-        copyright: recipe.copyright || "",
-        publisher: "",
-        publishDate: "",
         sourceText: "",
         importWarnings: [],
         // TODO: Recipe.description: string | undefined;

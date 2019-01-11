@@ -42,10 +42,43 @@ describe("mapPaprikaToDb", () => {
         });
     });
 
-    describe("id", () => {
-        it("should be mapped to id", () => {
+    describe("sourceUrl", () => {
+        it("should be mapped to url", () => {
             const actual = mapPaprikaToDb(recipe, id);
-            expect(actual.id).toBe("85f1d9f0-4542-43a2-805d-cb9713ba0b65");
+            expect(actual.url).toBe("https://www.example.com/source_url");
+        });
+
+        it("should set url to empty string when not present", () => {
+            const actual = mapPaprikaToDb(
+                {
+                    ...recipe,
+                    sourceUrl: undefined,
+                },
+                id
+            );
+            expect(actual.url).toBe("");
+        });
+    });
+
+    describe("categories, source", () => {
+        it("should be mapped to tags", () => {
+            const actual = mapPaprikaToDb(recipe, id);
+            expect(actual.tags).toEqual([
+                "Category A",
+                "Category B",
+                "source: Source A",
+            ]);
+        });
+
+        it("should not include fields that are not present", () => {
+            const actual = mapPaprikaToDb(
+                {
+                    ...recipe,
+                    source: undefined,
+                },
+                id
+            );
+            expect(actual.tags).toEqual(["Category A", "Category B"]);
         });
     });
 
@@ -64,13 +97,6 @@ describe("mapPaprikaToDb", () => {
                 id
             );
             expect(actual.servings).toBe("");
-        });
-    });
-
-    describe("categories", () => {
-        it("should be mapped to categories", () => {
-            const actual = mapPaprikaToDb(recipe, id);
-            expect(actual.categories).toEqual(["Category A", "Category B"]);
         });
     });
 
@@ -110,50 +136,22 @@ describe("mapPaprikaToDb", () => {
         });
     });
 
-    describe("source", () => {
-        it("should be mapped to source", () => {
+    describe("id", () => {
+        it("should be mapped to id", () => {
             const actual = mapPaprikaToDb(recipe, id);
-            expect(actual.source).toBe("Source A");
-        });
-
-        it("should set source to empty string when not present", () => {
-            const actual = mapPaprikaToDb(
-                {
-                    ...recipe,
-                    source: undefined,
-                },
-                id
-            );
-            expect(actual.source).toBe("");
-        });
-    });
-
-    describe("sourceUrl", () => {
-        it("should be mapped to webPage", () => {
-            const actual = mapPaprikaToDb(recipe, id);
-            expect(actual.webPage).toBe("https://www.example.com/source_url");
-        });
-
-        it("should set webPage to empty string when not present", () => {
-            const actual = mapPaprikaToDb(
-                {
-                    ...recipe,
-                    sourceUrl: undefined,
-                },
-                id
-            );
-            expect(actual.webPage).toBe("");
+            expect(actual.id).toBe("85f1d9f0-4542-43a2-805d-cb9713ba0b65");
         });
     });
 
     it("should have default values for other fields", () => {
         const actual = mapPaprikaToDb(recipe, id);
+        expect(actual.description).toBe("");
         expect(actual.yield).toBe("");
-        expect(actual.author).toBe("");
-        expect(actual.sourcePageNumber).toBe("");
-        expect(actual.copyright).toBe("");
-        expect(actual.publisher).toBe("");
-        expect(actual.publishDate).toBe("");
+        expect(actual.prepTime).toBe("");
+        expect(actual.cookTime).toBe("");
+        expect(actual.totalTime).toBe("");
+        expect(actual.ovenTemperature).toBe("");
+        expect(actual.notes).toBe("");
         expect(actual.sourceText).toBe("");
         expect(actual.importWarnings).toEqual([]);
     });

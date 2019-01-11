@@ -2,24 +2,34 @@ import * as db from "../../db/recipe";
 import * as model from "./model";
 
 export function mapSchemaOrgToDb(recipe: model.Recipe, id: string): db.Recipe {
+    const tags = [
+        ...recipe.recipeCategories,
+        ...(recipe.authors
+            .filter(x => x.name)
+            .map(x => `author: ${x.name}`) as string[]),
+    ];
+    if (recipe.publisher && recipe.publisher.name) {
+        tags.push(`publisher: ${recipe.publisher.name}`);
+    }
+    if (recipe.datePublished) {
+        tags.push(`publish date: ${recipe.datePublished}`);
+    }
+
     return {
         id,
         name: recipe.name || "Imported Recipe",
+        url: recipe.url || "",
+        description: "",
+        tags,
         servings: "",
         yield: recipe.recipeYield || "",
-        categories: recipe.recipeCategories,
+        prepTime: "",
+        cookTime: "",
+        totalTime: "",
+        ovenTemperature: "",
+        notes: "",
         ingredients: recipe.recipeIngredients.join("\n"),
         directions: recipe.recipeInstructions.join("\n"),
-        source: "",
-        author: recipe.authors
-            .filter(x => x.name)
-            .map(x => x.name)
-            .join("; "),
-        webPage: recipe.url || "",
-        sourcePageNumber: "",
-        copyright: "",
-        publisher: (recipe.publisher && recipe.publisher.name) || "",
-        publishDate: recipe.datePublished || "",
         sourceText: "",
         importWarnings: recipe.warnings,
         // TODO: aggregateRating: AggregateRating | undefined;
