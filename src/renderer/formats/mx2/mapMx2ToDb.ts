@@ -21,30 +21,26 @@ export function mapMx2ToDb(
         id,
         name: recipe.name || "Imported Recipe",
         url: "",
-        description: "",
+        description: recipe.description || "",
         tags,
         servings: recipe.servings ? recipe.servings.toString() : "",
         yield: recipe.yield
             ? `${recipe.yield.quantity} ${recipe.yield.unit}`
             : "",
-        prepTime: "",
+        prepTime: recipe.preparationTime || "",
         cookTime: "",
-        totalTime: "",
+        totalTime: recipe.totalTime || "",
         ovenTemperature: "",
-        notes: "",
+        notes: recipe.note || "",
         ingredients: recipe.ingredients.map(mapIngredient).join("\n"),
         directions: recipe.directions
             .map(direction => direction.text)
             .join("\n"),
         sourceText: "",
         importWarnings: [],
-        // TODO: Recipe.description: string | undefined;
         // TODO: Recipe.image: string | undefined;
-        // TODO: Recipe.note: string | undefined;
         // TODO: Recipe.cuisine: string | undefined;
         // TODO: Recipe.servingIdeas: string | undefined;
-        // TODO: Recipe.preparationTime: string | undefined;
-        // TODO: Recipe.totalTime: string | undefined;
         // TODO: Recipe.alternateTime: AlternateTime | undefined;
         // TODO: Recipe.alternateSource: AlternateSource | undefined;
         // TODO: Recipe.suggestedWine: string | undefined;

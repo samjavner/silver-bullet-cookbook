@@ -109,6 +109,29 @@ describe("mapMxpToDb", () => {
         });
     });
 
+    describe("preparationTime", () => {
+        it("should be mapped to prepTime", () => {
+            const actual = mapMxpToDb(recipe, source, id);
+            expect(actual.prepTime).toBe("1:15");
+        });
+
+        it("should set prepTime to empty string when not present", () => {
+            const actual = mapMxpToDb(
+                { ...recipe, preparationTime: undefined },
+                source,
+                id
+            );
+            expect(actual.prepTime).toBe("");
+        });
+    });
+
+    describe("notes", () => {
+        it("should join together notes with newlines into notes", () => {
+            const actual = mapMxpToDb(recipe, source, id);
+            expect(actual.notes).toBe("Note A\nNote B");
+        });
+    });
+
     describe("ingredients", () => {
         it("should be mapped to ingredients", () => {
             const actual = mapMxpToDb(recipe, source, id).ingredients.split(
@@ -179,11 +202,9 @@ describe("mapMxpToDb", () => {
         expect(actual.url).toBe("");
         expect(actual.description).toBe("");
         expect(actual.yield).toBe("");
-        expect(actual.prepTime).toBe("");
         expect(actual.cookTime).toBe("");
         expect(actual.totalTime).toBe("");
         expect(actual.ovenTemperature).toBe("");
-        expect(actual.notes).toBe("");
         expect(actual.importWarnings).toEqual([]);
     });
 });

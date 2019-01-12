@@ -100,6 +100,48 @@ describe("mapPaprikaToDb", () => {
         });
     });
 
+    describe("prepTime", () => {
+        it("should be mapped to prepTime", () => {
+            const actual = mapPaprikaToDb(recipe, id);
+            expect(actual.prepTime).toBe("20 mins");
+        });
+
+        it("should set prepTime to empty string when not present", () => {
+            const actual = mapPaprikaToDb(
+                { ...recipe, prepTime: undefined },
+                id
+            );
+            expect(actual.prepTime).toBe("");
+        });
+    });
+
+    describe("cookTime", () => {
+        it("should be mapped to cookTime", () => {
+            const actual = mapPaprikaToDb(recipe, id);
+            expect(actual.cookTime).toBe("25 mins");
+        });
+
+        it("should set cookTime to empty string when not present", () => {
+            const actual = mapPaprikaToDb(
+                { ...recipe, cookTime: undefined },
+                id
+            );
+            expect(actual.cookTime).toBe("");
+        });
+    });
+
+    describe("notes", () => {
+        it("should be mapped to notes", () => {
+            const actual = mapPaprikaToDb(recipe, id);
+            expect(actual.notes).toBe("Note A\n\nNote B");
+        });
+
+        it("should set notes to empty string when not present", () => {
+            const actual = mapPaprikaToDb({ ...recipe, notes: undefined }, id);
+            expect(actual.notes).toBe("");
+        });
+    });
+
     describe("ingredients", () => {
         it("should be mapped to ingredients", () => {
             const actual = mapPaprikaToDb(recipe, id);
@@ -147,11 +189,8 @@ describe("mapPaprikaToDb", () => {
         const actual = mapPaprikaToDb(recipe, id);
         expect(actual.description).toBe("");
         expect(actual.yield).toBe("");
-        expect(actual.prepTime).toBe("");
-        expect(actual.cookTime).toBe("");
         expect(actual.totalTime).toBe("");
         expect(actual.ovenTemperature).toBe("");
-        expect(actual.notes).toBe("");
         expect(actual.sourceText).toBe("");
         expect(actual.importWarnings).toEqual([]);
     });

@@ -19,13 +19,17 @@ export function mapSchemaOrgToDb(recipe: model.Recipe, id: string): db.Recipe {
         id,
         name: recipe.name || "Imported Recipe",
         url: recipe.url || "",
-        description: "",
+        description: [recipe.headline, recipe.description]
+            .filter(
+                x => x && x.toUpperCase() !== (recipe.name || "").toUpperCase()
+            )
+            .join("\n"),
         tags,
         servings: "",
         yield: recipe.recipeYield || "",
-        prepTime: "",
-        cookTime: "",
-        totalTime: "",
+        prepTime: recipe.prepTime || "",
+        cookTime: recipe.cookTime || "",
+        totalTime: recipe.totalTime || "",
         ovenTemperature: "",
         notes: "",
         ingredients: recipe.recipeIngredients.join("\n"),
@@ -35,17 +39,12 @@ export function mapSchemaOrgToDb(recipe: model.Recipe, id: string): db.Recipe {
         // TODO: aggregateRating: AggregateRating | undefined;
         // TODO: authors[i].url: string | undefined;
         // TODO: cookingMethods: string[];
-        // TODO: cookTime: string | undefined;
         // TODO: dateModified: string | undefined;
-        // TODO: description: string | undefined;
-        // TODO: headline: string | undefined;
         // TODO: images: ImageObject[];
         // TODO: keywords: string | undefined;
         // TODO: mainEntityOfPage: boolean | undefined;
-        // TODO: prepTime: string | undefined;
         // TODO: publisher.logo: ImageObject | undefined;
         // TODO: publisher.url: string | undefined;
         // TODO: reviews: Review[];
-        // TODO: totalTime: string | undefined;
     };
 }

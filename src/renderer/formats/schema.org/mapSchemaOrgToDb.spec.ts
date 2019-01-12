@@ -18,16 +18,16 @@ const recipe: model.Recipe = {
         },
     ],
     cookingMethods: [],
-    cookTime: undefined,
+    cookTime: "P0Y0M0DT0H20M0.000S",
     dateModified: undefined,
     datePublished: "2015-06-07T10:34:32.152-04:00",
-    description: undefined,
-    headline: undefined,
+    description: "It's a description!",
+    headline: "It's a headline!",
     images: [],
     keywords: undefined,
     mainEntityOfPage: true,
     name: "Example Recipe",
-    prepTime: undefined,
+    prepTime: "P0Y0M0DT2H40M0.000S",
     publisher: {
         logo: {
             height: 60,
@@ -42,7 +42,7 @@ const recipe: model.Recipe = {
     recipeInstructions: ["Instruction A", "Instruction B"],
     recipeYield: "12 large pretzels",
     reviews: [],
-    totalTime: undefined,
+    totalTime: "P0DT0H35M",
     url: "https://www.example.com/recipe",
     warnings: ["Warning A", "Warning B"],
 };
@@ -83,6 +83,47 @@ describe("mapSchemaOrgToDb", () => {
                 id
             );
             expect(actual.url).toBe("");
+        });
+    });
+
+    describe("description, headline", () => {
+        it("should map to description with headline followed by description", () => {
+            const actual = mapSchemaOrgToDb(recipe, id);
+            expect(actual.description).toBe(
+                "It's a headline!\nIt's a description!"
+            );
+        });
+
+        it("should map description to description when only description present", () => {
+            const actual = mapSchemaOrgToDb(
+                { ...recipe, headline: undefined },
+                id
+            );
+            expect(actual.description).toBe("It's a description!");
+        });
+
+        it("should map headline to headline when only headline present", () => {
+            const actual = mapSchemaOrgToDb(
+                { ...recipe, description: undefined },
+                id
+            );
+            expect(actual.description).toBe("It's a headline!");
+        });
+
+        it("should ignore values that are the same as the name of the recipe (case insensitive)", () => {
+            const actual = mapSchemaOrgToDb(
+                { ...recipe, headline: "eXAMPLE rECIPE" },
+                id
+            );
+            expect(actual.description).toBe("It's a description!");
+        });
+
+        it("should be empty string when not present", () => {
+            const actual = mapSchemaOrgToDb(
+                { ...recipe, description: undefined, headline: undefined },
+                id
+            );
+            expect(actual.description).toBe("");
         });
     });
 
@@ -147,6 +188,51 @@ describe("mapSchemaOrgToDb", () => {
         });
     });
 
+    describe("prepTime", () => {
+        it("should be mapped to prepTime", () => {
+            const actual = mapSchemaOrgToDb(recipe, id);
+            expect(actual.prepTime).toBe("P0Y0M0DT2H40M0.000S");
+        });
+
+        it("should set prepTime to empty string when not present", () => {
+            const actual = mapSchemaOrgToDb(
+                { ...recipe, prepTime: undefined },
+                id
+            );
+            expect(actual.prepTime).toBe("");
+        });
+    });
+
+    describe("cookTime", () => {
+        it("should be mapped to cookTime", () => {
+            const actual = mapSchemaOrgToDb(recipe, id);
+            expect(actual.cookTime).toBe("P0Y0M0DT0H20M0.000S");
+        });
+
+        it("should set prepTime to empty string when not present", () => {
+            const actual = mapSchemaOrgToDb(
+                { ...recipe, cookTime: undefined },
+                id
+            );
+            expect(actual.cookTime).toBe("");
+        });
+    });
+
+    describe("totalTime", () => {
+        it("should be mapped to totalTime", () => {
+            const actual = mapSchemaOrgToDb(recipe, id);
+            expect(actual.totalTime).toBe("P0DT0H35M");
+        });
+
+        it("should set totalTime to empty string when not present", () => {
+            const actual = mapSchemaOrgToDb(
+                { ...recipe, totalTime: undefined },
+                id
+            );
+            expect(actual.totalTime).toBe("");
+        });
+    });
+
     describe("recipeIngredients", () => {
         it("should be mapped to ingredients", () => {
             const actual = mapSchemaOrgToDb(recipe, id);
@@ -177,11 +263,7 @@ describe("mapSchemaOrgToDb", () => {
 
     it("should have default values for other fields", () => {
         const actual = mapSchemaOrgToDb(recipe, id);
-        expect(actual.description).toBe("");
         expect(actual.servings).toBe("");
-        expect(actual.prepTime).toBe("");
-        expect(actual.cookTime).toBe("");
-        expect(actual.totalTime).toBe("");
         expect(actual.ovenTemperature).toBe("");
         expect(actual.notes).toBe("");
         expect(actual.sourceText).toBe("");
