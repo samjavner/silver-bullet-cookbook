@@ -19,17 +19,15 @@ export function mapMxpToDb(
         tags,
         servings: recipe.servingSize || "",
         yield: "",
-        prepTime: "",
+        prepTime: recipe.preparationTime || "",
         cookTime: "",
         totalTime: "",
         ovenTemperature: "",
-        notes: "",
+        notes: recipe.notes.join("\n"),
         ingredients: recipe.ingredients.map(mapIngredient).join("\n"),
         directions: recipe.directions.join("\n"),
         sourceText: source.join("\n"),
         importWarnings: [],
-        // TODO: preparationTime: string | undefined;
-        // TODO: notes: string[];
     };
 }
 

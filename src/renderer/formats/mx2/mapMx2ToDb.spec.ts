@@ -181,6 +181,22 @@ describe("mapMx2ToDb", () => {
         });
     });
 
+    describe("description", () => {
+        it("should be mapped to description", () => {
+            const actual = mapMx2ToDb(recipe, mx2, id);
+            expect(actual.description).toBe("Description");
+        });
+
+        it("should set description to empty string when not present", () => {
+            const actual = mapMx2ToDb(
+                { ...recipe, description: undefined },
+                mx2,
+                id
+            );
+            expect(actual.description).toBe("");
+        });
+    });
+
     describe("categories, source, author, copyright", () => {
         it("should be mapped to tags", () => {
             const actual = mapMx2ToDb(recipe, mx2, id);
@@ -240,7 +256,7 @@ describe("mapMx2ToDb", () => {
     });
 
     describe("yield", () => {
-        it("should be stringified and mapped to yield", () => {
+        it("should be mapped to yield", () => {
             const actual = mapMx2ToDb(recipe, mx2, id);
             expect(actual.yield).toBe("5.5 cups");
         });
@@ -255,6 +271,50 @@ describe("mapMx2ToDb", () => {
                 id
             );
             expect(actual.yield).toBe("");
+        });
+    });
+
+    describe("preparationTime", () => {
+        it("should be mapped to prepTime", () => {
+            const actual = mapMx2ToDb(recipe, mx2, id);
+            expect(actual.prepTime).toBe("2:50");
+        });
+
+        it("should set prepTime to empty string when not present", () => {
+            const actual = mapMx2ToDb(
+                { ...recipe, preparationTime: undefined },
+                mx2,
+                id
+            );
+            expect(actual.prepTime).toBe("");
+        });
+    });
+
+    describe("totalTime", () => {
+        it("should be mapped to totalTime", () => {
+            const actual = mapMx2ToDb(recipe, mx2, id);
+            expect(actual.totalTime).toBe("4:44");
+        });
+
+        it("should set totalTime to empty string when not present", () => {
+            const actual = mapMx2ToDb(
+                { ...recipe, totalTime: undefined },
+                mx2,
+                id
+            );
+            expect(actual.totalTime).toBe("");
+        });
+    });
+
+    describe("note", () => {
+        it("should be mapped to notes", () => {
+            const actual = mapMx2ToDb(recipe, mx2, id);
+            expect(actual.notes).toBe("Note 1\n\nNote 2");
+        });
+
+        it("should set notes to empty string when not present", () => {
+            const actual = mapMx2ToDb({ ...recipe, note: undefined }, mx2, id);
+            expect(actual.notes).toBe("");
         });
     });
 
@@ -342,12 +402,8 @@ describe("mapMx2ToDb", () => {
     it("should have default values for other fields", () => {
         const actual = mapMx2ToDb(recipe, mx2, id);
         expect(actual.url).toBe("");
-        expect(actual.description).toBe("");
-        expect(actual.prepTime).toBe("");
         expect(actual.cookTime).toBe("");
-        expect(actual.totalTime).toBe("");
         expect(actual.ovenTemperature).toBe("");
-        expect(actual.notes).toBe("");
         expect(actual.sourceText).toBe("");
         expect(actual.importWarnings).toEqual([]);
     });

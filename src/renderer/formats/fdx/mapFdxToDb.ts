@@ -24,14 +24,18 @@ export function mapFdxToDb(
         id,
         name: recipe.name || "Imported Recipe",
         url: recipe.webPage || "",
-        description: "",
+        description: recipe.comments || "",
         tags,
         servings: recipe.servings ? recipe.servings.toString() : "",
         yield: recipe.yield || "",
-        prepTime: "",
-        cookTime: "",
-        totalTime: "",
-        ovenTemperature: "",
+        prepTime: formatTime(recipe.preparationTime),
+        cookTime: formatTime(recipe.cookingTime),
+        totalTime: formatTime(recipe.readyInTime),
+        ovenTemperature: recipe.ovenTemperatureF
+            ? `${recipe.ovenTemperatureF}°F`
+            : recipe.ovenTemperatureC
+                ? `${recipe.ovenTemperatureC}°C`
+                : "",
         notes: "",
         ingredients: recipe.ingredients.map(mapRecipeIngredient).join("\n"),
         directions: recipe.procedures.map(mapRecipeProcedure).join("\n"),
@@ -41,14 +45,8 @@ export function mapFdxToDb(
         // TODO: Recipe.cookbookChapterId: number | undefined;
         // TODO: Recipe.createDate: string;
         // TODO: Recipe.cookbookId: number | undefined;
-        // TODO: Recipe.preparationTime: number | undefined;
-        // TODO: Recipe.cookingTime: number | undefined;
         // TODO: Recipe.inactiveTime: number | undefined;
-        // TODO: Recipe.readyInTime: number | undefined;
-        // TODO: Recipe.ovenTemperatureF: number | undefined;
-        // TODO: Recipe.ovenTemperatureC: number | undefined;
         // TODO: Recipe.degreeOfDifficulty: number | undefined;
-        // TODO: Recipe.comments: string | undefined;
         // TODO: Recipe.userData1: string | undefined;
         // TODO: Recipe.userData2: string | undefined;
         // TODO: Recipe.userData3: string | undefined;
@@ -115,4 +113,12 @@ function mapRecipeProcedure(procedure: model.RecipeProcedure): string {
             ? `# ${procedure.text}`
             : ""
         : procedure.text;
+}
+
+function formatTime(minutes: number | undefined): string {
+    return minutes === undefined
+        ? ""
+        : `${Math.floor(minutes / 60)}:${(
+              "0" + (minutes % 60).toString()
+          ).slice(-2)}`;
 }

@@ -15,21 +15,18 @@ export function mapPaprikaToDb(recipe: parser.Recipe, id: string): db.Recipe {
         tags,
         servings: recipe.servings || "",
         yield: "",
-        prepTime: "",
-        cookTime: "",
+        prepTime: recipe.prepTime || "",
+        cookTime: recipe.cookTime || "",
         totalTime: "",
         ovenTemperature: "",
-        notes: "",
+        notes: recipe.notes || "",
         ingredients: recipe.ingredients || "",
         directions: recipe.directions || "",
         sourceText: "",
         importWarnings: [],
         // TODO: created: string | undefined;
-        // TODO: prepTime: string | undefined;
-        // TODO: cookTime: string | undefined;
         // TODO: difficulty: string | undefined;
         // TODO: rating: number;
-        // TODO: notes: string | undefined;
         // TODO: nutritionalInfo: string | undefined;
         // TODO: scale: string | undefined;
         // TODO: imageUrl: string | undefined;

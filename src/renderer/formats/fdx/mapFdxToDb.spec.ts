@@ -10,7 +10,7 @@ const recipe: model.Recipe = {
     servings: 6,
     yield: "6 1/2 cups",
     recipeTypes: ["Recipe Type A", "Recipe Type B"],
-    preparationTime: 71,
+    preparationTime: 51,
     cookingTime: 142,
     inactiveTime: 213,
     readyInTime: 284,
@@ -238,6 +238,22 @@ describe("mapFdxToDb", () => {
         });
     });
 
+    describe("comments", () => {
+        it("should be mapped to description", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.description).toBe("Comments A\n\nComments B");
+        });
+
+        it("should set description to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                { ...recipe, comments: undefined },
+                fdx,
+                id
+            );
+            expect(actual.description).toBe("");
+        });
+    });
+
     describe("recipeTypes, source, author, sourcePageNumber", () => {
         it("should be mapped to tags", () => {
             const actual = mapFdxToDb(recipe, fdx, id);
@@ -317,6 +333,102 @@ describe("mapFdxToDb", () => {
         });
     });
 
+    describe("preparationTime", () => {
+        it("should be formatted and mapped to prepTime", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.prepTime).toBe("0:51");
+        });
+
+        it("should set prepTime to 0:00 when 0", () => {
+            const actual = mapFdxToDb(
+                { ...recipe, preparationTime: 0 },
+                fdx,
+                id
+            );
+            expect(actual.prepTime).toBe("0:00");
+        });
+
+        it("should set prepTime to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                { ...recipe, preparationTime: undefined },
+                fdx,
+                id
+            );
+            expect(actual.prepTime).toBe("");
+        });
+    });
+
+    describe("cookingTime", () => {
+        it("should be formatted and mapped to cookTime", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.cookTime).toBe("2:22");
+        });
+
+        it("should set cookTime to 0:00 when 0", () => {
+            const actual = mapFdxToDb({ ...recipe, cookingTime: 0 }, fdx, id);
+            expect(actual.cookTime).toBe("0:00");
+        });
+
+        it("should set cookTime to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                { ...recipe, cookingTime: undefined },
+                fdx,
+                id
+            );
+            expect(actual.cookTime).toBe("");
+        });
+    });
+
+    describe("readyInTime", () => {
+        it("should be formatted and mapped to totalTime", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.totalTime).toBe("4:44");
+        });
+
+        it("should set totalTime to 0:00 when 0", () => {
+            const actual = mapFdxToDb({ ...recipe, readyInTime: 0 }, fdx, id);
+            expect(actual.totalTime).toBe("0:00");
+        });
+
+        it("should set totalTime to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                { ...recipe, readyInTime: undefined },
+                fdx,
+                id
+            );
+            expect(actual.totalTime).toBe("");
+        });
+    });
+
+    describe("ovenTemperatureF, ovenTemperatureC", () => {
+        it("should be ovenTemperatureF formatted and mapped to ovenTemperature", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.ovenTemperature).toBe("450°F");
+        });
+
+        it("should be ovenTemperatureC formatted and mapped to ovenTemperature when ovenTemperatureF not present", () => {
+            const actual = mapFdxToDb(
+                { ...recipe, ovenTemperatureF: undefined },
+                fdx,
+                id
+            );
+            expect(actual.ovenTemperature).toBe("232°C");
+        });
+
+        it("should be empty string when neither are present", () => {
+            const actual = mapFdxToDb(
+                {
+                    ...recipe,
+                    ovenTemperatureF: undefined,
+                    ovenTemperatureC: undefined,
+                },
+                fdx,
+                id
+            );
+            expect(actual.ovenTemperature).toBe("");
+        });
+    });
+
     describe("ingredients", () => {
         it("should be mapped to ingredients", () => {
             const actual = mapFdxToDb(recipe, fdx, id).ingredients.split("\n");
@@ -377,11 +489,6 @@ describe("mapFdxToDb", () => {
 
     it("should have default values for other fields", () => {
         const actual = mapFdxToDb(recipe, fdx, id);
-        expect(actual.description).toBe("");
-        expect(actual.prepTime).toBe("");
-        expect(actual.cookTime).toBe("");
-        expect(actual.totalTime).toBe("");
-        expect(actual.ovenTemperature).toBe("");
         expect(actual.notes).toBe("");
         expect(actual.sourceText).toBe("");
         expect(actual.importWarnings).toEqual([]);
