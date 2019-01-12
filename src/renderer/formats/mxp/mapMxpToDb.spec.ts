@@ -67,6 +67,29 @@ describe("mapMxpToDb", () => {
         });
     });
 
+    describe("categories, recipeBy", () => {
+        it("should be mapped to tags", () => {
+            const actual = mapMxpToDb(recipe, source, id);
+            expect(actual.tags).toEqual([
+                "Category A",
+                "Category B",
+                "by: James and Carol",
+            ]);
+        });
+
+        it("should not include fields that are not present", () => {
+            const actual = mapMxpToDb(
+                {
+                    ...recipe,
+                    recipeBy: undefined,
+                },
+                source,
+                id
+            );
+            expect(actual.tags).toEqual(["Category A", "Category B"]);
+        });
+    });
+
     describe("servingSize", () => {
         it("should be mapped to servings", () => {
             const actual = mapMxpToDb(recipe, source, id);
@@ -83,13 +106,6 @@ describe("mapMxpToDb", () => {
                 id
             );
             expect(actual.servings).toBe("");
-        });
-    });
-
-    describe("categories", () => {
-        it("should be mapped to categories", () => {
-            const actual = mapMxpToDb(recipe, source, id);
-            expect(actual.categories).toEqual(["Category A", "Category B"]);
         });
     });
 
@@ -144,25 +160,6 @@ describe("mapMxpToDb", () => {
         });
     });
 
-    describe("recipeBy", () => {
-        it("should be mapped to author", () => {
-            const actual = mapMxpToDb(recipe, source, id);
-            expect(actual.author).toBe("James and Carol");
-        });
-
-        it("should set servings to empty string when not present", () => {
-            const actual = mapMxpToDb(
-                {
-                    ...recipe,
-                    recipeBy: undefined,
-                },
-                source,
-                id
-            );
-            expect(actual.author).toBe("");
-        });
-    });
-
     describe("source", () => {
         it("should join together source with newlines into sourceText", () => {
             const actual = mapMxpToDb(recipe, source, id);
@@ -179,13 +176,14 @@ describe("mapMxpToDb", () => {
 
     it("should have default values for other fields", () => {
         const actual = mapMxpToDb(recipe, source, id);
-        expect(actual.source).toBe("");
-        expect(actual.webPage).toBe("");
-        expect(actual.sourcePageNumber).toBe("");
-        expect(actual.copyright).toBe("");
-        expect(actual.publisher).toBe("");
-        expect(actual.publishDate).toBe("");
+        expect(actual.url).toBe("");
+        expect(actual.description).toBe("");
         expect(actual.yield).toBe("");
+        expect(actual.prepTime).toBe("");
+        expect(actual.cookTime).toBe("");
+        expect(actual.totalTime).toBe("");
+        expect(actual.ovenTemperature).toBe("");
+        expect(actual.notes).toBe("");
         expect(actual.importWarnings).toEqual([]);
     });
 });

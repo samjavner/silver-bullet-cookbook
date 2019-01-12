@@ -219,6 +219,54 @@ describe("mapFdxToDb", () => {
         });
     });
 
+    describe("webPage", () => {
+        it("should be mapped to url", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.url).toBe("http://example.com/recipe");
+        });
+
+        it("should set url to empty string when not present", () => {
+            const actual = mapFdxToDb(
+                {
+                    ...recipe,
+                    webPage: undefined,
+                },
+                fdx,
+                id
+            );
+            expect(actual.url).toBe("");
+        });
+    });
+
+    describe("recipeTypes, source, author, sourcePageNumber", () => {
+        it("should be mapped to tags", () => {
+            const actual = mapFdxToDb(recipe, fdx, id);
+            expect(actual.tags).toEqual([
+                "Recipe Type A",
+                "Recipe Type B",
+                "source: Source A",
+                "author: Author A",
+                "page: 156-157",
+                "copyright: © 1999",
+            ]);
+        });
+
+        it("should not include fields that are not present", () => {
+            const actual = mapFdxToDb(
+                {
+                    ...recipe,
+                    source: undefined,
+                    author: undefined,
+                    sourcePageNumber: undefined,
+                    copyright: undefined,
+                },
+                fdx,
+                id
+            );
+            expect(actual.tags).toEqual(["Recipe Type A", "Recipe Type B"]);
+        });
+    });
+
     describe("servings", () => {
         it("should be stringified and mapped to servings", () => {
             const actual = mapFdxToDb(recipe, fdx, id);
@@ -266,16 +314,6 @@ describe("mapFdxToDb", () => {
                 id
             );
             expect(actual.yield).toBe("");
-        });
-    });
-
-    describe("recipeTypes", () => {
-        it("should be mapped to categories", () => {
-            const actual = mapFdxToDb(recipe, fdx, id);
-            expect(actual.categories).toEqual([
-                "Recipe Type A",
-                "Recipe Type B",
-            ]);
         });
     });
 
@@ -330,101 +368,6 @@ describe("mapFdxToDb", () => {
         });
     });
 
-    describe("source", () => {
-        it("should be mapped to source", () => {
-            const actual = mapFdxToDb(recipe, fdx, id);
-            expect(actual.source).toBe("Source A");
-        });
-
-        it("should set source to empty string when not present", () => {
-            const actual = mapFdxToDb(
-                {
-                    ...recipe,
-                    source: undefined,
-                },
-                fdx,
-                id
-            );
-            expect(actual.source).toBe("");
-        });
-    });
-
-    describe("author", () => {
-        it("should be mapped to author", () => {
-            const actual = mapFdxToDb(recipe, fdx, id);
-            expect(actual.author).toBe("Author A");
-        });
-
-        it("should set author to empty string when not present", () => {
-            const actual = mapFdxToDb(
-                {
-                    ...recipe,
-                    author: undefined,
-                },
-                fdx,
-                id
-            );
-            expect(actual.author).toBe("");
-        });
-    });
-
-    describe("webPage", () => {
-        it("should be mapped to webPage", () => {
-            const actual = mapFdxToDb(recipe, fdx, id);
-            expect(actual.webPage).toBe("http://example.com/recipe");
-        });
-
-        it("should set webPage to empty string when not present", () => {
-            const actual = mapFdxToDb(
-                {
-                    ...recipe,
-                    webPage: undefined,
-                },
-                fdx,
-                id
-            );
-            expect(actual.webPage).toBe("");
-        });
-    });
-
-    describe("sourcePageNumber", () => {
-        it("should be mapped to sourcePageNumber", () => {
-            const actual = mapFdxToDb(recipe, fdx, id);
-            expect(actual.sourcePageNumber).toBe("156-157");
-        });
-
-        it("should set sourcePageNumber to empty string when not present", () => {
-            const actual = mapFdxToDb(
-                {
-                    ...recipe,
-                    sourcePageNumber: undefined,
-                },
-                fdx,
-                id
-            );
-            expect(actual.sourcePageNumber).toBe("");
-        });
-    });
-
-    describe("copyright", () => {
-        it("should be mapped to copyright", () => {
-            const actual = mapFdxToDb(recipe, fdx, id);
-            expect(actual.copyright).toBe("© 1999");
-        });
-
-        it("should set copyright to empty string when not present", () => {
-            const actual = mapFdxToDb(
-                {
-                    ...recipe,
-                    copyright: undefined,
-                },
-                fdx,
-                id
-            );
-            expect(actual.copyright).toBe("");
-        });
-    });
-
     describe("id", () => {
         it("should be mapped to id", () => {
             const actual = mapFdxToDb(recipe, fdx, id);
@@ -434,8 +377,12 @@ describe("mapFdxToDb", () => {
 
     it("should have default values for other fields", () => {
         const actual = mapFdxToDb(recipe, fdx, id);
-        expect(actual.publisher).toBe("");
-        expect(actual.publishDate).toBe("");
+        expect(actual.description).toBe("");
+        expect(actual.prepTime).toBe("");
+        expect(actual.cookTime).toBe("");
+        expect(actual.totalTime).toBe("");
+        expect(actual.ovenTemperature).toBe("");
+        expect(actual.notes).toBe("");
         expect(actual.sourceText).toBe("");
         expect(actual.importWarnings).toEqual([]);
     });

@@ -181,6 +181,33 @@ describe("mapMx2ToDb", () => {
         });
     });
 
+    describe("categories, source, author, copyright", () => {
+        it("should be mapped to tags", () => {
+            const actual = mapMx2ToDb(recipe, mx2, id);
+            expect(actual.tags).toEqual([
+                "Category A",
+                "Category B",
+                "source: Source A",
+                "author: Author A",
+                "copyright: © 1999",
+            ]);
+        });
+
+        it("should not include fields that are not present", () => {
+            const actual = mapMx2ToDb(
+                {
+                    ...recipe,
+                    source: undefined,
+                    author: "",
+                    copyright: undefined,
+                },
+                mx2,
+                id
+            );
+            expect(actual.tags).toEqual(["Category A", "Category B"]);
+        });
+    });
+
     describe("servings", () => {
         it("should be stringified and mapped to servings", () => {
             const actual = mapMx2ToDb(recipe, mx2, id);
@@ -228,13 +255,6 @@ describe("mapMx2ToDb", () => {
                 id
             );
             expect(actual.yield).toBe("");
-        });
-    });
-
-    describe("categories", () => {
-        it("should be mapped to categories", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.categories).toEqual(["Category A", "Category B"]);
         });
     });
 
@@ -312,51 +332,6 @@ describe("mapMx2ToDb", () => {
         });
     });
 
-    describe("source", () => {
-        it("should be mapped to source", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.source).toBe("Source A");
-        });
-
-        it("should set source to empty string when not present", () => {
-            const actual = mapMx2ToDb(
-                {
-                    ...recipe,
-                    source: undefined,
-                },
-                mx2,
-                id
-            );
-            expect(actual.source).toBe("");
-        });
-    });
-
-    describe("author", () => {
-        it("should be mapped to author", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.author).toBe("Author A");
-        });
-    });
-
-    describe("copyright", () => {
-        it("should be mapped to copyright", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.copyright).toBe("© 1999");
-        });
-
-        it("should set copyright to empty string when not present", () => {
-            const actual = mapMx2ToDb(
-                {
-                    ...recipe,
-                    copyright: undefined,
-                },
-                mx2,
-                id
-            );
-            expect(actual.copyright).toBe("");
-        });
-    });
-
     describe("id", () => {
         it("should be mapped to id", () => {
             const actual = mapMx2ToDb(recipe, mx2, id);
@@ -366,10 +341,13 @@ describe("mapMx2ToDb", () => {
 
     it("should have default values for other fields", () => {
         const actual = mapMx2ToDb(recipe, mx2, id);
-        expect(actual.webPage).toBe("");
-        expect(actual.sourcePageNumber).toBe("");
-        expect(actual.publisher).toBe("");
-        expect(actual.publishDate).toBe("");
+        expect(actual.url).toBe("");
+        expect(actual.description).toBe("");
+        expect(actual.prepTime).toBe("");
+        expect(actual.cookTime).toBe("");
+        expect(actual.totalTime).toBe("");
+        expect(actual.ovenTemperature).toBe("");
+        expect(actual.notes).toBe("");
         expect(actual.sourceText).toBe("");
         expect(actual.importWarnings).toEqual([]);
     });

@@ -6,21 +6,26 @@ export function mapMxpToDb(
     source: string[],
     id: string
 ): db.Recipe {
+    const tags = [...recipe.categories];
+    if (recipe.recipeBy) {
+        tags.push(`by: ${recipe.recipeBy}`);
+    }
+
     return {
         id,
         name: recipe.title || "Imported Recipe",
+        url: "",
+        description: "",
+        tags,
         servings: recipe.servingSize || "",
         yield: "",
-        categories: recipe.categories,
+        prepTime: "",
+        cookTime: "",
+        totalTime: "",
+        ovenTemperature: "",
+        notes: "",
         ingredients: recipe.ingredients.map(mapIngredient).join("\n"),
         directions: recipe.directions.join("\n"),
-        source: "",
-        author: recipe.recipeBy || "",
-        webPage: "",
-        sourcePageNumber: "",
-        copyright: "",
-        publisher: "",
-        publishDate: "",
         sourceText: source.join("\n"),
         importWarnings: [],
         // TODO: preparationTime: string | undefined;

@@ -4,18 +4,18 @@ import sqlite from "sqlite";
 export interface Recipe {
     id: string;
     name: string;
-    ingredients: string;
-    directions: string;
+    url: string;
+    description: string;
+    tags: string[];
     servings: string;
     yield: string;
-    categories: string[];
-    source: string;
-    author: string;
-    webPage: string;
-    sourcePageNumber: string;
-    copyright: string;
-    publisher: string;
-    publishDate: string;
+    prepTime: string;
+    cookTime: string;
+    totalTime: string;
+    ovenTemperature: string;
+    notes: string;
+    ingredients: string;
+    directions: string;
     sourceText: string;
     importWarnings: string[];
 }
@@ -30,20 +30,18 @@ export async function putMultiple(
 }
 
 export async function put(db: sqlite.Database, recipe: Recipe): Promise<void> {
-    const categories = recipe.categories.join(";");
+    const tags = recipe.tags.join(";");
     const importWarnings = recipe.importWarnings.join(";");
     await db.run(
-        SQL`REPLACE INTO Recipe (id, name, ingredients, directions, servings, yield, categories, source, author, webPage, sourcePageNumber, copyright, publisher, publishDate, sourceText, importWarnings) VALUES (${
+        SQL`REPLACE INTO Recipe (id, name, url, description, tags, servings, yield, prepTime, cookTime, totalTime, ovenTemperature, notes, ingredients, directions, sourceText, importWarnings) VALUES (${
             recipe.id
-        }, ${recipe.name}, ${recipe.ingredients}, ${recipe.directions}, ${
+        }, ${recipe.name}, ${recipe.url}, ${recipe.description}, ${tags}, ${
             recipe.servings
-        }, ${recipe.yield}, ${categories}, ${recipe.source}, ${
-            recipe.author
-        }, ${recipe.webPage}, ${recipe.sourcePageNumber}, ${
-            recipe.copyright
-        }, ${recipe.publisher}, ${recipe.publishDate}, ${
-            recipe.sourceText
-        }, ${importWarnings})`
+        }, ${recipe.yield}, ${recipe.prepTime}, ${recipe.cookTime}, ${
+            recipe.totalTime
+        }, ${recipe.ovenTemperature}, ${recipe.notes}, ${recipe.ingredients}, ${
+            recipe.directions
+        }, ${recipe.sourceText}, ${importWarnings})`
     );
 }
 
@@ -71,19 +69,19 @@ function mapDbRecipe(recipe: any): Recipe {
     return {
         id: recipe.id,
         name: recipe.name,
-        ingredients: recipe.ingredients,
-        directions: recipe.directions,
+        url: recipe.url,
+        description: recipe.description,
+        tags: (recipe.tags as string).split(";").filter(x => x),
         servings: recipe.servings,
         yield: recipe.yield,
-        categories: (recipe.categories as string).split(";").filter(x => x),
+        prepTime: recipe.prepTime,
+        cookTime: recipe.cookTime,
+        totalTime: recipe.totalTime,
+        ovenTemperature: recipe.ovenTemperature,
+        notes: recipe.notes,
+        ingredients: recipe.ingredients,
+        directions: recipe.directions,
         sourceText: recipe.sourceText,
-        source: recipe.source,
-        author: recipe.author,
-        webPage: recipe.webPage,
-        sourcePageNumber: recipe.sourcePageNumber,
-        copyright: recipe.copyright,
-        publisher: recipe.publisher,
-        publishDate: recipe.publishDate,
         importWarnings: (recipe.importWarnings as string)
             .split(";")
             .filter(x => x),

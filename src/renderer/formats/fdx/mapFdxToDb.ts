@@ -6,21 +6,35 @@ export function mapFdxToDb(
     fdx: model.Fdx,
     id: string
 ): db.Recipe {
+    const tags = [...recipe.recipeTypes];
+    if (recipe.source) {
+        tags.push(`source: ${recipe.source}`);
+    }
+    if (recipe.author) {
+        tags.push(`author: ${recipe.author}`);
+    }
+    if (recipe.sourcePageNumber) {
+        tags.push(`page: ${recipe.sourcePageNumber}`);
+    }
+    if (recipe.copyright) {
+        tags.push(`copyright: ${recipe.copyright}`);
+    }
+
     return {
         id,
         name: recipe.name || "Imported Recipe",
+        url: recipe.webPage || "",
+        description: "",
+        tags,
         servings: recipe.servings ? recipe.servings.toString() : "",
         yield: recipe.yield || "",
-        categories: recipe.recipeTypes,
+        prepTime: "",
+        cookTime: "",
+        totalTime: "",
+        ovenTemperature: "",
+        notes: "",
         ingredients: recipe.ingredients.map(mapRecipeIngredient).join("\n"),
         directions: recipe.procedures.map(mapRecipeProcedure).join("\n"),
-        source: recipe.source || "",
-        author: recipe.author || "",
-        webPage: recipe.webPage || "",
-        sourcePageNumber: recipe.sourcePageNumber || "",
-        copyright: recipe.copyright || "",
-        publisher: "",
-        publishDate: "",
         sourceText: "",
         importWarnings: [],
         // TODO: Recipe.id: number;

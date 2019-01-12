@@ -1,13 +1,10 @@
 import {
     faCalendarPlus,
     faCartPlus,
-    faCheck,
     faEdit,
     faEllipsisV,
-    faHeart,
     faPrint,
     faStar,
-    faThumbtack,
     faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,8 +18,11 @@ export const RecipeView: React.FunctionComponent<{
 }> = ({ recipe, onEdit }) => (
     <>
         <HeaderView recipe={recipe} onEdit={onEdit} />
+        {recipe.description && <DescriptionView recipe={recipe} />}
         <TagsView recipe={recipe} />
+        <PrepInfoView recipe={recipe} />
         <ContentView recipe={recipe} />
+        {recipe.notes && <NotesView recipe={recipe} />}
     </>
 );
 
@@ -68,31 +68,6 @@ const HeaderView: React.FunctionComponent<{
                             <a className="button" href="#">
                                 <span className="icon is-small">
                                     <FontAwesomeIcon icon={faCartPlus} />
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div className="control">
-                    <div className="field has-addons">
-                        <div className="control">
-                            <a className="button" href="#">
-                                <span className="icon is-small has-text-info">
-                                    <FontAwesomeIcon icon={faThumbtack} />
-                                </span>
-                            </a>
-                        </div>
-                        <div className="control">
-                            <a className="button" href="#">
-                                <span className="icon is-small has-text-success">
-                                    <FontAwesomeIcon icon={faCheck} />
-                                </span>
-                            </a>
-                        </div>
-                        <div className="control">
-                            <a className="button" href="#">
-                                <span className="icon is-small has-text-danger">
-                                    <FontAwesomeIcon icon={faHeart} />
                                 </span>
                             </a>
                         </div>
@@ -166,112 +141,89 @@ const HeaderView: React.FunctionComponent<{
     </div>
 );
 
+const DescriptionView: React.FunctionComponent<{
+    recipe: Recipe;
+}> = ({ recipe }) => (
+    <div className="columns">
+        <div className="column">
+            <em>{recipe.description}</em>
+        </div>
+    </div>
+);
+
 const TagsView: React.FunctionComponent<{
     recipe: Recipe;
 }> = ({ recipe }) => (
     <div className="columns">
         <div className="column">
             <div className="field is-grouped is-grouped-multiline">
-                {recipe.categories.map((category, index) => (
+                {recipe.tags.map((tag, index) => (
                     <div className="control">
                         <div className="tags">
                             <div className="tag is-dark" key={index}>
-                                {category}
+                                {tag}
                             </div>
                         </div>
                     </div>
                 ))}
-                {recipe.servings && (
-                    <div className="control">
-                        <div className="tags has-addons">
-                            <span className="tag is-dark">Servings:</span>
-                            <span className="tag is-light">
-                                {recipe.servings}
-                            </span>
-                        </div>
-                    </div>
-                )}
-                {recipe.yield && (
-                    <div className="control">
-                        <div className="tags has-addons">
-                            <span className="tag is-dark">Yield:</span>
-                            <span className="tag is-light">{recipe.yield}</span>
-                        </div>
-                    </div>
-                )}
-                {recipe.source && (
-                    <div className="control">
-                        <div className="tags has-addons">
-                            <span className="tag is-dark">Source:</span>
-                            <span className="tag is-light">
-                                {recipe.source}
-                            </span>
-                        </div>
-                    </div>
-                )}
-                {recipe.author && (
-                    <div className="control">
-                        <div className="tags has-addons">
-                            <span className="tag is-dark">Author:</span>
-                            <span className="tag is-light">
-                                {recipe.author}
-                            </span>
-                        </div>
-                    </div>
-                )}
-                {recipe.webPage && (
-                    <div className="control">
-                        <div className="tags has-addons">
-                            <span className="tag is-dark">Web Page:</span>
-                            <span className="tag is-light">
-                                {recipe.webPage}
-                            </span>
-                        </div>
-                    </div>
-                )}
-                {recipe.sourcePageNumber && (
-                    <div className="control">
-                        <div className="tags has-addons">
-                            <span className="tag is-dark">Page Number:</span>
-                            <span className="tag is-light">
-                                {recipe.sourcePageNumber}
-                            </span>
-                        </div>
-                    </div>
-                )}
-                {recipe.copyright && (
-                    <div className="control">
-                        <div className="tags has-addons">
-                            <span className="tag is-dark">Copyright:</span>
-                            <span className="tag is-light">
-                                {recipe.copyright}
-                            </span>
-                        </div>
-                    </div>
-                )}
-                {recipe.publisher && (
-                    <div className="control">
-                        <div className="tags has-addons">
-                            <span className="tag is-dark">Publisher:</span>
-                            <span className="tag is-light">
-                                {recipe.publisher}
-                            </span>
-                        </div>
-                    </div>
-                )}
-                {recipe.publishDate && (
-                    <div className="control">
-                        <div className="tags has-addons">
-                            <span className="tag is-dark">Publish Date:</span>
-                            <span className="tag is-light">
-                                {recipe.publishDate}
-                            </span>
-                        </div>
-                    </div>
-                )}
             </div>
         </div>
     </div>
+);
+
+const PrepInfoView: React.FunctionComponent<{
+    recipe: Recipe;
+}> = ({ recipe }) => (
+    <>
+        {recipe.servings && (
+            <span>
+                <strong>Servings:</strong>
+                &nbsp;
+                {recipe.servings}
+                &nbsp; &nbsp;
+            </span>
+        )}
+        {recipe.yield && (
+            <span>
+                <strong>Yield:</strong>
+                &nbsp;
+                {recipe.yield}
+                &nbsp; &nbsp;
+            </span>
+        )}
+        {recipe.prepTime && (
+            <span>
+                <strong>Prep Time:</strong>
+                &nbsp;
+                {recipe.prepTime}
+                &nbsp; &nbsp;
+            </span>
+        )}
+        {recipe.cookTime && (
+            <span>
+                <strong>Cook Time:</strong>
+                &nbsp;
+                {recipe.cookTime}
+                &nbsp; &nbsp;
+            </span>
+        )}
+        {recipe.totalTime && (
+            <span>
+                <strong>Total Time:</strong>
+                &nbsp;
+                {recipe.totalTime}
+                &nbsp; &nbsp;
+            </span>
+        )}
+        {recipe.ovenTemperature && (
+            <span>
+                <strong>Oven Temperature:</strong>
+                &nbsp;
+                {recipe.ovenTemperature}
+                &nbsp; &nbsp;
+            </span>
+        )}
+    </>
 );
 
 const ContentView: React.FunctionComponent<{ recipe: Recipe }> = ({
@@ -324,6 +276,14 @@ const ContentView: React.FunctionComponent<{ recipe: Recipe }> = ({
             </div>
         </div>
     </article>
+);
+
+const NotesView: React.FunctionComponent<{
+    recipe: Recipe;
+}> = ({ recipe }) => (
+    <div className="columns">
+        <div className="column">{recipe.notes}</div>
+    </div>
 );
 
 export default RecipeView;
