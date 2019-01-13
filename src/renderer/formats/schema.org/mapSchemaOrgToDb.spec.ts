@@ -24,7 +24,7 @@ const recipe: model.Recipe = {
     description: "It's a description!",
     headline: "It's a headline!",
     images: [],
-    keywords: undefined,
+    keywords: "Category A, Category C, Category B, Category D",
     mainEntityOfPage: true,
     name: "Example Recipe",
     prepTime: "P0Y0M0DT2H40M0.000S",
@@ -127,16 +127,22 @@ describe("mapSchemaOrgToDb", () => {
         });
     });
 
-    describe("recipeCategories, authors, publisher.name, datePublished", () => {
+    describe("recipeCategories, keywords, authors, publisher.name, datePublished", () => {
         it("should be mapped to tags", () => {
             const actual = mapSchemaOrgToDb(recipe, id);
             expect(actual.tags).toEqual([
                 "Category A",
                 "Category B",
+                "Category C",
+                "Category D",
                 "author: Author A",
                 "author: Author B",
                 "author: Author C",
+                "author url: http://www.example.com/profiles/talent/author_a",
+                "author url: http://www.example.com/profiles/talent/author_b",
+                "author url: http://www.example.com/profiles/talent/author_c",
                 "publisher: Publisher A",
+                "publisher url: https://www.example.com/publisher_a",
                 "publish date: 2015-06-07T10:34:32.152-04:00",
             ]);
         });
@@ -146,7 +152,10 @@ describe("mapSchemaOrgToDb", () => {
                 {
                     ...recipe,
                     authors: [
-                        recipe.authors[0],
+                        {
+                            ...recipe.authors[0],
+                            url: undefined,
+                        },
                         {
                             ...recipe.authors[1],
                             name: undefined,
@@ -156,8 +165,10 @@ describe("mapSchemaOrgToDb", () => {
                     publisher: {
                         ...(recipe.publisher as model.Organization),
                         name: undefined,
+                        url: undefined,
                     },
                     datePublished: undefined,
+                    keywords: undefined,
                 },
                 id
             );
@@ -166,6 +177,8 @@ describe("mapSchemaOrgToDb", () => {
                 "Category B",
                 "author: Author A",
                 "author: Author C",
+                "author url: http://www.example.com/profiles/talent/author_b",
+                "author url: http://www.example.com/profiles/talent/author_c",
             ]);
         });
     });

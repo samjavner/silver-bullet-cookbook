@@ -7,6 +7,12 @@ export function mapMx2ToDb(
     id: string
 ): db.Recipe {
     const tags = [...recipe.categories];
+    if (recipe.cuisine) {
+        tags.push(`cuisine: ${recipe.cuisine}`);
+    }
+    if (recipe.suggestedWine) {
+        tags.push(`wine: ${recipe.suggestedWine}`);
+    }
     if (recipe.source) {
         tags.push(`source: ${recipe.source}`);
     }
@@ -39,11 +45,9 @@ export function mapMx2ToDb(
         sourceText: "",
         importWarnings: [],
         // TODO: Recipe.image: string | undefined;
-        // TODO: Recipe.cuisine: string | undefined;
         // TODO: Recipe.servingIdeas: string | undefined;
         // TODO: Recipe.alternateTime: AlternateTime | undefined;
         // TODO: Recipe.alternateSource: AlternateSource | undefined;
-        // TODO: Recipe.suggestedWine: string | undefined;
         // TODO: Recipe.ratings: Rating[];
         // TODO: Recipe.nutrition: string;
         // TODO: Recipe.embeddedRecipes: Recipe[];

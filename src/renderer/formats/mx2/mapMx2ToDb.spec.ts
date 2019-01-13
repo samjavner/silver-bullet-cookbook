@@ -197,12 +197,14 @@ describe("mapMx2ToDb", () => {
         });
     });
 
-    describe("categories, source, author, copyright", () => {
+    describe("categories, cuisine, suggestedWine, source, author, copyright", () => {
         it("should be mapped to tags", () => {
             const actual = mapMx2ToDb(recipe, mx2, id);
             expect(actual.tags).toEqual([
                 "Category A",
                 "Category B",
+                "cuisine: Cuisine A",
+                "wine: Wine A",
                 "source: Source A",
                 "author: Author A",
                 "copyright: © 1999",
@@ -213,6 +215,8 @@ describe("mapMx2ToDb", () => {
             const actual = mapMx2ToDb(
                 {
                     ...recipe,
+                    cuisine: undefined,
+                    suggestedWine: undefined,
                     source: undefined,
                     author: "",
                     copyright: undefined,

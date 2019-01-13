@@ -16,7 +16,7 @@ const recipe: model.Recipe = {
     readyInTime: 284,
     ovenTemperatureF: 450,
     ovenTemperatureC: 232,
-    degreeOfDifficulty: 5,
+    degreeOfDifficulty: 0,
     comments: "Comments A\n\nComments B",
     author: "Author A",
     source: "Source A",
@@ -28,7 +28,7 @@ const recipe: model.Recipe = {
     userData3: "Trois",
     userData4: "Quatre",
     userData5: "Cinq",
-    userData6: 6,
+    userData6: 0,
     userData7: 7,
     userData8: 8,
     userData9: 9,
@@ -254,12 +254,29 @@ describe("mapFdxToDb", () => {
         });
     });
 
-    describe("recipeTypes, source, author, sourcePageNumber", () => {
+    describe("recipeTypes, difficulty, colorFlag, userData, source, author, sourcePageNumber", () => {
         it("should be mapped to tags", () => {
             const actual = mapFdxToDb(recipe, fdx, id);
             expect(actual.tags).toEqual([
                 "Recipe Type A",
                 "Recipe Type B",
+                "difficulty: 0",
+                "flag: Purple",
+                "userdata1: Un",
+                "userdata2: Deux",
+                "userdata3: Trois",
+                "userdata4: Quatre",
+                "userdata5: Cinq",
+                "userdata6: 0",
+                "userdata7: 7",
+                "userdata8: 8",
+                "userdata9: 9",
+                "userdata10: -10",
+                "userdata11: www.example.com/11",
+                "userdata12: www.example.com/12",
+                "userdata13: www.example.com/13",
+                "userdata14: www.example.com/14",
+                "userdata15: anything I want",
                 "source: Source A",
                 "author: Author A",
                 "page: 156-157",
@@ -271,6 +288,23 @@ describe("mapFdxToDb", () => {
             const actual = mapFdxToDb(
                 {
                     ...recipe,
+                    degreeOfDifficulty: undefined,
+                    colorFlag: "<None>",
+                    userData1: undefined,
+                    userData2: undefined,
+                    userData3: undefined,
+                    userData4: undefined,
+                    userData5: undefined,
+                    userData6: undefined,
+                    userData7: undefined,
+                    userData8: undefined,
+                    userData9: undefined,
+                    userData10: undefined,
+                    userData11: undefined,
+                    userData12: undefined,
+                    userData13: undefined,
+                    userData14: undefined,
+                    userData15: undefined,
                     source: undefined,
                     author: undefined,
                     sourcePageNumber: undefined,

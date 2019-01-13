@@ -60,12 +60,13 @@ describe("mapPaprikaToDb", () => {
         });
     });
 
-    describe("categories, source", () => {
+    describe("categories, difficulty, source", () => {
         it("should be mapped to tags", () => {
             const actual = mapPaprikaToDb(recipe, id);
             expect(actual.tags).toEqual([
                 "Category A",
                 "Category B",
+                "difficulty: Easy",
                 "source: Source A",
             ]);
         });
@@ -74,6 +75,7 @@ describe("mapPaprikaToDb", () => {
             const actual = mapPaprikaToDb(
                 {
                     ...recipe,
+                    difficulty: undefined,
                     source: undefined,
                 },
                 id

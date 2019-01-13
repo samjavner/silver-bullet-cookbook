@@ -7,6 +7,57 @@ export function mapFdxToDb(
     id: string
 ): db.Recipe {
     const tags = [...recipe.recipeTypes];
+    if (recipe.degreeOfDifficulty !== undefined) {
+        tags.push(`difficulty: ${recipe.degreeOfDifficulty}`);
+    }
+    if (recipe.colorFlag && recipe.colorFlag !== "<None>") {
+        tags.push(`flag: ${recipe.colorFlag}`);
+    }
+    if (recipe.userData1) {
+        tags.push(`userdata1: ${recipe.userData1}`);
+    }
+    if (recipe.userData2) {
+        tags.push(`userdata2: ${recipe.userData2}`);
+    }
+    if (recipe.userData3) {
+        tags.push(`userdata3: ${recipe.userData3}`);
+    }
+    if (recipe.userData4) {
+        tags.push(`userdata4: ${recipe.userData4}`);
+    }
+    if (recipe.userData5) {
+        tags.push(`userdata5: ${recipe.userData5}`);
+    }
+    if (recipe.userData6 !== undefined) {
+        tags.push(`userdata6: ${recipe.userData6}`);
+    }
+    if (recipe.userData7 !== undefined) {
+        tags.push(`userdata7: ${recipe.userData7}`);
+    }
+    if (recipe.userData8 !== undefined) {
+        tags.push(`userdata8: ${recipe.userData8}`);
+    }
+    if (recipe.userData9 !== undefined) {
+        tags.push(`userdata9: ${recipe.userData9}`);
+    }
+    if (recipe.userData10 !== undefined) {
+        tags.push(`userdata10: ${recipe.userData10}`);
+    }
+    if (recipe.userData11) {
+        tags.push(`userdata11: ${recipe.userData11}`);
+    }
+    if (recipe.userData12) {
+        tags.push(`userdata12: ${recipe.userData12}`);
+    }
+    if (recipe.userData13) {
+        tags.push(`userdata13: ${recipe.userData13}`);
+    }
+    if (recipe.userData14) {
+        tags.push(`userdata14: ${recipe.userData14}`);
+    }
+    if (recipe.userData15) {
+        tags.push(`userdata15: ${recipe.userData15}`);
+    }
     if (recipe.source) {
         tags.push(`source: ${recipe.source}`);
     }
@@ -46,23 +97,6 @@ export function mapFdxToDb(
         // TODO: Recipe.createDate: string;
         // TODO: Recipe.cookbookId: number | undefined;
         // TODO: Recipe.inactiveTime: number | undefined;
-        // TODO: Recipe.degreeOfDifficulty: number | undefined;
-        // TODO: Recipe.userData1: string | undefined;
-        // TODO: Recipe.userData2: string | undefined;
-        // TODO: Recipe.userData3: string | undefined;
-        // TODO: Recipe.userData4: string | undefined;
-        // TODO: Recipe.userData5: string | undefined;
-        // TODO: Recipe.userData6: number | undefined;
-        // TODO: Recipe.userData7: number | undefined;
-        // TODO: Recipe.userData8: number | undefined;
-        // TODO: Recipe.userData9: number | undefined;
-        // TODO: Recipe.userData10: number | undefined;
-        // TODO: Recipe.userData11: string | undefined;
-        // TODO: Recipe.userData12: string | undefined;
-        // TODO: Recipe.userData13: string | undefined;
-        // TODO: Recipe.userData14: string | undefined;
-        // TODO: Recipe.userData15: string | undefined;
-        // TODO: Recipe.colorFlag: string | undefined;
         // TODO: Recipe.nutrition: RecipeNutrition | undefined;
         // TODO: Recipe.tips: RecipeTip[];
         // TODO: Recipe.reviews: RecipeReview[];
