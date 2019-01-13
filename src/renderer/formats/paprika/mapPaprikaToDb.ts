@@ -3,6 +3,9 @@ import * as parser from "./parser";
 
 export function mapPaprikaToDb(recipe: parser.Recipe, id: string): db.Recipe {
     const tags = [...recipe.categories];
+    if (recipe.difficulty) {
+        tags.push(`difficulty: ${recipe.difficulty}`);
+    }
     if (recipe.source) {
         tags.push(`source: ${recipe.source}`);
     }
@@ -25,7 +28,6 @@ export function mapPaprikaToDb(recipe: parser.Recipe, id: string): db.Recipe {
         sourceText: "",
         importWarnings: [],
         // TODO: created: string | undefined;
-        // TODO: difficulty: string | undefined;
         // TODO: rating: number;
         // TODO: nutritionalInfo: string | undefined;
         // TODO: scale: string | undefined;

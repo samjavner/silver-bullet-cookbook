@@ -2,17 +2,33 @@ import * as db from "../../db/recipe";
 import * as model from "./model";
 
 export function mapSchemaOrgToDb(recipe: model.Recipe, id: string): db.Recipe {
-    const tags = [
+    const keywords = (recipe.keywords || "")
+        .split(",")
+        .map(x => x.trim())
+        .filter(x => x);
+
+    const authors = recipe.authors
+        .filter(x => x.name)
+        .map(x => `author: ${x.name}`) as string[];
+
+    const authorUrls = recipe.authors
+        .filter(x => x.url)
+        .map(x => `author url: ${x.url}`) as string[];
+
+    const tags = new Set([
         ...recipe.recipeCategories,
-        ...(recipe.authors
-            .filter(x => x.name)
-            .map(x => `author: ${x.name}`) as string[]),
-    ];
+        ...keywords,
+        ...authors,
+        ...authorUrls,
+    ]);
     if (recipe.publisher && recipe.publisher.name) {
-        tags.push(`publisher: ${recipe.publisher.name}`);
+        tags.add(`publisher: ${recipe.publisher.name}`);
+    }
+    if (recipe.publisher && recipe.publisher.url) {
+        tags.add(`publisher url: ${recipe.publisher.url}`);
     }
     if (recipe.datePublished) {
-        tags.push(`publish date: ${recipe.datePublished}`);
+        tags.add(`publish date: ${recipe.datePublished}`);
     }
 
     return {
@@ -24,7 +40,7 @@ export function mapSchemaOrgToDb(recipe: model.Recipe, id: string): db.Recipe {
                 x => x && x.toUpperCase() !== (recipe.name || "").toUpperCase()
             )
             .join("\n"),
-        tags,
+        tags: Array.from(tags),
         servings: "",
         yield: recipe.recipeYield || "",
         prepTime: recipe.prepTime || "",
@@ -37,14 +53,11 @@ export function mapSchemaOrgToDb(recipe: model.Recipe, id: string): db.Recipe {
         sourceText: "",
         importWarnings: recipe.warnings,
         // TODO: aggregateRating: AggregateRating | undefined;
-        // TODO: authors[i].url: string | undefined;
         // TODO: cookingMethods: string[];
         // TODO: dateModified: string | undefined;
         // TODO: images: ImageObject[];
-        // TODO: keywords: string | undefined;
         // TODO: mainEntityOfPage: boolean | undefined;
         // TODO: publisher.logo: ImageObject | undefined;
-        // TODO: publisher.url: string | undefined;
         // TODO: reviews: Review[];
     };
 }
