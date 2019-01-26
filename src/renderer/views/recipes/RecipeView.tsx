@@ -20,7 +20,6 @@ export const RecipeView: React.FunctionComponent<{
         <HeaderView recipe={recipe} onEdit={onEdit} />
         {recipe.description && <DescriptionView recipe={recipe} />}
         <TagsView recipe={recipe} />
-        <PrepInfoView recipe={recipe} />
         <ContentView recipe={recipe} />
         {recipe.notes && <NotesView recipe={recipe} />}
     </>
@@ -169,61 +168,6 @@ const TagsView: React.FunctionComponent<{
             </div>
         </div>
     </div>
-);
-
-const PrepInfoView: React.FunctionComponent<{
-    recipe: Recipe;
-}> = ({ recipe }) => (
-    <>
-        {recipe.servings && (
-            <span>
-                <strong>Servings:</strong>
-                &nbsp;
-                {recipe.servings}
-                &nbsp; &nbsp;
-            </span>
-        )}
-        {recipe.yield && (
-            <span>
-                <strong>Yield:</strong>
-                &nbsp;
-                {recipe.yield}
-                &nbsp; &nbsp;
-            </span>
-        )}
-        {recipe.prepTime && (
-            <span>
-                <strong>Prep Time:</strong>
-                &nbsp;
-                {recipe.prepTime}
-                &nbsp; &nbsp;
-            </span>
-        )}
-        {recipe.cookTime && (
-            <span>
-                <strong>Cook Time:</strong>
-                &nbsp;
-                {recipe.cookTime}
-                &nbsp; &nbsp;
-            </span>
-        )}
-        {recipe.totalTime && (
-            <span>
-                <strong>Total Time:</strong>
-                &nbsp;
-                {recipe.totalTime}
-                &nbsp; &nbsp;
-            </span>
-        )}
-        {recipe.ovenTemperature && (
-            <span>
-                <strong>Oven Temperature:</strong>
-                &nbsp;
-                {recipe.ovenTemperature}
-                &nbsp; &nbsp;
-            </span>
-        )}
-    </>
 );
 
 const ContentView: React.FunctionComponent<{ recipe: Recipe }> = ({
