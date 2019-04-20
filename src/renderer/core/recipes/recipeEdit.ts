@@ -40,34 +40,6 @@ export const update = {
         ...model,
         description,
     }),
-    setServings: (model: Model, servings: string): Model => ({
-        ...model,
-        servings,
-    }),
-    setYield: (model: Model, yieldValue: string): Model => ({
-        ...model,
-        yield: yieldValue,
-    }),
-    setPrepTime: (model: Model, prepTime: string): Model => ({
-        ...model,
-        prepTime,
-    }),
-    setCookTime: (model: Model, cookTime: string): Model => ({
-        ...model,
-        cookTime,
-    }),
-    setTotalTime: (model: Model, totalTime: string): Model => ({
-        ...model,
-        totalTime,
-    }),
-    setOvenTemperature: (model: Model, ovenTemperature: string): Model => ({
-        ...model,
-        ovenTemperature,
-    }),
-    setNotes: (model: Model, notes: string): Model => ({
-        ...model,
-        notes,
-    }),
     setIngredients: (model: Model, ingredients: string): Model => ({
         ...model,
         ingredients,
@@ -75,5 +47,9 @@ export const update = {
     setDirections: (model: Model, directions: string): Model => ({
         ...model,
         directions,
+    }),
+    setNotes: (model: Model, notes: string): Model => ({
+        ...model,
+        notes,
     }),
 };

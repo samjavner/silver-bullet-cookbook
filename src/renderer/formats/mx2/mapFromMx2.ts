@@ -1,49 +1,31 @@
-import * as db from "../../db/recipe";
+import { ImportRecipe } from "../model";
 import * as model from "./model";
 
-export function mapMx2ToDb(
-    recipe: model.Recipe,
-    mx2: model.Mx2,
-    id: string
-): db.Recipe {
-    const tags = [...recipe.categories];
-    if (recipe.cuisine) {
-        tags.push(`cuisine: ${recipe.cuisine}`);
-    }
-    if (recipe.suggestedWine) {
-        tags.push(`wine: ${recipe.suggestedWine}`);
-    }
-    if (recipe.source) {
-        tags.push(`source: ${recipe.source}`);
-    }
-    if (recipe.author) {
-        tags.push(`author: ${recipe.author}`);
-    }
-    if (recipe.copyright) {
-        tags.push(`copyright: ${recipe.copyright}`);
-    }
-
+export function mapFromMx2(recipe: model.Recipe, mx2: model.Mx2): ImportRecipe {
     return {
-        id,
-        name: recipe.name || "Imported Recipe",
+        name: recipe.name,
         url: "",
         description: recipe.description || "",
-        tags,
-        servings: recipe.servings ? recipe.servings.toString() : "",
-        yield: recipe.yield
-            ? `${recipe.yield.quantity} ${recipe.yield.unit}`
-            : "",
-        prepTime: recipe.preparationTime || "",
-        cookTime: "",
-        totalTime: recipe.totalTime || "",
-        ovenTemperature: "",
-        notes: recipe.note || "",
         ingredients: recipe.ingredients.map(mapIngredient).join("\n"),
         directions: recipe.directions
             .map(direction => direction.text)
             .join("\n"),
-        sourceText: "",
         importWarnings: [],
+        extras: {
+            categories: recipe.categories,
+            cuisine: recipe.cuisine,
+            suggestedWine: recipe.suggestedWine,
+            source: recipe.source,
+            author: recipe.author,
+            copyright: recipe.copyright,
+            servings: recipe.servings ? recipe.servings.toString() : undefined,
+            yield: recipe.yield
+                ? `${recipe.yield.quantity} ${recipe.yield.unit}`
+                : undefined,
+            preparationTime: recipe.preparationTime,
+            totalTime: recipe.totalTime,
+            note: recipe.note,
+        },
         // TODO: Recipe.image: string | undefined;
         // TODO: Recipe.servingIdeas: string | undefined;
         // TODO: Recipe.alternateTime: AlternateTime | undefined;

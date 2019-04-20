@@ -1,28 +1,19 @@
-import * as db from "../../db/recipe";
+import { ImportRecipe } from "../model";
 import * as parser from "./parser";
 
-export function mapMmfToDb(
-    recipe: parser.Recipe,
-    source: string[],
-    id: string
-): db.Recipe {
+export function mapFromMmf(recipe: parser.Recipe): ImportRecipe {
     return {
-        id,
-        name: recipe.title || "Imported Recipe",
+        name: recipe.title || "",
         url: "",
         description: "",
-        tags: recipe.categories,
-        servings: recipe.servings || "",
-        yield: recipe.yield || "",
-        prepTime: "",
-        cookTime: "",
-        totalTime: "",
-        ovenTemperature: "",
-        notes: "",
         ingredients: recipe.ingredients.map(mapIngredientOrHeading).join("\n"),
         directions: recipe.directions.join("\n"),
-        sourceText: source.join("\n"),
         importWarnings: recipe.warnings,
+        extras: {
+            categories: recipe.categories,
+            servings: recipe.servings,
+            yield: recipe.yield,
+        },
     };
 }
 

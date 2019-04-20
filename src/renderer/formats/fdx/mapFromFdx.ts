@@ -1,97 +1,70 @@
-import * as db from "../../db/recipe";
+import { ImportRecipe } from "../model";
 import * as model from "./model";
 
-export function mapFdxToDb(
-    recipe: model.Recipe,
-    fdx: model.Fdx,
-    id: string
-): db.Recipe {
-    const tags = [...recipe.recipeTypes];
-    if (recipe.degreeOfDifficulty !== undefined) {
-        tags.push(`difficulty: ${recipe.degreeOfDifficulty}`);
-    }
-    if (recipe.colorFlag && recipe.colorFlag !== "<None>") {
-        tags.push(`flag: ${recipe.colorFlag}`);
-    }
-    if (recipe.userData1) {
-        tags.push(`userdata1: ${recipe.userData1}`);
-    }
-    if (recipe.userData2) {
-        tags.push(`userdata2: ${recipe.userData2}`);
-    }
-    if (recipe.userData3) {
-        tags.push(`userdata3: ${recipe.userData3}`);
-    }
-    if (recipe.userData4) {
-        tags.push(`userdata4: ${recipe.userData4}`);
-    }
-    if (recipe.userData5) {
-        tags.push(`userdata5: ${recipe.userData5}`);
-    }
-    if (recipe.userData6 !== undefined) {
-        tags.push(`userdata6: ${recipe.userData6}`);
-    }
-    if (recipe.userData7 !== undefined) {
-        tags.push(`userdata7: ${recipe.userData7}`);
-    }
-    if (recipe.userData8 !== undefined) {
-        tags.push(`userdata8: ${recipe.userData8}`);
-    }
-    if (recipe.userData9 !== undefined) {
-        tags.push(`userdata9: ${recipe.userData9}`);
-    }
-    if (recipe.userData10 !== undefined) {
-        tags.push(`userdata10: ${recipe.userData10}`);
-    }
-    if (recipe.userData11) {
-        tags.push(`userdata11: ${recipe.userData11}`);
-    }
-    if (recipe.userData12) {
-        tags.push(`userdata12: ${recipe.userData12}`);
-    }
-    if (recipe.userData13) {
-        tags.push(`userdata13: ${recipe.userData13}`);
-    }
-    if (recipe.userData14) {
-        tags.push(`userdata14: ${recipe.userData14}`);
-    }
-    if (recipe.userData15) {
-        tags.push(`userdata15: ${recipe.userData15}`);
-    }
-    if (recipe.source) {
-        tags.push(`source: ${recipe.source}`);
-    }
-    if (recipe.author) {
-        tags.push(`author: ${recipe.author}`);
-    }
-    if (recipe.sourcePageNumber) {
-        tags.push(`page: ${recipe.sourcePageNumber}`);
-    }
-    if (recipe.copyright) {
-        tags.push(`copyright: ${recipe.copyright}`);
-    }
-
+export function mapFromFdx(recipe: model.Recipe, fdx: model.Fdx): ImportRecipe {
     return {
-        id,
-        name: recipe.name || "Imported Recipe",
+        name: recipe.name,
         url: recipe.webPage || "",
         description: recipe.comments || "",
-        tags,
-        servings: recipe.servings ? recipe.servings.toString() : "",
-        yield: recipe.yield || "",
-        prepTime: formatTime(recipe.preparationTime),
-        cookTime: formatTime(recipe.cookingTime),
-        totalTime: formatTime(recipe.readyInTime),
-        ovenTemperature: recipe.ovenTemperatureF
-            ? `${recipe.ovenTemperatureF}°F`
-            : recipe.ovenTemperatureC
-                ? `${recipe.ovenTemperatureC}°C`
-                : "",
-        notes: "",
         ingredients: recipe.ingredients.map(mapRecipeIngredient).join("\n"),
         directions: recipe.procedures.map(mapRecipeProcedure).join("\n"),
-        sourceText: "",
         importWarnings: [],
+        extras: {
+            recipeTypes: recipe.recipeTypes,
+            degreeOfDifficulty:
+                recipe.degreeOfDifficulty === undefined
+                    ? undefined
+                    : recipe.degreeOfDifficulty.toString(),
+            colorFlag:
+                recipe.colorFlag && recipe.colorFlag !== "<None>"
+                    ? recipe.colorFlag
+                    : undefined,
+            userData1: recipe.userData1,
+            userData2: recipe.userData2,
+            userData3: recipe.userData3,
+            userData4: recipe.userData4,
+            userData5: recipe.userData5,
+            userData6:
+                recipe.userData6 === undefined
+                    ? undefined
+                    : recipe.userData6.toString(),
+            userData7:
+                recipe.userData7 === undefined
+                    ? undefined
+                    : recipe.userData7.toString(),
+            userData8:
+                recipe.userData8 === undefined
+                    ? undefined
+                    : recipe.userData8.toString(),
+            userData9:
+                recipe.userData9 === undefined
+                    ? undefined
+                    : recipe.userData9.toString(),
+            userData10:
+                recipe.userData10 === undefined
+                    ? undefined
+                    : recipe.userData10.toString(),
+            userData11: recipe.userData11,
+            userData12: recipe.userData12,
+            userData13: recipe.userData13,
+            userData14: recipe.userData14,
+            userData15: recipe.userData15,
+            source: recipe.source,
+            author: recipe.author,
+            sourcePageNumber: recipe.sourcePageNumber,
+            copyright: recipe.copyright,
+            servings: recipe.servings ? recipe.servings.toString() : undefined,
+            yield: recipe.yield,
+            preparationTime: formatTime(recipe.preparationTime),
+            cookingTime: formatTime(recipe.cookingTime),
+            readyInTime: formatTime(recipe.readyInTime),
+            ovenTemperatureF: recipe.ovenTemperatureF
+                ? `${recipe.ovenTemperatureF}°F`
+                : undefined,
+            ovenTemperatureC: recipe.ovenTemperatureC
+                ? `${recipe.ovenTemperatureC}°C`
+                : undefined,
+        },
         // TODO: Recipe.id: number;
         // TODO: Recipe.cookbookChapterId: number | undefined;
         // TODO: Recipe.createDate: string;
@@ -149,9 +122,9 @@ function mapRecipeProcedure(procedure: model.RecipeProcedure): string {
         : procedure.text;
 }
 
-function formatTime(minutes: number | undefined): string {
+function formatTime(minutes: number | undefined): string | undefined {
     return minutes === undefined
-        ? ""
+        ? undefined
         : `${Math.floor(minutes / 60)}:${(
               "0" + (minutes % 60).toString()
           ).slice(-2)}`;

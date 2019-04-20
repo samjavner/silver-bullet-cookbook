@@ -1,4 +1,4 @@
-import { mapMx2ToDb } from "./mapMx2ToDb";
+import { mapFromMx2 } from "./mapFromMx2";
 import * as model from "./model";
 
 const recipe: model.Recipe = {
@@ -159,256 +159,196 @@ const mx2: model.Mx2 = {
     warnings: ["Warning A", "Warning B"],
 };
 
-const id = "85f1d9f0-4542-43a2-805d-cb9713ba0b65";
-
-describe("mapMx2ToDb", () => {
+describe("mapFromMx2", () => {
     describe("name", () => {
-        it("should be mapped to name", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
+        it("should be name", () => {
+            const actual = mapFromMx2(recipe, mx2);
             expect(actual.name).toBe("Example Recipe");
         });
+    });
 
-        it("should set name to 'Imported Recipe' when not present", () => {
-            const actual = mapMx2ToDb(
-                {
-                    ...recipe,
-                    name: "",
-                },
-                mx2,
-                id
-            );
-            expect(actual.name).toBe("Imported Recipe");
+    describe("url", () => {
+        it("should be empty string", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.url).toBe("");
         });
     });
 
     describe("description", () => {
         it("should be mapped to description", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
+            const actual = mapFromMx2(recipe, mx2);
             expect(actual.description).toBe("Description");
         });
 
         it("should set description to empty string when not present", () => {
-            const actual = mapMx2ToDb(
+            const actual = mapFromMx2(
                 { ...recipe, description: undefined },
-                mx2,
-                id
+                mx2
             );
             expect(actual.description).toBe("");
         });
     });
 
-    describe("categories, cuisine, suggestedWine, source, author, copyright", () => {
-        it("should be mapped to tags", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.tags).toEqual([
-                "Category A",
-                "Category B",
-                "cuisine: Cuisine A",
-                "wine: Wine A",
-                "source: Source A",
-                "author: Author A",
-                "copyright: © 1999",
-            ]);
-        });
-
-        it("should not include fields that are not present", () => {
-            const actual = mapMx2ToDb(
-                {
-                    ...recipe,
-                    cuisine: undefined,
-                    suggestedWine: undefined,
-                    source: undefined,
-                    author: "",
-                    copyright: undefined,
-                },
-                mx2,
-                id
-            );
-            expect(actual.tags).toEqual(["Category A", "Category B"]);
-        });
-    });
-
-    describe("servings", () => {
-        it("should be stringified and mapped to servings", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.servings).toBe("42");
-        });
-
-        it("should set servings to empty string when not present", () => {
-            const actual = mapMx2ToDb(
-                {
-                    ...recipe,
-                    servings: undefined,
-                },
-                mx2,
-                id
-            );
-            expect(actual.servings).toBe("");
-        });
-
-        it("should set servings to empty string when 0", () => {
-            const actual = mapMx2ToDb(
-                {
-                    ...recipe,
-                    servings: 0,
-                },
-                mx2,
-                id
-            );
-            expect(actual.servings).toBe("");
-        });
-    });
-
-    describe("yield", () => {
-        it("should be mapped to yield", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.yield).toBe("5.5 cups");
-        });
-
-        it("should set yield to empty string when not present", () => {
-            const actual = mapMx2ToDb(
-                {
-                    ...recipe,
-                    yield: undefined,
-                },
-                mx2,
-                id
-            );
-            expect(actual.yield).toBe("");
-        });
-    });
-
-    describe("preparationTime", () => {
-        it("should be mapped to prepTime", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.prepTime).toBe("2:50");
-        });
-
-        it("should set prepTime to empty string when not present", () => {
-            const actual = mapMx2ToDb(
-                { ...recipe, preparationTime: undefined },
-                mx2,
-                id
-            );
-            expect(actual.prepTime).toBe("");
-        });
-    });
-
-    describe("totalTime", () => {
-        it("should be mapped to totalTime", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.totalTime).toBe("4:44");
-        });
-
-        it("should set totalTime to empty string when not present", () => {
-            const actual = mapMx2ToDb(
-                { ...recipe, totalTime: undefined },
-                mx2,
-                id
-            );
-            expect(actual.totalTime).toBe("");
-        });
-    });
-
-    describe("note", () => {
-        it("should be mapped to notes", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.notes).toBe("Note 1\n\nNote 2");
-        });
-
-        it("should set notes to empty string when not present", () => {
-            const actual = mapMx2ToDb({ ...recipe, note: undefined }, mx2, id);
-            expect(actual.notes).toBe("");
-        });
-    });
-
     describe("ingredients", () => {
-        it("should be mapped to ingredients", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+        it("should be mapped from ingredients", () => {
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual.length).toBe(recipe.ingredients.length);
         });
 
         it("should map a subtitle to an ingredient with '# ' prepended to the text", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[0]).toBe("# Subtitle A");
         });
 
         it("should map a subtitle with no text to an empty string", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[1]).toBe("");
         });
 
         it("should map a text entry to that text", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[2]).toBe("Text A");
         });
 
         it("should map a text entry with no text to an empty string", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[3]).toBe("");
         });
 
         it("should map an ingredient with only text", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[4]).toBe("Ingredient A");
         });
 
         it("should map an ingredient with quantity and text", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[5]).toBe("1 1/2 Ingredient B");
         });
 
         it("should map an ingredient with unit and text", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[6]).toBe("medium Ingredient C");
         });
 
         it("should map an ingredient with quantity, unit, and text", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[7]).toBe("1 1/2 cups Ingredient D");
         });
 
         it("should append semi-colon and preparationMethod", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[8]).toBe("1 1/2 cups Ingredient E; chopped");
         });
 
         it("should map an ingredient with no text to an empty string", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[9]).toBe("");
         });
 
         it("should map a recipe the same way as an ingredient", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[10]).toBe("1 1/2 cups Recipe A; chopped");
         });
 
         it("should map a recipe with no text to an empty string", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id).ingredients.split("\n");
+            const actual = mapFromMx2(recipe, mx2).ingredients.split("\n");
             expect(actual[11]).toBe("");
         });
     });
 
     describe("directions", () => {
         it("should map text to directions", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
+            const actual = mapFromMx2(recipe, mx2);
             expect(actual.directions).toEqual("Direction A\nDirection B");
         });
     });
 
-    describe("id", () => {
-        it("should be mapped to id", () => {
-            const actual = mapMx2ToDb(recipe, mx2, id);
-            expect(actual.id).toBe("85f1d9f0-4542-43a2-805d-cb9713ba0b65");
+    describe("importWarnings", () => {
+        it("should be empty array", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.importWarnings).toEqual([]);
         });
     });
 
-    it("should have default values for other fields", () => {
-        const actual = mapMx2ToDb(recipe, mx2, id);
-        expect(actual.url).toBe("");
-        expect(actual.cookTime).toBe("");
-        expect(actual.ovenTemperature).toBe("");
-        expect(actual.sourceText).toBe("");
-        expect(actual.importWarnings).toEqual([]);
+    describe("extras", () => {
+        it("should have categories", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.extras.categories).toEqual([
+                "Category A",
+                "Category B",
+            ]);
+        });
+
+        it("should have cuisine", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.extras.cuisine).toBe("Cuisine A");
+        });
+
+        it("should have suggestedWine", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.extras.suggestedWine).toBe("Wine A");
+        });
+
+        it("should have source", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.extras.source).toBe("Source A");
+        });
+
+        it("should have author", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.extras.author).toBe("Author A");
+        });
+
+        it("should have copyright", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.extras.copyright).toBe("© 1999");
+        });
+
+        describe("servings", () => {
+            it("should be stringified", () => {
+                const actual = mapFromMx2(recipe, mx2);
+                expect(actual.extras.servings).toBe("42");
+            });
+
+            it("should be undefined when not present", () => {
+                const actual = mapFromMx2(
+                    { ...recipe, servings: undefined },
+                    mx2
+                );
+                expect(actual.extras.servings).toBeUndefined();
+            });
+
+            it("should be undefined when 0", () => {
+                const actual = mapFromMx2({ ...recipe, servings: 0 }, mx2);
+                expect(actual.extras.servings).toBeUndefined();
+            });
+        });
+
+        describe("yield", () => {
+            it("should be stringified", () => {
+                const actual = mapFromMx2(recipe, mx2);
+                expect(actual.extras.yield).toBe("5.5 cups");
+            });
+
+            it("should be undefined when not present", () => {
+                const actual = mapFromMx2({ ...recipe, yield: undefined }, mx2);
+                expect(actual.extras.yield).toBeUndefined();
+            });
+        });
+
+        it("should have preparationTime", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.extras.preparationTime).toBe("2:50");
+        });
+
+        it("should have totalTime", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.extras.totalTime).toBe("4:44");
+        });
+
+        it("should have note", () => {
+            const actual = mapFromMx2(recipe, mx2);
+            expect(actual.extras.note).toBe("Note 1\n\nNote 2");
+        });
     });
 });

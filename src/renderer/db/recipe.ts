@@ -7,15 +7,9 @@ export interface Recipe {
     url: string;
     description: string;
     tags: string[];
-    servings: string;
-    yield: string;
-    prepTime: string;
-    cookTime: string;
-    totalTime: string;
-    ovenTemperature: string;
-    notes: string;
     ingredients: string;
     directions: string;
+    notes: string;
     sourceText: string;
     importWarnings: string[];
 }
@@ -33,15 +27,13 @@ export async function put(db: sqlite.Database, recipe: Recipe): Promise<void> {
     const tags = recipe.tags.join(";");
     const importWarnings = recipe.importWarnings.join(";");
     await db.run(
-        SQL`REPLACE INTO Recipe (id, name, url, description, tags, servings, yield, prepTime, cookTime, totalTime, ovenTemperature, notes, ingredients, directions, sourceText, importWarnings) VALUES (${
+        SQL`REPLACE INTO Recipe (id, name, url, description, tags, ingredients, directions, notes, sourceText, importWarnings) VALUES (${
             recipe.id
         }, ${recipe.name}, ${recipe.url}, ${recipe.description}, ${tags}, ${
-            recipe.servings
-        }, ${recipe.yield}, ${recipe.prepTime}, ${recipe.cookTime}, ${
-            recipe.totalTime
-        }, ${recipe.ovenTemperature}, ${recipe.notes}, ${recipe.ingredients}, ${
-            recipe.directions
-        }, ${recipe.sourceText}, ${importWarnings})`
+            recipe.ingredients
+        }, ${recipe.directions}, ${recipe.notes}, ${
+            recipe.sourceText
+        }, ${importWarnings})`
     );
 }
 
@@ -72,15 +64,9 @@ function mapDbRecipe(recipe: any): Recipe {
         url: recipe.url,
         description: recipe.description,
         tags: (recipe.tags as string).split(";").filter(x => x),
-        servings: recipe.servings,
-        yield: recipe.yield,
-        prepTime: recipe.prepTime,
-        cookTime: recipe.cookTime,
-        totalTime: recipe.totalTime,
-        ovenTemperature: recipe.ovenTemperature,
-        notes: recipe.notes,
         ingredients: recipe.ingredients,
         directions: recipe.directions,
+        notes: recipe.notes,
         sourceText: recipe.sourceText,
         importWarnings: (recipe.importWarnings as string)
             .split(";")

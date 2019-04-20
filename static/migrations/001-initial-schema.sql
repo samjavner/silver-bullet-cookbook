@@ -7,15 +7,9 @@ CREATE TABLE Recipe
     url                 TEXT NOT NULL,
     description         TEXT NOT NULL,
     tags                TEXT NOT NULL,
-    servings            TEXT NOT NULL,
-    yield               TEXT NOT NULL,
-    prepTime            TEXT NOT NULL,
-    cookTime            TEXT NOT NULL,
-    totalTime           TEXT NOT NULL,
-    ovenTemperature     TEXT NOT NULL,
-    notes               TEXT NOT NULL,
     ingredients         TEXT NOT NULL,
     directions          TEXT NOT NULL,
+    notes               TEXT NOT NULL,
     sourceText          TEXT NOT NULL,
     importWarnings      TEXT NOT NULL
 );

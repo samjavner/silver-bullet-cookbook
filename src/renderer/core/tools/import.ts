@@ -2,17 +2,18 @@ import { remote } from "electron";
 import * as uuid from "uuid";
 import { Recipe } from "../../db/recipe";
 import * as fdx from "../../formats/fdx";
-import { mapFdxToDb } from "../../formats/fdx/mapFdxToDb";
-import { mapMmfToDb } from "../../formats/mmf/mapMmfToDb";
+import { mapFromFdx } from "../../formats/fdx/mapFromFdx";
+import { mapFromMmf } from "../../formats/mmf/mapFromMmf";
 import * as mmf from "../../formats/mmf/parser";
+import { ImportRecipe } from "../../formats/model";
 import * as mx2 from "../../formats/mx2";
-import { mapMx2ToDb } from "../../formats/mx2/mapMx2ToDb";
-import { mapMxpToDb } from "../../formats/mxp/mapMxpToDb";
+import { mapFromMx2 } from "../../formats/mx2/mapFromMx2";
+import { mapFromMxp } from "../../formats/mxp/mapFromMxp";
 import * as mxp from "../../formats/mxp/parser";
-import { mapPaprikaToDb } from "../../formats/paprika/mapPaprikaToDb";
+import { mapFromPaprika } from "../../formats/paprika/mapFromPaprika";
 import * as paprika from "../../formats/paprika/parser";
 import * as schemaOrg from "../../formats/schema.org";
-import { mapSchemaOrgToDb } from "../../formats/schema.org/mapSchemaOrgToDb";
+import { mapFromSchemaOrg } from "../../formats/schema.org/mapFromSchemaOrg";
 import { Dispatch, Store, UseStore } from "../../store";
 import { RecipeBox } from "../recipes/recipeBox";
 
@@ -91,7 +92,7 @@ export const createCommands = (recipeBox: RecipeBox) => (
         await dispatch.importRequest();
         const path = paths[0];
 
-        async function getRecipes(): Promise<Recipe[]> {
+        async function getRecipes(): Promise<ImportRecipe[]> {
             const extension = path
                 .slice(path.lastIndexOf(".") + 1)
                 .toLowerCase();
@@ -100,32 +101,30 @@ export const createCommands = (recipeBox: RecipeBox) => (
                 case "mmf":
                     const mmfRecipes = mmf.parseFileWithSource(path);
                     return mmfRecipes.map(([source, recipe]) =>
-                        mapMmfToDb(recipe, source, uuid.v4())
+                        mapFromMmf(recipe)
                     );
                 case "mxp":
                     const mxpRecipes = mxp.parseFileWithSource(path);
                     return mxpRecipes.map(([source, recipe]) =>
-                        mapMxpToDb(recipe, source, uuid.v4())
+                        mapFromMxp(recipe)
                     );
                 case "mx2":
                     const mx2Recipes = await mx2.parseFile(path);
                     return mx2Recipes.recipes.map(recipe =>
-                        mapMx2ToDb(recipe, mx2Recipes, uuid.v4())
+                        mapFromMx2(recipe, mx2Recipes)
                     );
                 case "fdx":
                     const fdxRecipes = await fdx.parseFile(path);
                     return fdxRecipes.recipes.map(recipe =>
-                        mapFdxToDb(recipe, fdxRecipes, uuid.v4())
+                        mapFromFdx(recipe, fdxRecipes)
                     );
                 case "paprikarecipes":
                     const paprikaRecipes = paprika.parseFile(path);
-                    return paprikaRecipes.map(recipe =>
-                        mapPaprikaToDb(recipe, uuid.v4())
-                    );
+                    return paprikaRecipes.map(recipe => mapFromPaprika(recipe));
                 case "json":
                     const schemaOrgRecipes = schemaOrg.parseFile(path);
                     return schemaOrgRecipes.map(recipe =>
-                        mapSchemaOrgToDb(recipe, uuid.v4())
+                        mapFromSchemaOrg(recipe)
                     );
                 default:
                     return [];
@@ -133,7 +132,32 @@ export const createCommands = (recipeBox: RecipeBox) => (
         }
 
         const recipes = await getRecipes();
-        await recipeBox.addMultiple(recipes);
+        const dbRecipes = recipes.map<Recipe>(recipe => {
+            const { extras, name, ...fields } = recipe;
+
+            const tags: string[] = [];
+            Object.keys(extras).forEach(extra => {
+                const value = extras[extra];
+                const values = value
+                    ? typeof value === "string"
+                        ? [value]
+                        : value
+                    : [];
+                values.forEach(val => {
+                    tags.push(`${extra}: ${val}`);
+                });
+            });
+
+            return {
+                id: uuid.v4(),
+                name: name || "Imported Recipe",
+                ...fields,
+                tags,
+                notes: "",
+                sourceText: "",
+            };
+        });
+        await recipeBox.addMultiple(dbRecipes);
         await dispatch.importSuccess();
     }
 
