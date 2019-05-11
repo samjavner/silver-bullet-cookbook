@@ -1,55 +1,44 @@
 import { Recipe } from "../../db/recipe";
-import { Store, UseStore } from "../../store";
+import { SetState, useSelector } from "../../store";
 
-export type RecipeEdit = Store<Model, Update>;
+export type RecipeEdit = ReturnType<typeof selector>;
 
-export function useRecipeEdit(
-    useStore: UseStore<Model, Update>,
-    init: Model
-): RecipeEdit {
-    return useStore({
-        init,
-        update,
-    });
-}
+export const useRecipeEdit = (init: Recipe): RecipeEdit =>
+    useSelector(selector, init);
 
 // MODEL
 
-export type Model = Recipe;
+type State = Recipe;
 
-// SELECTORS
+// SELECTOR
 
-export function isValid(model: Model): boolean {
-    return model.name.trim() !== "";
-}
+const selector = (snapshot: State, setState: SetState<State>) => {
+    const isValid = snapshot.name.trim() !== "";
 
-// UPDATE
+    const setName = (name: string) => setState(state => ({ ...state, name }));
 
-export type Update = typeof update;
+    const setUrl = (url: string) => setState(state => ({ ...state, url }));
 
-export const update = {
-    setName: (model: Model, name: string): Model => ({
-        ...model,
-        name,
-    }),
-    setUrl: (model: Model, url: string): Model => ({
-        ...model,
-        url,
-    }),
-    setDescription: (model: Model, description: string): Model => ({
-        ...model,
-        description,
-    }),
-    setIngredients: (model: Model, ingredients: string): Model => ({
-        ...model,
-        ingredients,
-    }),
-    setDirections: (model: Model, directions: string): Model => ({
-        ...model,
-        directions,
-    }),
-    setNotes: (model: Model, notes: string): Model => ({
-        ...model,
-        notes,
-    }),
+    const setDescription = (description: string) =>
+        setState(state => ({ ...state, description }));
+
+    const setIngredients = (ingredients: string) =>
+        setState(state => ({ ...state, ingredients }));
+
+    const setDirections = (directions: string) =>
+        setState(state => ({ ...state, directions }));
+
+    const setNotes = (notes: string) =>
+        setState(state => ({ ...state, notes }));
+
+    return {
+        ...snapshot,
+        isValid,
+        setName,
+        setUrl,
+        setDescription,
+        setIngredients,
+        setDirections,
+        setNotes,
+    };
 };

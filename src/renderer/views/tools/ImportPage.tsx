@@ -3,7 +3,7 @@ import { Import } from "../../core/tools/import";
 
 export const ImportPage: React.FunctionComponent<Import> = vm => (
     <div>
-        <button className="button" onClick={vm.import}>
+        <button className="button" onClick={vm.importRecipes}>
             Import
         </button>
     </div>

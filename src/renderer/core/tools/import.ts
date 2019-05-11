@@ -14,61 +14,32 @@ import { mapFromPaprika } from "../../formats/paprika/mapFromPaprika";
 import * as paprika from "../../formats/paprika/parser";
 import * as schemaOrg from "../../formats/schema.org";
 import { mapFromSchemaOrg } from "../../formats/schema.org/mapFromSchemaOrg";
-import { Dispatch, Store, UseStore } from "../../store";
+import { SetState, useSelector } from "../../store";
 import { RecipeBox } from "../recipes/recipeBox";
 
-export type Import = Store<Model, Update, Commands>;
+export type Import = ReturnType<typeof selector>;
 
-export function useImport(
-    useStore: UseStore<Model, Update, Commands>,
-    recipeBox: RecipeBox
-): Import {
-    return useStore({
-        init,
-        update,
-        createCommands: createCommands(recipeBox),
-        memo: [recipeBox],
-    });
-}
+export const useImport = (recipeBox: RecipeBox) =>
+    useSelector(selector, init, recipeBox);
 
 // MODEL
 
-export interface Model {
+interface State {
     isImporting: boolean;
 }
 
-export const init: Model = {
+const init: State = {
     isImporting: false,
 };
 
-// UPDATE
+// SELECTOR
 
-type Update = typeof update;
-
-export const update = {
-    importRequest(model: Model): Model {
-        return {
-            ...model,
-            isImporting: true,
-        };
-    },
-    importSuccess(model: Model): Model {
-        return {
-            ...model,
-            isImporting: false,
-        };
-    },
-};
-
-// COMMANDS
-
-type Commands = ReturnType<ReturnType<typeof createCommands>>;
-
-export const createCommands = (recipeBox: RecipeBox) => (
-    model: Model,
-    dispatch: Dispatch<Update>
+const selector = (
+    snapshot: State,
+    setState: SetState<State>,
+    recipeBox: RecipeBox
 ) => {
-    async function importRecipes() {
+    const importRecipes = async () => {
         const paths = remote.dialog.showOpenDialog(remote.getCurrentWindow(), {
             filters: [
                 {
@@ -89,7 +60,7 @@ export const createCommands = (recipeBox: RecipeBox) => (
             return;
         }
 
-        await dispatch.importRequest();
+        setState(state => ({ ...state, isImporting: true }));
         const path = paths[0];
 
         async function getRecipes(): Promise<ImportRecipe[]> {
@@ -158,10 +129,11 @@ export const createCommands = (recipeBox: RecipeBox) => (
             };
         });
         await recipeBox.addMultiple(dbRecipes);
-        await dispatch.importSuccess();
-    }
+        setState(state => ({ ...state, isImporting: false }));
+    };
 
     return {
-        import: importRecipes,
+        ...snapshot,
+        importRecipes,
     };
 };
