@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import * as recipeBox from "../../core/recipes/recipeBox";
 import { RecipeBoxPage } from "./RecipeBoxPage";
 
 describe("RecipeBoxPage", () => {
@@ -8,15 +7,15 @@ describe("RecipeBoxPage", () => {
         const component = renderer.create(
             <RecipeBoxPage
                 recipeBox={{
-                    ...recipeBox.init,
+                    recipes: [],
                     selectedIndex: 10,
-                    refreshSuccess: () => ({}),
+                    isAddRecipeActive: false,
+                    isEditRecipeActive: false,
                     setSelectedIndex: () => ({}),
                     openAddRecipe: () => ({}),
                     closeAddRecipe: () => ({}),
                     openEditRecipe: () => ({}),
                     closeEditRecipe: () => ({}),
-                    refresh: () => Promise.resolve(),
                     saveAddRecipe: () => Promise.resolve(),
                     saveEditRecipe: () => Promise.resolve(),
                     addMultiple: () => Promise.resolve(),

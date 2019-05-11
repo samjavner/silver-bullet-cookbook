@@ -1,24 +1,15 @@
 import * as sqlite from "sqlite";
 import * as recipe from "../db/recipe";
-import { Dispatch, Store, UseStore } from "../store";
+import { SetState, useSelector } from "../store";
 
-export type CommandProvider = Store<Model, Update, Commands>;
+export type CommandProvider = ReturnType<typeof selector>;
 
-export function useCommandProvider(
-    useStore: UseStore<Model, Update, Commands>,
-    db: sqlite.Database
-): CommandProvider {
-    return useStore({
-        init,
-        update,
-        createCommands: createCommands(db),
-        memo: [db],
-    });
-}
+export const useCommandProvider = (db: sqlite.Database): CommandProvider =>
+    useSelector(selector, init, db);
 
 // MODEL
 
-export interface Model {
+interface State {
     isInProgress: boolean;
     undoStack: Command[];
     redoStack: Command[];
@@ -38,151 +29,95 @@ export type Command =
           recipes: recipe.Recipe[];
       };
 
-export const init: Model = {
+const init: State = {
     isInProgress: false,
     undoStack: [],
     redoStack: [],
 };
 
-// SELECTORS
+// SELECTOR
 
-export function canUndo(model: Model): boolean {
-    return model.undoStack.length > 0;
-}
-
-export function canRedo(model: Model): boolean {
-    return model.redoStack.length > 0;
-}
-
-// UPDATE
-
-export type Update = typeof update;
-
-export const update = {
-    executeRequest(model: Model): Model {
-        return {
-            ...model,
-            isInProgress: true,
-        };
-    },
-    executeFailure(model: Model): Model {
-        return {
-            ...model,
-            isInProgress: false,
-        };
-    },
-    executeSuccess(model: Model, command: Command): Model {
-        return {
-            ...model,
-            isInProgress: false,
-            undoStack: [command, ...model.undoStack],
-            redoStack: [],
-        };
-    },
-    undoRequest(model: Model): Model {
-        return {
-            ...model,
-            isInProgress: true,
-        };
-    },
-    undoFailure(model: Model): Model {
-        return {
-            ...model,
-            isInProgress: false,
-        };
-    },
-    undoSuccess(model: Model): Model {
-        return {
-            ...model,
-            isInProgress: false,
-            undoStack: model.undoStack.slice(1),
-            redoStack: [model.undoStack[0], ...model.redoStack],
-        };
-    },
-    redoRequest(model: Model): Model {
-        return {
-            ...model,
-            isInProgress: true,
-        };
-    },
-    redoFailure(model: Model): Model {
-        return {
-            ...model,
-            isInProgress: false,
-        };
-    },
-    redoSuccess(model: Model): Model {
-        return {
-            ...model,
-            isInProgress: false,
-            undoStack: [model.redoStack[0], ...model.undoStack],
-            redoStack: model.redoStack.slice(1),
-        };
-    },
-};
-
-// COMMANDS
-
-export type Commands = ReturnType<ReturnType<typeof createCommands>>;
-
-export const createCommands = (db: sqlite.Database) => (
-    model: Model,
-    dispatch: Dispatch<Update>
+const selector = (
+    snapshot: State,
+    setState: SetState<State>,
+    db: sqlite.Database
 ) => {
-    async function execute(command: Command) {
-        if (model.isInProgress) {
-            return;
-        }
-        dispatch.executeRequest();
-        await executeCommand(db, command);
-        dispatch.executeSuccess(command);
-    }
+    const isInProgress = snapshot.isInProgress;
+    const canUndo = snapshot.undoStack.length > 0;
+    const canRedo = snapshot.redoStack.length > 0;
 
-    async function undo() {
-        if (model.isInProgress || !canUndo(model)) {
+    const execute = async (command: Command) => {
+        if (isInProgress) {
             return;
         }
-        dispatch.undoRequest();
-        await undoCommand(db, model.undoStack[0]);
-        dispatch.undoSuccess();
-    }
 
-    async function redo() {
-        if (model.isInProgress || !canRedo(model)) {
+        setState(state => ({ ...state, isInProgress: true }));
+
+        switch (command.type) {
+            case "recipe_create":
+            case "recipe_edit":
+                await recipe.put(db, command.recipe);
+                break;
+            case "recipe_import":
+                await recipe.putMultiple(db, command.recipes);
+                break;
+        }
+
+        setState(state => ({
+            isInProgress: false,
+            undoStack: [command, ...state.undoStack],
+            redoStack: [],
+        }));
+    };
+
+    const undo = async () => {
+        if (isInProgress || !canUndo) {
             return;
         }
-        dispatch.redoRequest();
-        await redoCommand(db, model.redoStack[0]);
-        dispatch.redoSuccess();
-    }
+
+        setState(state => ({ ...state, isInProgress: true }));
+
+        const command = snapshot.undoStack[0];
+        switch (command.type) {
+            case "recipe_create":
+                await recipe.remove(db, command.recipe);
+                break;
+        }
+
+        setState(state => ({
+            isInProgress: false,
+            undoStack: state.undoStack.slice(1),
+            redoStack: [state.undoStack[0], ...state.redoStack],
+        }));
+    };
+
+    const redo = async () => {
+        if (isInProgress || !canRedo) {
+            return;
+        }
+
+        setState(state => ({ ...state, isInProgress: true }));
+
+        const command = snapshot.redoStack[0];
+        switch (command.type) {
+            case "recipe_create":
+                await recipe.put(db, command.recipe);
+                break;
+        }
+
+        setState(state => ({
+            isInProgress: false,
+            undoStack: [state.redoStack[0], ...state.undoStack],
+            redoStack: state.redoStack.slice(1),
+        }));
+    };
 
     return {
+        isInProgress,
+        canUndo,
+        canRedo,
         execute,
         undo,
         redo,
     };
 };
-
-async function executeCommand(db: sqlite.Database, command: Command) {
-    switch (command.type) {
-        case "recipe_create":
-        case "recipe_edit":
-            return recipe.put(db, command.recipe);
-        case "recipe_import":
-            return recipe.putMultiple(db, command.recipes);
-    }
-}
-
-async function undoCommand(db: sqlite.Database, command: Command) {
-    switch (command.type) {
-        case "recipe_create":
-            return recipe.remove(db, command.recipe);
-    }
-}
-
-async function redoCommand(db: sqlite.Database, command: Command) {
-    switch (command.type) {
-        case "recipe_create":
-            return recipe.put(db, command.recipe);
-    }
-}

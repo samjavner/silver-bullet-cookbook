@@ -1,125 +1,98 @@
 import * as sqlite from "sqlite";
 import { getAll, Recipe } from "../../db/recipe";
-import { Dispatch, Store, UseStore } from "../../store";
+import { SetState, useSelector } from "../../store";
 import { CommandProvider } from "../commandProvider";
 
-export type RecipeBox = Store<Model, Update, Commands>;
+export type RecipeBox = ReturnType<typeof selector>;
 
-export function useRecipeBox(
-    useStore: UseStore<Model, Update, Commands>,
+export const useRecipeBox = (
     commandProvider: CommandProvider,
     db: sqlite.Database
-): RecipeBox {
-    return useStore({
-        init,
-        update,
-        createCommands: createCommands(commandProvider, db),
-        memo: [commandProvider, db],
-    });
-}
+): RecipeBox => useSelector(selector, init, commandProvider, db);
 
 // MODEL
 
-export interface Model {
+interface State {
     recipes: Recipe[];
     selectedIndex: number;
     isAddRecipeActive: boolean;
     isEditRecipeActive: boolean;
 }
 
-export const init: Model = {
+const init: State = {
     recipes: [],
     selectedIndex: 0,
     isAddRecipeActive: false,
     isEditRecipeActive: false,
 };
 
-// UPDATE
+// SELECTOR
 
-export type Update = typeof update;
-
-export const update = {
-    refreshSuccess(model: Model, recipes: Recipe[]): Model {
-        return {
-            ...model,
-            recipes,
-        };
-    },
-    setSelectedIndex(model: Model, index: number): Model {
-        return {
-            ...model,
-            selectedIndex: index,
-        };
-    },
-    openAddRecipe(model: Model): Model {
-        return {
-            ...model,
-            isAddRecipeActive: true,
-        };
-    },
-    closeAddRecipe(model: Model): Model {
-        return {
-            ...model,
-            isAddRecipeActive: false,
-        };
-    },
-    openEditRecipe(model: Model): Model {
-        return {
-            ...model,
-            isEditRecipeActive: true,
-        };
-    },
-    closeEditRecipe(model: Model): Model {
-        return {
-            ...model,
-            isEditRecipeActive: false,
-        };
-    },
-};
-
-// COMMANDS
-
-export type Commands = ReturnType<ReturnType<typeof createCommands>>;
-
-export const createCommands = (
+const selector = (
+    snapshot: State,
+    setState: SetState<State>,
     commandProvider: CommandProvider,
     db: sqlite.Database
-) => (model: Model, dispatch: Dispatch<Update>) => {
-    async function refresh(): Promise<void> {
-        const recipes = await getAll(db);
-        dispatch.refreshSuccess(recipes);
-    }
+) => {
+    const setSelectedIndex = (index: number) =>
+        setState(state => ({ ...state, selectedIndex: index }));
 
-    async function saveAddRecipe(recipe: Recipe): Promise<void> {
+    const openAddRecipe = () =>
+        setState(state => ({ ...state, isAddRecipeActive: true }));
+
+    const closeAddRecipe = () =>
+        setState(state => ({ ...state, isAddRecipeActive: false }));
+
+    const openEditRecipe = () =>
+        setState(state => ({ ...state, isEditRecipeActive: true }));
+
+    const closeEditRecipe = () =>
+        setState(state => ({ ...state, isEditRecipeActive: false }));
+
+    const refresh = async () => {
+        const recipes = await getAll(db);
+        setState(state => ({
+            ...state,
+            recipes,
+        }));
+    };
+
+    const saveAddRecipe = async (recipe: Recipe) => {
         await commandProvider.execute({
             type: "recipe_create",
             recipe,
         });
         await refresh();
-        dispatch.closeAddRecipe();
-    }
+        setState(state => ({ ...state, isAddRecipeActive: false }));
+    };
 
-    async function saveEditRecipe(recipe: Recipe): Promise<void> {
+    const saveEditRecipe = async (recipe: Recipe) => {
         await commandProvider.execute({
             type: "recipe_edit",
             recipe,
         });
         await refresh();
-        dispatch.closeEditRecipe();
-    }
+        setState(state => ({ ...state, isEditRecipeActive: false }));
+    };
 
-    async function addMultiple(recipes: Recipe[]): Promise<void> {
+    const addMultiple = async (recipes: Recipe[]) => {
         await commandProvider.execute({
             type: "recipe_import",
             recipes,
         });
         await refresh();
-    }
+        setState(state => ({ ...state, isEditRecipeActive: false }));
+    };
 
     return {
+        ...snapshot,
+        setSelectedIndex,
+        openAddRecipe,
+        closeAddRecipe,
+        openEditRecipe,
+        closeEditRecipe,
         saveAddRecipe,
         saveEditRecipe,
-        refresh,
         addMultiple,
     };
 };

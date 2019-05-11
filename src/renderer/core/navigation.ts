@@ -1,17 +1,12 @@
-import { Store, UseStore } from "../store";
+import { SetState, useSelector } from "../store";
 
-export type Navigation = Store<Model, Update>;
+export type Navigation = ReturnType<typeof selector>;
 
-export function useNavigation(useStore: UseStore<Model, Update>): Navigation {
-    return useStore({
-        init,
-        update,
-    });
-}
+export const useNavigation = (): Navigation => useSelector(selector, init);
 
 // MODEL
 
-export interface Model {
+interface State {
     activeArea: AreaName;
     activeHomePage: HomePageName;
     activeRecipesPage: RecipesPageName;
@@ -55,7 +50,7 @@ export type ToolsPageName =
 
 export type SettingsPageName = "settings" | "about";
 
-export const init: Model = {
+const init: State = {
     activeArea: "home",
     activeHomePage: "home",
     activeRecipesPage: "recipe_box",
@@ -66,57 +61,42 @@ export const init: Model = {
     activeSettingsPage: "settings",
 };
 
-// UPDATE
+// SELECTOR
 
-type Update = typeof update;
+const selector = (snapshot: State, setState: SetState<State>) => {
+    const setActiveArea = (area: AreaName) =>
+        setState(state => ({ ...state, activeArea: area }));
 
-export const update = {
-    setActiveArea(model: Model, area: AreaName): Model {
-        return {
-            ...model,
-            activeArea: area,
-        };
-    },
-    setActiveHomePage(model: Model, page: HomePageName): Model {
-        return {
-            ...model,
-            activeHomePage: page,
-        };
-    },
-    setActiveRecipesPage(model: Model, page: RecipesPageName): Model {
-        return {
-            ...model,
-            activeRecipesPage: page,
-        };
-    },
-    setActiveCalendarPage(model: Model, page: CalendarPageName): Model {
-        return {
-            ...model,
-            activeCalendarPage: page,
-        };
-    },
-    setActiveShoppingPage(model: Model, page: ShoppingPageName): Model {
-        return {
-            ...model,
-            activeShoppingPage: page,
-        };
-    },
-    setActiveReferencePage(model: Model, page: ReferencePageName): Model {
-        return {
-            ...model,
-            activeReferencePage: page,
-        };
-    },
-    setActiveToolsPage(model: Model, page: ToolsPageName): Model {
-        return {
-            ...model,
-            activeToolsPage: page,
-        };
-    },
-    setActiveSettingsPage(model: Model, page: SettingsPageName): Model {
-        return {
-            ...model,
-            activeSettingsPage: page,
-        };
-    },
+    const setActiveHomePage = (page: HomePageName) =>
+        setState(state => ({ ...state, activeHomePage: page }));
+
+    const setActiveRecipesPage = (page: RecipesPageName) =>
+        setState(state => ({ ...state, activeRecipesPage: page }));
+
+    const setActiveCalendarPage = (page: CalendarPageName) =>
+        setState(state => ({ ...state, activeCalendarPage: page }));
+
+    const setActiveShoppingPage = (page: ShoppingPageName) =>
+        setState(state => ({ ...state, activeShoppingPage: page }));
+
+    const setActiveReferencePage = (page: ReferencePageName) =>
+        setState(state => ({ ...state, activeReferencePage: page }));
+
+    const setActiveToolsPage = (page: ToolsPageName) =>
+        setState(state => ({ ...state, activeToolsPage: page }));
+
+    const setActiveSettingsPage = (page: SettingsPageName) =>
+        setState(state => ({ ...state, activeSettingsPage: page }));
+
+    return {
+        ...snapshot,
+        setActiveArea,
+        setActiveHomePage,
+        setActiveRecipesPage,
+        setActiveCalendarPage,
+        setActiveShoppingPage,
+        setActiveReferencePage,
+        setActiveToolsPage,
+        setActiveSettingsPage,
+    };
 };

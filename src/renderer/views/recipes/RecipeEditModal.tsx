@@ -8,21 +8,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import * as React from "react";
 import CreatableSelect from "react-select/lib/Creatable";
-import {
-    isValid,
-    Model,
-    RecipeEdit,
-    useRecipeEdit,
-} from "../../core/recipes/recipeEdit";
-import { useLocalStore } from "../../store/react";
+import { RecipeEdit, useRecipeEdit } from "../../core/recipes/recipeEdit";
+import { Recipe } from "../../db/recipe";
 
 const RecipeEditModalContainer: React.FunctionComponent<{
     title: string;
-    init: Model;
+    init: Recipe;
     onClose: () => void;
-    onSave: (model: Model) => void;
+    onSave: (model: Recipe) => void;
 }> = ({ init, ...props }) => {
-    const recipeEdit = useRecipeEdit(useLocalStore(), init);
+    const recipeEdit = useRecipeEdit(init);
     return <RecipeEditModal recipeEdit={recipeEdit} {...props} />;
 };
 
@@ -32,7 +27,7 @@ export const RecipeEditModal: React.FunctionComponent<{
     title: string;
     recipeEdit: RecipeEdit;
     onClose: () => void;
-    onSave: (model: Model) => void;
+    onSave: (model: Recipe) => void;
 }> = ({ title, recipeEdit, onClose, onSave }) => (
     <div
         className={classNames({
@@ -237,7 +232,7 @@ export const RecipeEditModal: React.FunctionComponent<{
                 </button>
                 <button
                     className="button is-info"
-                    disabled={!isValid(recipeEdit)}
+                    disabled={!recipeEdit.isValid}
                     onClick={() => onSave(recipeEdit)}
                 >
                     Save Changes

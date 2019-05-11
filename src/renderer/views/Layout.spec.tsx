@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import * as Model from "../core/navigation";
 import { Layout, LayoutProps } from "./Layout";
 
 describe("Layout", () => {
@@ -9,7 +8,14 @@ describe("Layout", () => {
     beforeEach(() => {
         props = {
             navigation: {
-                ...Model.init,
+                activeArea: "home",
+                activeHomePage: "home",
+                activeRecipesPage: "recipe_box",
+                activeCalendarPage: "calendar",
+                activeShoppingPage: "grocery_lists",
+                activeReferencePage: "dictionary",
+                activeToolsPage: "calculator",
+                activeSettingsPage: "settings",
                 setActiveArea: () => ({}),
                 setActiveHomePage: () => ({}),
                 setActiveRecipesPage: () => ({}),

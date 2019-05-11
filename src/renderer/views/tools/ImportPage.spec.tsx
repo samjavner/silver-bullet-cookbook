@@ -7,9 +7,7 @@ describe("ImportPage", () => {
         const component = renderer.create(
             <ImportPage
                 isImporting={false}
-                importRequest={() => ({})}
-                importSuccess={() => ({})}
-                import={() => Promise.resolve()}
+                importRecipes={() => Promise.resolve()}
             />
         );
         const tree = component.toJSON();

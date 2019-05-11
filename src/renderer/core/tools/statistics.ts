@@ -1,50 +1,30 @@
-import { Dispatch, Store, UseStore } from "../../store";
+import { SetState, useSelector } from "../../store";
 
-export type Statistics = Store<Model, Update, Commands>;
+export type Statistics = ReturnType<typeof selector>;
 
-export function useStatistics(
-    useStore: UseStore<Model, Update, Commands>
-): Statistics {
-    return useStore({
-        init,
-        update,
-        createCommands,
-    });
-}
+export const useStatistics = (): Statistics => useSelector(selector, init);
 
 // MODEL
 
-export interface Model {
+interface State {
     dieFace: number;
 }
 
-export const init: Model = {
+const init: State = {
     dieFace: 1,
 };
 
-// UPDATE
+// SELECTOR
 
-type Update = typeof update;
+const selector = (snapshot: State, setState: SetState<State>) => {
+    const roll = () =>
+        setState(state => ({
+            ...state,
+            dieFace: Math.floor(Math.random() * 6 + 1),
+        }));
 
-export const update = {
-    newFace(model: Model, dieFace: number): Model {
-        return {
-            ...model,
-            dieFace,
-        };
-    },
-};
-
-// COMMANDS
-
-type Commands = ReturnType<typeof createCommands>;
-
-export const createCommands = (model: Model, dispatch: Dispatch<Update>) => {
-    async function roll() {
-        const dieFace = Math.floor(Math.random() * 6 + 1);
-        dispatch.newFace(dieFace);
-    }
     return {
+        ...snapshot,
         roll,
     };
 };
