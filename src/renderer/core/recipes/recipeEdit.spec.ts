@@ -3,6 +3,13 @@ import { recipe1 } from "../../db/recipe.mock";
 import { useRecipeEdit } from "./recipeEdit";
 
 describe("recipeEdit", () => {
+    describe("recipe", () => {
+        it("should pull together all the recipe properties", () => {
+            const { result } = renderHook(() => useRecipeEdit(recipe1));
+            expect(result.current.recipe).toEqual(recipe1);
+        });
+    });
+
     describe("isValid", () => {
         it("is valid when the name has a non-whitespace character", () => {
             const { result } = renderHook(() =>
@@ -53,5 +60,11 @@ describe("recipeEdit", () => {
         const { result } = renderHook(() => useRecipeEdit(recipe1));
         act(() => result.current.setNotes("This is the new notes"));
         expect(result.current.notes).toBe("This is the new notes");
+    });
+
+    it("should set selectedTab", () => {
+        const { result } = renderHook(() => useRecipeEdit(recipe1));
+        act(() => result.current.setSelectedTab("source"));
+        expect(result.current.selectedTab).toBe("source");
     });
 });

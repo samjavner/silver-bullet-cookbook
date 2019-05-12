@@ -3,16 +3,37 @@ import { SetState, useSelector } from "../../store";
 
 export type RecipeEdit = ReturnType<typeof selector>;
 
-export const useRecipeEdit = (init: Recipe): RecipeEdit =>
-    useSelector(selector, init);
+export const useRecipeEdit = (recipe: Recipe): RecipeEdit =>
+    useSelector(selector, init(recipe));
 
 // MODEL
 
-type State = Recipe;
+interface State extends Recipe {
+    selectedTab: RecipeEditTab;
+}
+
+export type RecipeEditTab = "recipe" | "media" | "source" | "capture";
+
+const init = (recipe: Recipe): State => ({
+    ...recipe,
+    selectedTab: "recipe",
+});
 
 // SELECTOR
 
 const selector = (snapshot: State, setState: SetState<State>) => {
+    const recipe: Recipe = {
+        id: snapshot.id,
+        name: snapshot.name,
+        url: snapshot.url,
+        description: snapshot.description,
+        tags: snapshot.tags,
+        ingredients: snapshot.ingredients,
+        directions: snapshot.directions,
+        notes: snapshot.notes,
+        sourceText: snapshot.sourceText,
+        importWarnings: snapshot.importWarnings,
+    };
     const isValid = snapshot.name.trim() !== "";
 
     const setName = (name: string) => setState(state => ({ ...state, name }));
@@ -31,8 +52,12 @@ const selector = (snapshot: State, setState: SetState<State>) => {
     const setNotes = (notes: string) =>
         setState(state => ({ ...state, notes }));
 
+    const setSelectedTab = (selectedTab: RecipeEditTab) =>
+        setState(state => ({ ...state, selectedTab }));
+
     return {
         ...snapshot,
+        recipe,
         isValid,
         setName,
         setUrl,
@@ -40,5 +65,6 @@ const selector = (snapshot: State, setState: SetState<State>) => {
         setIngredients,
         setDirections,
         setNotes,
+        setSelectedTab,
     };
 };
