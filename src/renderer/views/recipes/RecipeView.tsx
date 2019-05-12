@@ -157,11 +157,9 @@ const TagsView: React.FunctionComponent<{
         <div className="column">
             <div className="field is-grouped is-grouped-multiline">
                 {recipe.tags.map((tag, index) => (
-                    <div className="control">
+                    <div className="control" key={index}>
                         <div className="tags">
-                            <div className="tag is-dark" key={index}>
-                                {tag}
-                            </div>
+                            <div className="tag is-dark">{tag}</div>
                         </div>
                     </div>
                 ))}
