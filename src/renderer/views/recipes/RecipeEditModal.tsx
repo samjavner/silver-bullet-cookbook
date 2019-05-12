@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import {
     faCode,
     faCrosshairs,
@@ -60,165 +61,39 @@ export const RecipeEditModal: React.FunctionComponent<{
                 }}
             >
                 <ul>
-                    <li className="is-active">
-                        <a href="#">
-                            <span className="icon is-small">
-                                <FontAwesomeIcon icon={faInfoCircle} />
-                            </span>
-                            Recipe
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span className="icon is-small">
-                                <FontAwesomeIcon icon={faImages} />
-                            </span>
-                            Media
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span className="icon is-small">
-                                <FontAwesomeIcon icon={faCode} />
-                            </span>
-                            Source
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span className="icon is-small">
-                                <FontAwesomeIcon icon={faCrosshairs} />
-                            </span>
-                            Capture
-                        </a>
-                    </li>
+                    <Tab
+                        icon={faInfoCircle}
+                        text="Recipe"
+                        isActive={recipeEdit.selectedTab === "recipe"}
+                        onClick={() => recipeEdit.setSelectedTab("recipe")}
+                    />
+                    <Tab
+                        icon={faImages}
+                        text="Media"
+                        isActive={recipeEdit.selectedTab === "media"}
+                        onClick={() => recipeEdit.setSelectedTab("media")}
+                    />
+                    <Tab
+                        icon={faCode}
+                        text="Source"
+                        isActive={recipeEdit.selectedTab === "source"}
+                        onClick={() => recipeEdit.setSelectedTab("source")}
+                    />
+                    <Tab
+                        icon={faCrosshairs}
+                        text="Capture"
+                        isActive={recipeEdit.selectedTab === "capture"}
+                        onClick={() => recipeEdit.setSelectedTab("capture")}
+                    />
                 </ul>
             </div>
             <section className="modal-card-body">
-                <div className="columns">
-                    <div className="column">
-                        <div className="field">
-                            <label className="label">Name</label>
-                            <div className="control">
-                                <input
-                                    className="input"
-                                    type="text"
-                                    value={recipeEdit.name}
-                                    onChange={event =>
-                                        recipeEdit.setName(event.target.value)
-                                    }
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="column">
-                        <div className="field">
-                            <label className="label">URL</label>
-                            <div className="control">
-                                <input
-                                    className="input"
-                                    type="text"
-                                    value={recipeEdit.url}
-                                    onChange={event =>
-                                        recipeEdit.setUrl(event.target.value)
-                                    }
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="columns">
-                    <div className="column">
-                        <div className="field">
-                            <label className="label">Description</label>
-                            <div className="control">
-                                <input
-                                    className="input"
-                                    type="text"
-                                    value={recipeEdit.description}
-                                    onChange={event =>
-                                        recipeEdit.setDescription(
-                                            event.target.value
-                                        )
-                                    }
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="columns">
-                    <div className="column">
-                        <div className="field">
-                            <label className="label">Tags</label>
-                            <div className="control">
-                                <TagsEditView recipeEdit={recipeEdit} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="columns">
-                    <div className="column">
-                        <div className="field">
-                            <label className="label">Ingredients</label>
-                            <div className="control">
-                                <textarea
-                                    rows={Math.max(
-                                        recipeEdit.ingredients.split("\n")
-                                            .length,
-                                        3
-                                    )}
-                                    className="textarea"
-                                    value={recipeEdit.ingredients}
-                                    onChange={event =>
-                                        recipeEdit.setIngredients(
-                                            event.target.value
-                                        )
-                                    }
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="columns">
-                    <div className="column">
-                        <div className="field">
-                            <label className="label">Directions</label>
-                            <div className="control">
-                                <textarea
-                                    rows={Math.max(
-                                        recipeEdit.directions.split("\n")
-                                            .length,
-                                        3
-                                    )}
-                                    className="textarea"
-                                    value={recipeEdit.directions}
-                                    onChange={event =>
-                                        recipeEdit.setDirections(
-                                            event.target.value
-                                        )
-                                    }
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="columns">
-                    <div className="column">
-                        <div className="field">
-                            <label className="label">Notes</label>
-                            <div className="control">
-                                <input
-                                    className="input"
-                                    type="text"
-                                    value={recipeEdit.notes}
-                                    onChange={event =>
-                                        recipeEdit.setNotes(event.target.value)
-                                    }
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {recipeEdit.selectedTab === "recipe" && (
+                    <RecipeTabContent recipeEdit={recipeEdit} />
+                )}
+                {recipeEdit.selectedTab === "media" && <div>Media</div>}
+                {recipeEdit.selectedTab === "source" && <div>Source</div>}
+                {recipeEdit.selectedTab === "capture" && <div>Capture</div>}
             </section>
             <footer
                 className="modal-card-foot"
@@ -233,13 +108,155 @@ export const RecipeEditModal: React.FunctionComponent<{
                 <button
                     className="button is-info"
                     disabled={!recipeEdit.isValid}
-                    onClick={() => onSave(recipeEdit)}
+                    onClick={() => onSave(recipeEdit.recipe)}
                 >
                     Save Changes
                 </button>
             </footer>
         </div>
     </div>
+);
+
+const Tab: React.FunctionComponent<{
+    icon: IconProp;
+    isActive: boolean;
+    onClick: () => void;
+    text: string;
+}> = props => (
+    <li
+        className={classNames({ "is-active": props.isActive })}
+        onClick={props.onClick}
+    >
+        <a href="#">
+            <span className="icon is-small">
+                <FontAwesomeIcon icon={props.icon} />
+            </span>
+            {props.text}
+        </a>
+    </li>
+);
+
+const RecipeTabContent: React.FunctionComponent<{
+    recipeEdit: RecipeEdit;
+}> = ({ recipeEdit }) => (
+    <>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label">Name</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            value={recipeEdit.name}
+                            onChange={event =>
+                                recipeEdit.setName(event.target.value)
+                            }
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label className="label">URL</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            value={recipeEdit.url}
+                            onChange={event =>
+                                recipeEdit.setUrl(event.target.value)
+                            }
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label">Description</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            value={recipeEdit.description}
+                            onChange={event =>
+                                recipeEdit.setDescription(event.target.value)
+                            }
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label">Tags</label>
+                    <div className="control">
+                        <TagsEditView recipeEdit={recipeEdit} />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label">Ingredients</label>
+                    <div className="control">
+                        <textarea
+                            rows={Math.max(
+                                recipeEdit.ingredients.split("\n").length,
+                                3
+                            )}
+                            className="textarea"
+                            value={recipeEdit.ingredients}
+                            onChange={event =>
+                                recipeEdit.setIngredients(event.target.value)
+                            }
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label">Directions</label>
+                    <div className="control">
+                        <textarea
+                            rows={Math.max(
+                                recipeEdit.directions.split("\n").length,
+                                3
+                            )}
+                            className="textarea"
+                            value={recipeEdit.directions}
+                            onChange={event =>
+                                recipeEdit.setDirections(event.target.value)
+                            }
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label">Notes</label>
+                    <div className="control">
+                        <input
+                            className="input"
+                            type="text"
+                            value={recipeEdit.notes}
+                            onChange={event =>
+                                recipeEdit.setNotes(event.target.value)
+                            }
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </>
 );
 
 const TagsEditView: React.FunctionComponent<{
@@ -264,7 +281,6 @@ const TagsEditView: React.FunctionComponent<{
         </div>
     );
 };
-
 // TODO:
 // Star rating, difficulty rating, aggregate rating of other raters (best/worst/value)
 // Try Soon/Prepared/Favorite, colored flag
