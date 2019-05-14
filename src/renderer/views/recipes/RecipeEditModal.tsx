@@ -268,14 +268,9 @@ const TagsEditView: React.FunctionComponent<{
                 <CreatableSelect
                     isMulti={true}
                     isClearable={false}
-                    options={recipeEdit.tags.map(tag => ({
-                        label: tag,
-                        value: tag,
-                    }))}
-                    value={recipeEdit.tags.map(tag => ({
-                        label: tag,
-                        value: tag,
-                    }))}
+                    options={recipeEdit.selectedTags}
+                    value={recipeEdit.selectedTags}
+                    onChange={recipeEdit.selectTags as any}
                 />
             </div>
         </div>
