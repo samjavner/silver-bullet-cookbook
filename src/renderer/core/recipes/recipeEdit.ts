@@ -55,6 +55,11 @@ const selector = (snapshot: State, setState: SetState<State>) => {
     const setSelectedTab = (selectedTab: RecipeEditTab) =>
         setState(state => ({ ...state, selectedTab }));
 
+    const selectedTags = recipe.tags.map(tag => ({ label: tag, value: tag }));
+
+    const selectTags = (tags: Array<{ label: string; value: string }>) =>
+        setState(state => ({ ...state, tags: tags.map(tag => tag.value) }));
+
     return {
         ...snapshot,
         recipe,
@@ -66,5 +71,7 @@ const selector = (snapshot: State, setState: SetState<State>) => {
         setDirections,
         setNotes,
         setSelectedTab,
+        selectedTags,
+        selectTags,
     };
 };
