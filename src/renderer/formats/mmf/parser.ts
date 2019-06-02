@@ -659,9 +659,8 @@ function adjustSpacingOnLeft(lines: string[]): string[] {
 
     if (spacesOnLeft > 2) {
         const spacesToRemove = spacesOnLeft - 2;
-        lines = lines.map(
-            line =>
-                line.length >= spacesOnLeft ? line.slice(spacesToRemove) : line
+        lines = lines.map(line =>
+            line.length >= spacesOnLeft ? line.slice(spacesToRemove) : line
         );
     }
 
@@ -677,7 +676,10 @@ function isAllDividerPunctuation(line: string): boolean {
 
     return line
         .split("")
-        .reduce((soFar, c) => soFar && isDividerPunctuation(c), true);
+        .reduce(
+            (soFar, c) => soFar && isDividerPunctuation(c),
+            true as boolean
+        );
 }
 
 function isDividerPunctuation(c: string): boolean {
