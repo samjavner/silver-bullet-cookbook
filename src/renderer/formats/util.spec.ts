@@ -315,12 +315,12 @@ describe("anyOf", () => {
     });
 
     it("should return false if all predicates return false", () => {
-        const actual = anyOf(x => x === 5, x => x > 15)(10);
+        const actual = anyOf<number>(x => x === 5, x => x > 15)(10);
         expect(actual).toBe(false);
     });
 
     it("should return true if any predicate returns true", () => {
-        const actual = anyOf(x => x === 5, x => x > 15)(20);
+        const actual = anyOf<number>(x => x === 5, x => x > 15)(20);
         expect(actual).toBe(true);
     });
 });
