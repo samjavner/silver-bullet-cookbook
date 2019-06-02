@@ -20,7 +20,7 @@ jobs:
           name: Linux
           pool:
               vmImage: ubuntu-16.04
-          artifact: silver-bullet-cookbook-$(versionNumber).AppImage
+          artifact: silver-bullet-cookbook $(versionNumber).AppImage
 
     - template: templates/build.yml
       parameters:
